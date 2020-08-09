@@ -274,7 +274,7 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    awful.key({ modkey,           }, "r", function () awful.spawn(terminal) end,
+    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
@@ -311,7 +311,7 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "Return",     function () awful.spawn.with_shell("dmenu_run -nb '#3b4252' -sf '#000000' -sb '#f4800d' -nf '#F4800d'") end,
+    awful.key({ modkey },            "r",     function () awful.spawn.with_shell("dmenu_run -nb '#3b4252' -sf '#000000' -sb '#f4800d' -nf '#F4800d'") end,
               {description = "run prompt", group = "launcher"}),
     
 	-- coustom application bindings 
