@@ -1,7 +1,3 @@
--- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-pcall(require, "luarocks.loader")
-
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -13,10 +9,12 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+local hotkeys_popup = require("awful.hotkeys_popup").widget
+-- Freedesktop menu
+local freedesktop = require("freedesktop")
+-- Enable VIM help for hotkeys widget when client with matching name is opened:
+require("awful.hotkeys_popup.keys.vim")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -46,11 +44,20 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init("~/.config/awesome/themes/default/theme.lua")
-
+beautiful.icon_theme        = "Vimix"
+beautiful.bg_normal         = "#313338"
+beautiful.bg_focus          = "#f4800d"
+beautiful.titlebar_close_button_normal = "/usr/share/awesome/themes/cesious/titlebar/close_normal_adapta.png"
+beautiful.titlebar_close_button_focus = "/usr/share/awesome/themes/cesious/titlebar/close_focus_adapta.png"
+beautiful.font              = "Noto Sans Regular 10"
+beautiful.notification_font = "Noto Sans Bold 14"
 -- This is used later as the default terminal and editor to run.
-terminal = "termite"
+browser = "brave"
+filemanager = "nautilus"
+terminal = "lxterminal"
 editor = "vim"
-editor_cmd = terminal .. " -e " .. editor
+gui_editor = "atom"
+
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -83,24 +90,36 @@ awful.layout.layouts = {
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+    { "hotkeys", function() return false, hotkeys_popup.show_help end, menubar.utils.lookup_icon("preferences-desktop-keyboard-shortcuts") },
+    { "manual", terminal .. " -e man awesome", menubar.utils.lookup_icon("system-help") },
+    { "edit config", gui_editor .. " " .. awesome.conffile,  menubar.utils.lookup_icon("accessories-text-editor") },
+    { "restart", awesome.restart, menubar.utils.lookup_icon("system-restart") }
 }
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
-
+myexitmenu = {
+    { "log out", function() awesome.quit() end, menubar.utils.lookup_icon("system-log-out") },
+    { "suspend", "systemctl suspend", menubar.utils.lookup_icon("system-suspend") },
+    { "hibernate", "systemctl hibernate", menubar.utils.lookup_icon("system-suspend-hibernate") },
+    { "reboot", "systemctl reboot", menubar.utils.lookup_icon("system-reboot") },
+    { "shutdown", "poweroff", menubar.utils.lookup_icon("system-shutdown") }
+}
+mymainmenu = freedesktop.menu.build({
+    icon_size = 32,
+    before = {
+        { "Terminal", terminal, menubar.utils.lookup_icon("utilities-terminal") },
+        { "Browser", browser, menubar.utils.lookup_icon("internet-web-browser") },
+        { "Files", filemanager, menubar.utils.lookup_icon("system-file-manager") },
+        -- other triads can be put here
+    },
+    after = {
+        { "Awesome", myawesomemenu, "/usr/share/awesome/icons/awesome32.png" },
+        { "Exit", myexitmenu, menubar.utils.lookup_icon("system-shutdown") },
+        -- other triads can be put here
+    }
+})
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
-
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -221,6 +240,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
+	awful.button({ }, 1, function () mymainmenu:hide() end),
     awful.button({ }, 3, function () mymainmenu:toggle() end),
     awful.button({ }, 4, awful.tag.viewnext),
     awful.button({ }, 5, awful.tag.viewprev)
@@ -311,18 +331,18 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.spawn.with_shell("dmenu_run -nb '#3b4252' -sf '#000000' -sb '#f4800d' -nf '#F4800d'") end,
-              {description = "run prompt", group = "launcher"}),
-    
-	-- coustom application bindings 
-	awful.key({ modkey }, "v", function () awful.spawn.with_shell("code") end,
-		{description = "open code", group = "laucher" }) ,
+  --  awful.key({ modkey },            "r",     function () awful.spawn.with_shell("dmenu_run -nb '#3b4252' -sf '#000000' -sb '#f4800d' -nf '#F4800d'") end,
+ --             {description = "run prompt", group = "launcher"}),
+
+	-- coustom application bindings
+	awful.key({ modkey }, "v", function () awful.spawn.with_shell("atom") end,
+		{description = "open atom", group = "laucher" }) ,
 	awful.key({modkey }, "b" , function () awful.spawn.with_shell("brave") end,
 		{description = "open brave", group = "laucher" }) ,
 	awful.key({modkey } , "n" , function () awful.spawn.with_shell("nautilus") end,
 		{description = "open file manager" , group ="laucher"}),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
+    awful.key({ modkey }, "r", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
 )
 
@@ -555,5 +575,4 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 --
 --
 awful.spawn.with_shell("nitrogen --restore")
-awful.spawn.with_shell("termite")
-
+awful.spawn.with_shell(terminal)
