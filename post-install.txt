@@ -1,0 +1,25 @@
+install themes :
+
+https://aur.archlinux.org/nordic-theme-git.git
+https://aur.archlinux.org/vimix-gtk-themes.git
+
+icon themes 
+
+https://aur.archlinux.org/acyls-icon-theme-git.git      
+
+https://aur.archlinux.org/vimix-icon-theme.git
+
+Applications
+
+nautilus 
+nitrogen
+dmenu 
+atom - get vim mode plus 
+brave
+termite
+vim 
+lxappearance
+
+
+pav - audio control
+spotify -snap 
