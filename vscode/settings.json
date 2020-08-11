@@ -1,0 +1,22 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Community Material Theme Darker",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "kite.showWelcomeNotificationOnStartup": false,
+    "editor.colorDecorators": false,
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#313338",
+        "activityBar.activeFocusBorder": "#313338",
+        "focusBorder": "#eeeeee",
+        "foreground": "#eeeeee",
+        "widget.shadow": "#eeeeee",
+        "selection.background": "#ffffff",
+        "descriptionForeground": "#eeeeee",
+        "sideBar.background": "#313338",
+        "sideBar.foreground": "#eeeeee",
+        "editor.background": "#313338",
+        "tab.activeBorder": "#eeeeee",
+        "editorLineNumber.foreground": "#eeeeee"
+    }
+}
