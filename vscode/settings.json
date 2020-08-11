@@ -1,22 +1,69 @@
 {
     "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Community Material Theme Darker",
+    "workbench.colorTheme": "Material Theme Darker High Contrast",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "kite.showWelcomeNotificationOnStartup": false,
     "editor.colorDecorators": false,
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#313338",
-        "activityBar.activeFocusBorder": "#313338",
+        
+        "activityBar.foreground": "#57ad67",
+        "activityBar.activeFocusBorder": "#57ad67",
+        "activityBar.background": "#313338",
+        
         "focusBorder": "#eeeeee",
         "foreground": "#eeeeee",
+        
         "widget.shadow": "#eeeeee",
+        
         "selection.background": "#ffffff",
+        
         "descriptionForeground": "#eeeeee",
+        
         "sideBar.background": "#313338",
         "sideBar.foreground": "#eeeeee",
+        
         "editor.background": "#313338",
+        
+        "editorWidget.background": "#313338",
+
         "tab.activeBorder": "#eeeeee",
-        "editorLineNumber.foreground": "#eeeeee"
-    }
+
+        "editorLineNumber.foreground": "#eeeeee", 
+
+        "editorGroupHeader.noTabsBackground": "#313338",
+        "editorGroupHeader.tabsBackground": "#313338",
+        "editorGroup.border": "#57ad67",
+
+        "tab.unfocusedActiveBackground": "#57ad67",
+
+        "tab.inactiveBackground": "#313338",
+        "tab.activeBackground": "#313338",
+        "button.foreground": "#eeeeee",
+        "button.background": "#313338",
+
+        "dropdown.background": "#313338",
+        "dropdown.listBackground": "#4075cf",
+        "dropdown.border": "#313338",
+        "dropdown.foreground": "#eeeeee",
+
+
+        "input.background": "#313338",
+        "input.border": "#57ad67",
+        "input.foreground": "#eeeeee",
+        "inputOption.activeBackground": "#313338",
+        "inputOption.activeForeground": "#4075cf",
+        "inputOption.activeBorder": "#4075cf",
+    
+        "panel.background": "#313338",
+        
+        "statusBar.background": "#313338",
+
+        "menu.selectionBackground": "#313338",
+
+        "settings.dropdownBackground": "#313338",
+
+        "breadcrumb.background": "#313338"
+    },
+    "workbench.statusBar.visible": false
 }
