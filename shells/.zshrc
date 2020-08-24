@@ -1,3 +1,4 @@
+export ANDROID_SDK=/home/amadeus/Android/Sdk
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -11,8 +12,8 @@ export ZSH=/usr/share/oh-my-zsh/
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="agnoster"
-
+#ZSH_THEME="agnoster"
+ZSH_THEME="wuffers"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
@@ -116,8 +117,7 @@ if [ -d "$HOME/.local/bin" ] ;
 fi
 
 #list
-alias ls='ls  --color=auto'
-alias la='ls -lAh'
+alias ls='ls -lAh --color=auto'
 alias ll='ls -la'
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
@@ -290,5 +290,6 @@ ex ()
 #in there. They will not be overwritten by skel.
 
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
+export ANDROID_SDK=~/Android/Sdk
 export ANDROID_SDK=/home/amadeus/Android/Sdk
 neofetch
