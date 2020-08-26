@@ -104,7 +104,7 @@ local themes = {
 }
 
 -- choose your theme here
-local chosen_theme = themes[2]
+local chosen_theme = themes[3]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -314,7 +314,7 @@ globalkeys = my_table.join(
     awful.key({modkey } , "n" , function () awful.spawn.with_shell(filemanager) end,
             {description = "open file manager" , group ="laucher"}),
 
-    awful.key({ modkey }, "r", function() awful.spawn.with_shell("dmenu_run -nb '#da2e5e' -sb '#008eff'") end,
+    awful.key({ modkey }, "r", function() awful.spawn.with_shell("dmenu_run -nb '#292d3e' -sb '#497B96'") end,
             {description = "show the menubar", group = "launcher"}),
 
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
@@ -348,7 +348,7 @@ globalkeys = my_table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
+    awful.key({ modkey,           }, "w", function () awful.util.mymainmenu:toggle() end,
               {description = "show main menu", group = "awesome"}),
 
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
