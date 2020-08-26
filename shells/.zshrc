@@ -122,7 +122,7 @@ alias ll='ls -la'
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
 
-alias gitnow="git add . && git commit -m && git push -u origin master"
+alias gitcum="git add . && git commit -m 'cummit' && git push -u origin master"
 #fix obvious typo's
 alias cd..='cd ..'
 alias pdw="pwd"
