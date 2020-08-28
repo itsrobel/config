@@ -758,6 +758,7 @@ awful.rules.rules = {
           "copyq",  -- Includes session name in class.
         },
         class = {
+	  "godot",
           "Arandr",
           "Arcolinux-welcome-app.py",
           "Blueberry",
