@@ -119,9 +119,9 @@ local modkey1      = "Control"
 local browser1          = "firefox"
 local browser2          = "brave"
 local browser3          = "chromium -no-default-browser-check"
-local editor            = "vim"
+local editor            = "termite -e nvim"
 local editorgui         = "code"
-local filemanager       = "pcmanfm"
+local filemanager       = "termite -e ranger"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "termite"
@@ -311,8 +311,8 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editorgui) end,
         {description = "run gui editor", group = "launcher"}),
 
-    awful.key({modkey } , "n" , function () awful.spawn.with_shell(filemanager) end,
-            {description = "open file manager" , group ="laucher"}),
+  --  awful.key({modkey } , "n" , function () awful.spawn.with_shell(filemanager) end,
+  --         {description = "open file manager" , group ="laucher"}),
 
     awful.key({ modkey }, "r", function() awful.spawn.with_shell("dmenu_run -nb '#292d3e' -sb '#497B96'") end,
             {description = "show the menubar", group = "launcher"}),

@@ -293,4 +293,8 @@ ex ()
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 export ANDROID_SDK=~/Android/Sdk
 export ANDROID_SDK=/home/amadeus/Android/Sdk
+export VISUAl=nvim
+export EDITOR=nvim
 neofetch
+
+
