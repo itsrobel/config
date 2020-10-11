@@ -122,7 +122,7 @@ alias ll='ls -la'
 alias l='ls'
 alias l.="ls -A | egrep '^\.'"
 
-alias gitcum="git add . && git commit -m 'cummit' && git push -u origin master"
+alias gitcom="git add . && git commit -m 'cummit' && git push -u origin master"
 #fix obvious typo's
 alias cd..='cd ..'
 alias pdw="pwd"
@@ -295,6 +295,6 @@ export ANDROID_SDK=~/Android/Sdk
 export ANDROID_SDK=/home/amadeus/Android/Sdk
 export VISUAl=nvim
 export EDITOR=nvim
-neofetch
+export IMAGE=vimiv
 
 

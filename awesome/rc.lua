@@ -396,9 +396,6 @@ globalkeys = my_table.join(
         {description = "select previous", group = "layout"}),
 
 
-
-
-
     awful.key({ modkey, "Control" }, "n",
         function ()
             local c = awful.client.restore()
@@ -564,6 +561,12 @@ clientkeys = my_table.join(
             c:raise()
         end,
         {description = "toggle fullscreen", group = "client"}),
+    awful.key({ modkey,           }, "m",
+        function (c)
+	    c.maximized = not c.maximized
+	    c:raise()
+	end,
+	{description = "toggle max", group = "client"}),
     awful.key({ modkey, "Shift"   }, "q",      function (c) c:kill()                         end,
               {description = "close", group = "hotkeys"}),
     awful.key({ modkey, },           "q",      function (c) c:kill()                         end,
