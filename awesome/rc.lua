@@ -122,6 +122,7 @@ local browser3          = "chromium -no-default-browser-check"
 local editor            = "termite -e nvim"
 local editorgui         = "code"
 local filemanager       = "termite -e ranger"
+local filemanagergui 	= "nemo" 
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "termite"
@@ -311,12 +312,14 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editorgui) end,
         {description = "run gui editor", group = "launcher"}),
 
-  --  awful.key({modkey } , "n" , function () awful.spawn.with_shell(filemanager) end,
-  --         {description = "open file manager" , group ="laucher"}),
-
-    awful.key({ modkey }, "r", function() awful.spawn.with_shell("dmenu_run -nb '#292d3e' -sb '#497B96'") end,
-            {description = "show the menubar", group = "launcher"}),
-
+    awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
+        {description = "open file manager" , group ="laucher"}),
+    awful.key({ modkey }, "e" , function () awful.spawn.with_shell(filemanagergui) end,
+    	{description = "open file manager gui", group = "laucher"}),
+    awful.key({ modkey }, "r", function  () awful.spawn.with_shell("dmenu_run -nb '#292D3E' -sb '#EA6F81'") end,
+        {description = "show the menubar", group = "launcher"}),
+    awful.key({modkey  }, "i", function  () awful.spawn.with_shell("nemo-connect-server") end,
+    	{description = "ssh with gui filemanager",group = "laucher"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
     awful.key({ modkey }, "F4", function () awful.spawn.with_shell( "pavucontrol" ) end,
@@ -327,7 +330,7 @@ globalkeys = my_table.join(
         {description = "Scrot", group = "screenshots"}),
   
     -- Layout manipulation
-    awful.key({ modkey,           }, "e",      hotkeys_popup.show_help,
+    awful.key({ modkey,           }, "z",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
