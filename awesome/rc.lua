@@ -105,9 +105,7 @@ local themes = {
 
 -- choose your theme here
 local chosen_theme = themes[4]
-
-local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
-beautiful.init(theme_path)
+theme_colors = require (".themes/".. chosen_theme .."/colors" )
 
 -- modkey or mod4 = super key
 local modkey       = "Mod4"
@@ -122,7 +120,9 @@ local browser3          = "chromium -no-default-browser-check"
 local editor            = "termite -e nvim"
 local editorgui         = "code"
 local filemanager       = "termite -e ranger"
-local filemanagergui 	= "nemo" 
+local filemanagergui 	  = "nemo" 
+local dmenu             = string.format("dmenu_run -nb '%s' -sb '%s'", theme_colors.bg_normal , theme_colors.fg_focus) 
+--"dmenu_run -nb " .. "'" .. theme_colors.fg_normal .. "'".. " -sb " .. "'".. theme_colors.fg_focus .. "'"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
 local terminal          = "termite"
@@ -186,7 +186,8 @@ awful.util.tasklist_buttons = my_table.join(
         else
             --c:emit_signal("request::activate", "tasklist", {raise = true})<Paste>
 
-            -- Without this, the following
+            -- Without this, the followiwdng
+            --
             -- :isvisible() makes no sense
             c.minimized = false
             if not c:isvisible() and c.first_tag then
@@ -224,9 +225,11 @@ awful.util.tasklist_buttons = my_table.join(
 --lain.layout.cascade.tile.nmaster       = 5
 --lain.layout.cascade.tile.ncol          = 2
 
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
 -- }}}
 
+
+local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
+beautiful.init(theme_path)
 
 
 -- {{{ Menu
@@ -316,8 +319,8 @@ globalkeys = my_table.join(
         {description = "open file manager" , group ="laucher"}),
     awful.key({ modkey }, "e" , function () awful.spawn.with_shell(filemanagergui) end,
     	{description = "open file manager gui", group = "laucher"}),
-    awful.key({ modkey }, "r", function  () awful.spawn.with_shell("dmenu_run -nb '#292D3E' -sb '#EA6F81'") end,
-        {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "r", function  () awful.spawn.with_shell(dmenu) end,
+        {description = "show the runlauncher", group = "launcher"}),
     awful.key({modkey  }, "i", function  () awful.spawn.with_shell("nemo-connect-server") end,
     	{description = "ssh with gui filemanager",group = "laucher"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
