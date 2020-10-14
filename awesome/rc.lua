@@ -104,7 +104,7 @@ local themes = {
 }
 
 -- choose your theme here
-local chosen_theme = themes[3]
+local chosen_theme = themes[4]
 
 local theme_path = string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme)
 beautiful.init(theme_path)
@@ -308,10 +308,10 @@ globalkeys = my_table.join(
     -- {{{ Personal keybindings
     awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser1 ) end,
         {description = browser1, group = "function keys"}),
-
-    awful.key({ modkey }, "v", function () awful.spawn.with_shell(editorgui) end,
-        {description = "run gui editor", group = "launcher"}),
-
+    awful.key({ modkey }, "c", function () awful.spawn.with_shell(editorgui) end,
+        {description = "run gui edior" , group = "launcher"}),
+    awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
+        {description = "run editor", group = "launcher"}),
     awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
         {description = "open file manager" , group ="laucher"}),
     awful.key({ modkey }, "e" , function () awful.spawn.with_shell(filemanagergui) end,
