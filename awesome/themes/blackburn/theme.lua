@@ -21,18 +21,18 @@ theme.font                                      = "Noto Sans Regular 11"
 theme.taglist_font                              = "Noto Sans Regular 11"
 theme.fg_normal                                 = "#D7D7D7"
 theme.fg_focus                                  = "#F6784F"
-theme.bg_normal                                 = "#060606"
-theme.bg_focus                                  = "#060606"
+theme.bg_normal                                 = "#282828"
+theme.bg_focus                                  = "#282828"
 theme.fg_urgent                                 = "#CC9393"
 theme.bg_urgent                                 = "#2A1F1E"
 theme.border_width                              = dpi(1)
 
-theme.border_normal                             = "#0E0E0E"
+theme.border_normal                             = "#282828"
 theme.border_focus                              = "#F79372"
 theme.taglist_fg_focus                          = "#F6784F"
-theme.taglist_bg_focus                          = "#060606"
+theme.taglist_bg_focus                          = "#282828"
 theme.tasklist_fg_focus                         = "#F6784F"
-theme.tasklist_bg_focus                         = "#060606"
+theme.tasklist_bg_focus                         = "#282828"
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(130)
 theme.menu_submenu_icon                         = theme.dir .. "/icons/submenu.png"
@@ -79,7 +79,7 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/
 theme.useless_gap                               = 8
 
 --awful.util.tagnames   = { "ƀ", "Ƅ", "Ɗ", "ƈ", "ƙ" }
-awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" ,"☊" }
+awful.util.tagnames = {  "תשע","שמונה","שבע","שש","חמש","ארבע","שלש","שתים","אחת" }
 
 local markup     = lain.util.markup
 local separators = lain.util.separators
