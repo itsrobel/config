@@ -169,7 +169,6 @@ local bat = lain.widget.bat({
 })
 --]]
 
---[[
 -- ALSA volume
 theme.volume = lain.widget.alsa({
     --togglechannel = "IEC958,3",
@@ -186,7 +185,6 @@ theme.volume = lain.widget.alsa({
         widget:set_markup(markup.font(theme.font, markup(gray, header) .. vlevel))
     end
 })
---]]
 
 -- Weather
 theme.weather = lain.widget.weather({
@@ -275,7 +273,7 @@ function theme.at_screen_connect(s)
             --theme.weather.widget,
             --theme.fs.widget,
             --bat,
-            --theme.volume.widget,
+            theme.volume.widget,
             wibox.widget.systray(),
             first,
             mytextclock,
