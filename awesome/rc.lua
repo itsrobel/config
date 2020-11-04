@@ -24,6 +24,10 @@ local awful         = require("awful") --Everything related to window managment
 local wibox         = require("wibox")
 
 -- Theme handling library
+
+
+-- define your volume control, using default settings:
+-- }
 local beautiful     = require("beautiful")
 
 -- Notification library
@@ -117,15 +121,15 @@ local modkey1      = "Control"
 local browser1          = "firefox"
 local browser2          = "brave"
 local browser3          = "chromium -no-default-browser-check"
-local editor            = "termite -e nvim"
+local editor            = "alacritty -e nvim"
 local editorgui         = "code"
-local filemanager       = "termite -e ranger"
+local filemanager       = "alacritty -e ranger"
 local filemanagergui 	  = "nemo" 
 local dmenu             = string.format("dmenu_run -nb '%s' -sb '%s'", theme_colors.bg_normal , theme_colors.fg_focus) 
 --"dmenu_run -nb " .. "'" .. theme_colors.fg_normal .. "'".. " -sb " .. "'".. theme_colors.fg_focus .. "'"
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "termite"
+local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
@@ -450,13 +454,12 @@ globalkeys = my_table.join(
     awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
               {description = "-10%", group = "hotkeys"}),
 
-    -- ALSA volume control
+    --{ ALSA volume control
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
             beautiful.volume.update()
         end),
-    --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
             os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
