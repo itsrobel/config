@@ -124,7 +124,7 @@ local filemanagergui 	= "nemo"
 local dmenu             = string.format("dmenu_run -nb '%s' -sb '%s'", theme_colors.bg_normal , theme_colors.fg_focus)
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "termite"
+local terminal          = "alacritty"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables
