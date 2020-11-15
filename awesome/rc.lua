@@ -120,7 +120,8 @@ local browser3          = "chromium"
 local editor            = "emacsclient -c"
 local editorgui         = "code"
 local filemanager       = string.format("emacsclient -c -e '(dired %s )'", string.format('"."'))
-local filemanagergui 	= "nemo"
+local filemanagergui 	  = "pcmanfm"
+local filemanagerterm   = "alacritty -e ranger"
 local dmenu             = string.format("dmenu_run -nb '%s' -sb '%s'", theme_colors.bg_normal , theme_colors.fg_focus)
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
@@ -320,8 +321,8 @@ globalkeys = my_table.join(
     	{description = "open file manager gui", group = "laucher"}),
     awful.key({ modkey }, "r", function  () awful.spawn.with_shell(dmenu) end,
         {description = "show the runlauncher", group = "launcher"}),
-    awful.key({modkey  }, "i", function  () awful.spawn.with_shell("nemo-connect-server") end,
-    	{description = "ssh with gui filemanager",group = "laucher"}),
+    awful.key({modkey  }, "i", function  () awful.spawn.with_shell(filemanagerterm) end,
+    	{description = "ranger",group = "laucher"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
     awful.key({ modkey }, "F4", function () awful.spawn.with_shell( "pavucontrol" ) end,
