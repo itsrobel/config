@@ -121,11 +121,11 @@ local editor            = "emacsclient -c"
 local editorgui         = "code"
 local filemanager       = string.format("emacsclient -c -e '(dired %s )'", string.format('"."'))
 local filemanagergui 	  = "pcmanfm"
-local filemanagerterm   = "alacritty -e ranger"
+local filemanagerterm   = "termite -e ranger"
 local dmenu             = string.format("dmenu_run -nb '%s' -sb '%s'", theme_colors.bg_normal , theme_colors.fg_focus)
 local mailclient        = "evolution"
 local mediaplayer       = "spotify"
-local terminal          = "alacritty"
+local terminal          = "termite"
 local virtualmachine    = "virtualbox"
 
 -- awesome variables

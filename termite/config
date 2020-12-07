@@ -43,19 +43,20 @@ urgent_on_bell = true
 #### https://terminal.sexy
 #### https://critical.ch/xterm/
 ############################################################
+
 [colors]
-# Base16 Gruvbox dark, hard
+# Base16 Gruvbox dark, medium
 # Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
 foreground      = #d5c4a1
 foreground_bold = #ebdbb2
 cursor          = #ebdbb2
-background      = #282828
+background = rgba(40, 40, 40, 0.8)
 
 # 16 color space
 
 # Black, Gray, Silver, White
-color0  = #1d2021
+color0  = #282828
 color8  = #665c54
 color7  = #d5c4a1
 color15 = #fbf1c7
