@@ -16,7 +16,7 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow"
-theme.wallpaper                                 = theme.dir .. "/none.jpg"
+theme.wallpaper                                 = theme.dir .. "/wallpaper.jpg"
 theme.font                                      = "Noto Sans Regular 11"
 theme.taglist_font                              = "Noto Sans Regular 14"
 theme.fg_normal                                 = "#FEFEFE"
@@ -28,9 +28,9 @@ theme.bg_urgent                                 = "#3F3F3F"
 theme.taglist_fg_focus                          = "#7b88d3"
 theme.tasklist_bg_focus                         = "#222222"
 theme.tasklist_fg_focus                         = "#7b88d3"
-theme.border_width                              = dpi(4)
+theme.border_width                              = dpi(2)
 theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#008eff"
+theme.border_focus                              = "#6F6F6F"
 theme.border_marked                             = "#CC9393"
 theme.titlebar_bg_focus                         = "#3F3F3F"
 theme.titlebar_bg_normal                        = "#3F3F3F"
@@ -98,9 +98,6 @@ theme.titlebar_maximized_button_focus_active    = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
-
-
-theme.useless_gap                               = 8
 
 local markup = lain.util.markup
 local separators = lain.util.separators
@@ -374,7 +371,7 @@ function theme.at_screen_connect(s)
     --s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(19), bg = theme.bg_normal, fg = theme.fg_normal })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = dpi(22), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
