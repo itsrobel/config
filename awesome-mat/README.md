@@ -1,3 +1,11 @@
+## A Gruvbox recolor
+
+Added Emacs client support
+Brave Default bindings
+Movement changes
+Change To default wallpaper
+fixed left panel multi monitor
+fixed rofi launch with multi monitor
 ## Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/) 
 
 An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
@@ -25,14 +33,9 @@ An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) foll
 ### 2) Clone the configuration
 
 ```
-git clone https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
+git clone https://github.com/Amadeus-Stephen/material-awesome.git ~/.config/awesome
 ```
 
-> Awesome 4.3 is so new that most of the distribution didn't updated yet. If you want to install this config on Awesome 4.2 (current version on depo) use the specific awesome-4.2 branch
-
-```
-git clone -b awesome-4.2 https://github.com/PapyElGringo/material-awesome.git ~/.config/awesome
-```
 
 ### 3) Set the themes
 Start **lxappearance** to active the **icon** theme and **GTK** theme
