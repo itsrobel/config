@@ -1,11 +1,11 @@
 ## A Gruvbox recolor
 
-Added Emacs client support
-Brave Default bindings
-Movement changes
-Change To default wallpaper
-fixed left panel multi monitor
-fixed rofi launch with multi monitor
+Added Emacs client support,
+Brave Default bindings,
+Movement changes,
+Change To default wallpaper,
+fixed left panel multi monitor,
+fixed rofi launch with multi monitor,
 ## Material and Mouse driven theme for [AwesomeWM 4.3](https://awesomewm.org/) 
 
 An almost desktop environment made with [AwesomeWM](https://awesomewm.org/) following the [Material Design guidelines](https://material.io) with a performant opiniated mouse/keyboard workflow to increase daily productivity and comfort.
