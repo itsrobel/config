@@ -74,8 +74,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
+source /home/amadeus/zsh/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source /home/amadeus/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh    
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -108,7 +108,7 @@ alias l.="ls -A | egrep '^\.'"
 
 #scripts
 alias gitcom="git add . && git commit -m 'commit' && git push -u origin master"
-alias mi="node ~/Documents/scripts/node-dl/index.js"
+alias mi="cd ~/Documents/scripts/node-dl/ && node index.js && cd"
 
 
 
@@ -139,3 +139,4 @@ alias yta-wav="youtube-dl --extract-audio --audio-format wav "
 alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 export ANDROID_SDK=/home/amadeus/Android/Sdk
+export QT_QPA_PLATFORMTHEME=qt5ct
