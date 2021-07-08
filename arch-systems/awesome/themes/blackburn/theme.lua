@@ -16,9 +16,9 @@ local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/blackburn"
---theme.wallpaper                                 = theme.dir .. "/wall.png"
-theme.font                                      = "Noto Sans Regular 11"
-theme.taglist_font                              = "Noto Sans Regular 11"
+theme.wallpaper                                 = theme.dir .. "/wall.png"
+theme.font                                      = "Terminus 10.5"
+theme.taglist_font                              = "Icons 10"
 theme.fg_normal                                 = "#D7D7D7"
 theme.fg_focus                                  = "#F6784F"
 theme.bg_normal                                 = "#060606"
@@ -72,12 +72,11 @@ theme.titlebar_maximized_button_normal_active   = theme.dir .. "/icons/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .. "/icons/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_inactive = theme.dir .. "/icons/titlebar/maximized_normal_inactive.png"
 
---awful.util.tagnames   = { "ƀ", "Ƅ", "Ɗ", "ƈ", "ƙ" }
-awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" ,"☊" }
+awful.util.tagnames   = { "ƀ", "Ƅ", "Ɗ", "ƈ", "ƙ" }
 
 local markup     = lain.util.markup
 local separators = lain.util.separators
-local gray       = "#dddddd"
+local gray       = "#9E9C9A"
 
 -- Textclock
 local mytextclock = wibox.widget.textclock(" %H:%M ")
@@ -94,7 +93,7 @@ theme.cal = lain.widget.cal({
 })
 
 -- Mail IMAP check
---[[ commented because it needs to be set before use
+--[[ to be set before use
 theme.mail = lain.widget.imap({
     timeout  = 180,
     server   = "server",
@@ -152,7 +151,6 @@ theme.fs = lain.widget.fs({
 })
 --]]
 
---[[
 -- Battery
 local bat = lain.widget.bat({
     settings = function()
@@ -161,9 +159,7 @@ local bat = lain.widget.bat({
         widget:set_markup(markup.font(theme.font, markup(gray, bat_header) .. bat_p))
     end
 })
---]]
 
---[[
 -- ALSA volume
 theme.volume = lain.widget.alsa({
     --togglechannel = "IEC958,3",
@@ -180,16 +176,18 @@ theme.volume = lain.widget.alsa({
         widget:set_markup(markup.font(theme.font, markup(gray, header) .. vlevel))
     end
 })
---]]
 
 -- Weather
+--[[ to be set before use
 theme.weather = lain.widget.weather({
-    city_id = 2803138, -- placeholder (Belgium)
+    --APPID =
+    city_id = 2643743, -- placeholder (London)
     settings = function()
         units = math.floor(weather_now["main"]["temp"])
         widget:set_markup(" " .. units .. " ")
     end
 })
+--]]
 
 -- Separators
 local first     = wibox.widget.textbox('<span font="Terminus 4"> </span>')
@@ -263,15 +261,15 @@ function theme.at_screen_connect(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            --theme.mpd.widget,
+            wibox.widget.systray(),
+            first,
+            theme.mpd.widget,
             --theme.mail.widget,
             --theme.weather.icon,
             --theme.weather.widget,
             --theme.fs.widget,
-            --bat,
-            --theme.volume.widget,
-            wibox.widget.systray(),
-            first,
+            bat,
+            theme.volume.widget,
             mytextclock,
         },
     }
