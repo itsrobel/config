@@ -1,6 +1,6 @@
 
 #genral shortcuts
-alias l='ls -lah'
+alias l='eca -lah'
 alias ssn='sudo shutdown now'
 alias sr='sudo reboot'
 
