@@ -5,13 +5,12 @@ sudo pacman -Syyu
 
 yay -i paru
 
-paru -S alacritty awesome qtile rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
+paru -S spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
 
-yay -i spicetify-cli
 
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
@@ -23,7 +22,7 @@ cp -r ~/Documents/config/alacritty ~/.config/
 cp -r ~/Documents/config/fish ~/.config/
 cp -r ~/Documents/config/rofi ~/.config/
 cp -r ~/Documents/config/qtile ~/.config/
-cp -r ~/Documents/config/.doom.d ~/.config/
+cp -r ~/Documents/config/doom ~/.config/
 cp -r ~/Documents/config/awesome ~/.config/
 
 
