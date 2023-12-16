@@ -2,13 +2,16 @@
 
 sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 sudo pacman -Syyu
-yay -i  awesome qtile paru rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
+
+yay -i paru
+
+paru -S  awesome qtile rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
 
-sudo pacman -S spicetify-cli
+yay -i spicetify-cli
 
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
@@ -33,4 +36,4 @@ spicetify apply
 
 chsh -s $(which fish)
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
-#sudo reboot
+# sudo reboot
