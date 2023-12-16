@@ -5,7 +5,7 @@ sudo pacman -Syyu
 
 yay -i paru
 
-paru -S  awesome qtile rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
+paru -S alacritty awesome qtile rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
