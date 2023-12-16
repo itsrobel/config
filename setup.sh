@@ -2,8 +2,7 @@
 
 sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 sudo pacman -Syyu
-sudo pacman -S awesome qtile paru rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
-
+yay -i  awesome qtile paru rofi nitrogen base-devel obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
