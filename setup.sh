@@ -1,11 +1,11 @@
 #!/usr/bin/env
-
-sudo pacman-mirrors --fasttrack && sudo pacman -Syu
+#manjaro
+#sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 sudo pacman -Syyu
 
 yay -i paru
 
-paru -S spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
+paru -S fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
@@ -15,7 +15,8 @@ sudo chmod a+wr /opt/spotify/Apps -R
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
-git clone https://github.com/amarshavir/config ~/Documents/
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
 
 cp -r ~/Documents/config/.face ~/
 cp -r ~/Documents/config/alacritty ~/.config/
@@ -35,4 +36,5 @@ spicetify apply
 
 chsh -s $(which fish)
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
+
 # sudo reboot
