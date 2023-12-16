@@ -2,10 +2,8 @@
 
 sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 sudo pacman -Syyu
-sudo pacman -S awesome rofi nitrogen base-devel emacs
-sudo pacman -S dracula-icons-git lxapperance dracula-gtk-theme
-sudo pacman -S eca spotify microsoft-edge-stable-bin
-sudo pacman -S google-messages
+sudo pacman -S awesome qtile rofi nitrogen base-devel obsidian emacs dracula-icons-git lxapperance dracula-gtk-theme eca spotify microsoft-edge-stable-bin google-messages
+
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
@@ -36,4 +34,4 @@ spicetify apply
 cp -r ~/Documents/config/awesome ~/.config/
 chsh -s $(which fish)
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
-sudo reboot
+#sudo reboot
