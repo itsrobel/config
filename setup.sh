@@ -9,14 +9,10 @@ sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
 
-
 sudo pacman -S spicetify-cli
 
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
-
-# sudo pacman -S lightdm-webkit-theme-aether
-# sudo cp tree.jpg /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/
 
 git clone https://github.com/amarshavir/config ~/Documents/
 
