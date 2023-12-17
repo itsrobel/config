@@ -79,6 +79,14 @@
 (add-to-list 'package-archives
      '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
+
+;; global activation of the unicode symbol completion
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+(add-to-list 'company-backends 'company-math-symbols-latex)
+(add-to-list 'company-backends 'company-latex-commands)
+
+
+
 ;; accept completion from copilot and fallback to company
 
 (use-package! copilot
