@@ -106,7 +106,7 @@ local vi_focus     = false -- vi-like client focus https://github.com/lcpz/aweso
 local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor       = os.getenv("EDITOR") or "emacs"
 
-local browser1          = "brave"
+local browser1          = "microsft-edge-stable"
 local editor            = "emacsclient -c"
 local editorgui         = "code"
 local filemanager       = string.format("emacsclient -c -e '(dired %s )'", string.format('"."'))
@@ -692,7 +692,7 @@ awful.rules.rules = {
           "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
+          -- "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
           "xtightvncviewer"},
