@@ -5,7 +5,7 @@ sudo pacman -Syyu
 
 yay -i paru
 
-paru -S thunderbird picom fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages lemurs
+paru -S cmake thunderbird picom fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages lemurs
 
 
 
