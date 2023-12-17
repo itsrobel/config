@@ -7,6 +7,17 @@ yay -i paru
 
 paru -S fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages lemurs
 
+
+
+#because dooom emacs
+paru -S shellcheck marked ripgrep fd
+#
+#
+#python tools
+paru -S python-setuptools python-pipenv python-isort python-pytest python-nose
+
+
+
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
@@ -40,7 +51,11 @@ spicetify config current_theme Dracula
 spicetify backup apply
 spicetify apply
 
-chsh -s $(which fish)
-git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 
-# sudo reboot
+
+chsh -s $(which fish)
+
+
+git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
+sudo systemctl enable lemurs
+sudo reboot
