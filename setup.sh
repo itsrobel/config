@@ -1,11 +1,11 @@
 #!/usr/bin/env
-#manjaro
+#config file for endeavor
 #sudo pacman-mirrors --fasttrack && sudo pacman -Syu
 sudo pacman -Syyu
 
 yay -i paru
 
-paru -S fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages
+paru -S fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages lemurs
 
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
@@ -25,7 +25,13 @@ cp -r ~/Documents/config/rofi ~/.config/
 cp -r ~/Documents/config/qtile ~/.config/
 cp -r ~/Documents/config/doom ~/.config/
 cp -r ~/Documents/config/awesome ~/.config/
+cp -r ~/Documents/config/spotify ~/.config/
 
+
+
+sudo cp -r ~/Documents/config/lemurs /etc/
+sudo cp ~/Documents/config/paru.conf /etc/
+sudo cp ~/Documents/config/pacman.conf /etc/
 
 
 cp -r ~/Documents/config/spicetify/Dracula ~/.config/spicetify/Themes/
