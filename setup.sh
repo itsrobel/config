@@ -4,14 +4,18 @@
 sudo pacman -Syyu
 
 yay -i paru
+# System
+paru -S network-manager-applet picom alacritty fish awesome rofi base-devel lemurs
 
-paru -S jdk network-manager-applet fastfetch cmake thunderbird picom fish spicetify-cli alacritty awesome qtile rofi nitrogen base-devel lxappearance obsidian emacs dracula-icons-git  dracula-gtk-theme eza spotify microsoft-edge-stable-bin google-messages lemurs
+# Dooom Emacs
+paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs
 
-
-
-#because dooom emacs
-paru -S shellcheck marked ripgrep fd
-#
+# Tools
+paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin  eza
+# Themes
+paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
+# Programming langauges
+paru -S jdk
 #
 #python tools
 paru -S python-setuptools python-pipenv python-isort python-pytest python-nose
