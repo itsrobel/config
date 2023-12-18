@@ -14,6 +14,5 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 
 
 
-
 #scripts
 alias mi='cd ~/Documents/scripts/node-dl/ && node index.js && cd ~/'
