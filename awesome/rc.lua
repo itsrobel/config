@@ -500,7 +500,7 @@ globalkeys = mytable.join(
             os.execute("mpc next")
             beautiful.mpd.update()
         end,
-        {description = "mpc next", group = "widgets"}),
+        {description = "mpc next", group = "widgets"})
     -- awful.key({ modkey1, "Shift" }, "s",
 
 
@@ -533,16 +533,16 @@ globalkeys = mytable.join(
               {description = "show the menubar", group = "super"})
     --]]
 
-    awful.key({ altkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"})
+    -- awful.key({ altkey }, "x",
+    --           function ()
+    --               awful.prompt.run {
+    --                 prompt       = "Run Lua code: ",
+    --                 textbox      = awful.screen.focused().mypromptbox.widget,
+    --                 exe_callback = awful.util.eval,
+    --                 history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --               }
+    --           end,
+    --           {description = "lua execute prompt", group = "awesome"})
     --]]
 )
 
