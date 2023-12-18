@@ -36,6 +36,7 @@ cp -r ~/Documents/config/rofi ~/.config/
 cp -r ~/Documents/config/qtile ~/.config/
 cp -r ~/Documents/config/doom ~/.config/
 cp -r ~/Documents/config/awesome ~/.config/
+cp -r ~/Documents/config/nvim ~/.config/
 cp -r ~/Documents/config/spotify ~/.config/
 
 

@@ -50,3 +50,11 @@
 ;(unpin! t)
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+(package! org-pretty-tags)
+(package! org-preview-html)
+(package! vterm)
+(package! saveplace-pdf-view)
+(package! pdf-tools)
+(package! latex-preview-pane)
+(package! latex-change-env)
