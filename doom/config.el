@@ -42,7 +42,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-
+(setq-default tab-width 4)
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
@@ -92,9 +92,43 @@
 (use-package! copilot
   :hook (prog-mode . copilot-mode)
   :bind (:map copilot-completion-map
-              ("<tab>" . 'copilot-accept-completion)
-              ("TAB" . 'copilot-accept-completion)
+              ;; ("C-<tab>" . 'copilot-accept-completion)
+              ;; ("C-TAB" . 'copilot-accept-completion)))
               ("C-TAB" . 'copilot-accept-completion-by-word)
               ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
+(add-to-list 'warning-suppress-types '(copilot copilot-no-mode-indent))
 
+
+
+;;
+(use-package! org-bullets-mode
+  :hook (org-mode . org-bullets-mode))
+
+(use-package! centered-window
+  :bind ("M-o" . 'centered-window-mode))
+
+(use-package! org-roam
+  ;; :ensure t
+  ;; :init
+  ;; (setq org-roam-v2-ack t)
+  ;; (after-init . 'org-roam-mode)
+  :custom
+  (org-roam-directory "~/Documents/roam")
+  (org-roam-completion-everywhere t)
+  :bind (("C-c n l" . 'org-roam-buffer-toggle)
+         ("C-c n f" . 'org-roam-node-find)
+         ("C-c n g" . 'org-roam-graph)
+         ("C-c n i" . 'org-roam-node-insert)
+        :map org-mode-map
+        ("C-M-i" . 'completion-at-point))
+
+  ;; :bind (:map org-roam-mode-map
+  ;;             (("C-c n l" . org-roam)
+  ;;              ("C-c n f" . org-roam-find-file)
+  ;;              ("C-c n g" . org-roam-graph))
+  ;;             :map org-mode-map
+  ;;             (("C-c n i" . org-roam-insert))
+  ;;             (("C-c n I" . org-roam-insert-immediate)))
+  :config
+  (org-roam-setup))
