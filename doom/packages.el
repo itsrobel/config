@@ -53,8 +53,11 @@
 
 (package! org-pretty-tags)
 (package! org-preview-html)
+(package! org-bullets)
 (package! vterm)
 (package! saveplace-pdf-view)
 (package! pdf-tools)
 (package! latex-preview-pane)
 (package! latex-change-env)
+(package! evil-multiedit)
+(package! centered-window-mode)
