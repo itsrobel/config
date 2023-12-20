@@ -42,6 +42,7 @@ cp -r ~/Documents/config/doom ~/.config/
 cp -r ~/Documents/config/awesome ~/.config/
 cp -r ~/Documents/config/nvim ~/.config/
 cp -r ~/Documents/config/spotify ~/.config/
+cp -r ~/Documents/config/qt5ct ~/.config/
 
 
 
