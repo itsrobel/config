@@ -14,7 +14,7 @@ alias i="paru"
 
 alias emacs="emacsclient -c -nw"
 #code shortcuts
-alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin master"
+alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
 
 
 
