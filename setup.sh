@@ -5,7 +5,7 @@ sudo pacman -Syyu
 
 yay -i paru
 # System
-paru -S network-manager-applet picom alacritty fish awesome rofi base-devel lemurs
+paru -S acpilight network-manager-applet picom alacritty fish awesome rofi base-devel lemurs
 
 # Dooom Emacs
 paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs
@@ -58,8 +58,7 @@ spicetify config current_theme Dracula
 spicetify backup apply
 spicetify apply
 
-
-
+sudo gpasswd -a $(whoami) video
 chsh -s $(which fish)
 
 
