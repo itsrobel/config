@@ -43,6 +43,7 @@ cp -r ~/Documents/config/awesome ~/.config/
 cp -r ~/Documents/config/nvim ~/.config/
 cp -r ~/Documents/config/spotify ~/.config/
 cp -r ~/Documents/config/qt5ct ~/.config/
+cp -r ~/Documents/config/vis ~/.config/
 
 
 
