@@ -66,6 +66,14 @@ chsh -s $(which fish)
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
 
+
+# UNCOMMENT FOR LAPTOP
+# install auto-cpufreq
+
+# paru -S auto-cpufreq
+# sudo auto-cpufreq --install
+
+
 # set display manager
 sudo systemctl enable lemurs
 sudo reboot
