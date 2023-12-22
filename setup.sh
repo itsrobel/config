@@ -20,17 +20,19 @@ paru -S jdk
 #python tools
 paru -S python-setuptools python-pipenv python-isort python-pytest python-nose
 
-
-
+# Read Write Spotify
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
 
+# Set gtk theme to dracula
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
+# Install doom emacs
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
+# set all config files
 cp -r ~/Documents/config/.face ~/
 cp -r ~/Documents/config/alacritty ~/.config/
 cp -r ~/Documents/config/fish ~/.config/
@@ -43,8 +45,6 @@ cp -r ~/Documents/config/spotify ~/.config/
 cp -r ~/Documents/config/qt5ct ~/.config/
 cp -r ~/Documents/config/vis ~/.config/
 
-
-
 sudo cp -r ~/Documents/config/lemurs /etc/
 sudo cp ~/Documents/config/paru.conf /etc/
 sudo cp ~/Documents/config/pacman.conf /etc/
@@ -52,14 +52,20 @@ sudo cp ~/Documents/config/pacman.conf /etc/
 
 cp -r ~/Documents/config/spicetify/Dracula ~/.config/spicetify/Themes/
 
+# set spotify theme to dracula
 spicetify config current_theme Dracula
 spicetify backup apply
 spicetify apply
 
+# add user to video group enabling xbacklight
 sudo gpasswd -a $(whoami) video
+# set default shell to fish
 chsh -s $(which fish)
 
+# set git config
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
+
+# set display manager
 sudo systemctl enable lemurs
 sudo reboot
