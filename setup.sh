@@ -61,7 +61,7 @@ spicetify apply
 sudo gpasswd -a $(whoami) video
 chsh -s $(which fish)
 
-
+echo "some change"
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
 sudo systemctl enable lemurs
