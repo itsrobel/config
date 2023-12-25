@@ -79,7 +79,7 @@
 ;; they are implemented.
 (require 'package)
 (add-to-list 'package-archives
-     '("melpa" . "http://melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 ;; global activation of the unicode symbol completion
@@ -101,7 +101,8 @@
 
 (add-to-list 'warning-suppress-types '(copilot copilot-no-mode-indent))
 
-(general-auto-unbind-keys)
+
+(define-key global-map (kbd "C-g") (make-sparse-keymap))
 (use-package! magit
   :bind (
          ("C-g s" . 'magit-stage-modified)
@@ -129,8 +130,8 @@
          ("C-c n f" . 'org-roam-node-find)
          ("C-c n g" . 'org-roam-graph)
          ("C-c n i" . 'org-roam-node-insert)
-        :map org-mode-map
-        ("C-M-i" . 'completion-at-point))
+         :map org-mode-map
+         ("C-M-i" . 'completion-at-point))
 
   ;; :bind (:map org-roam-mode-map
   ;;             (("C-c n l" . org-roam)
