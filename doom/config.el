@@ -101,6 +101,13 @@
 
 (add-to-list 'warning-suppress-types '(copilot copilot-no-mode-indent))
 
+(general-auto-unbind-keys)
+(use-package! magit
+  :bind (
+         ("C-g s" . 'magit-stage-modified)
+         ("C-g c" . 'magit-commit)
+         ("C-g p" . 'magit-push)
+         ))
 
 
 ;;
@@ -134,3 +141,4 @@
   ;;             (("C-c n I" . org-roam-insert-immediate)))
   :config
   (org-roam-setup))
+
