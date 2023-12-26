@@ -20,6 +20,11 @@ paru -S jdk
 #python tools
 paru -S python-setuptools python-pipenv python-isort python-pytest python-nose
 
+
+# Pdflatex
+paru -S texlive-latex texlive-latexextra texlive-plaingeneric
+
+
 # Read Write Spotify
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R
