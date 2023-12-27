@@ -278,7 +278,7 @@ globalkeys = mytable.join(
         {description = "show the runlauncher", group = "launcher"}),
     awful.key({modkey  }, "i", function  () awful.spawn.with_shell(filemanagerterm) end,
         {description = "ranger",group = "laucher"}),
-    awful.key({ modkey }, "x",  function () awful.util.spawn( "arcolinux-logout" ) end,
+    awful.key({ modkey }, "x",  function () awful.util.spawn( "logoutscreen" ) end,
       {description = "exit", group = "hotkeys"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
