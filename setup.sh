@@ -11,7 +11,7 @@ paru -S acpilight network-manager-applet picom alacritty fish awesome rofi base-
 paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs
 
 # Tools
-paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin  eza
+paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
 paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
 # Programming langauges
@@ -48,7 +48,7 @@ cp -r ~/Documents/config/awesome ~/.config/
 cp -r ~/Documents/config/nvim ~/.config/
 cp -r ~/Documents/config/spotify ~/.config/
 cp -r ~/Documents/config/qt5ct ~/.config/
-cp -r ~/Documents/config/vis ~/.config/
+cp -r ~/Documents/config/cava ~/.config/
 
 sudo cp -r ~/Documents/config/lemurs /etc/
 sudo cp ~/Documents/config/paru.conf /etc/
