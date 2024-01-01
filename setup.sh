@@ -5,7 +5,7 @@ sudo pacman -Syyu
 
 yay -i paru
 # System
-paru -S acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
+paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Dooom Emacs
 paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs

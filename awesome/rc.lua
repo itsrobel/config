@@ -59,11 +59,14 @@ end
 -- {{{ Autostart windowless processes
 
 -- This function will run once every time Awesome is started
--- local function run_once(cmd_arr)
---     for _, cmd in ipairs(cmd_arr) do
---         awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
---     end
--- end
+local function run_once(cmd_arr)
+    for _, cmd in ipairs(cmd_arr) do
+        awful.spawn.with_shell(string.format("pgrep -u $USER -fx '%s' > /dev/null || (%s)", cmd, cmd))
+    end
+end
+
+
+run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
 
 local modkey       = "Mod4"
 local altkey       = "Mod1"
@@ -176,22 +179,14 @@ root.buttons(mytable.join(
 
 globalkeys = mytable.join(
     -- Destroy all notifications
-    awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser1 ) end,
+    awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser ) end,
         {description = browser1, group = "function keys"}),
-    awful.key({ modkey }, "c", function () awful.spawn.with_shell(editorgui) end,
-        {description = "run gui edior" , group = "launcher"}),
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
         {description = "run editor", group = "launcher"}),
     awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
         {description = "open file manager" , group ="laucher"}),
-    awful.key({ modkey }, "e" , function () awful.spawn.with_shell(filemanagergui) end,
-    	{description = "open file manager gui", group = "laucher"}),
-    awful.key({ modkey }, "r", function  () awful.spawn.with_shell(dmenu) end,
+    awful.key({ modkey }, "r", function  () awful.spawn.with_shell(rofi) end,
         {description = "show the runlauncher", group = "launcher"}),
-    awful.key({modkey  }, "i", function  () awful.spawn.with_shell(filemanagerterm) end,
-        {description = "ranger",group = "laucher"}),
-    awful.key({ modkey }, "x",  function () awful.util.spawn( "logoutscreen" ) end,
-      {description = "exit", group = "hotkeys"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
     awful.key({ modkey }, "F4", function () awful.spawn.with_shell( "pavucontrol" ) end,
