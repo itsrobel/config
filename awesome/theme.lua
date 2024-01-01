@@ -248,13 +248,9 @@ function theme.at_screen_connect(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             s.mytaglist,
-            spr,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
-
-            spr,
-            spr,
             layout = wibox.layout.fixed.horizontal,
             spr,
             spr,
@@ -272,7 +268,6 @@ function theme.at_screen_connect(s)
             baticon,
             bat.widget,
             s.mylayoutbox,
-            spr,
             spr,
             spr,
         },
