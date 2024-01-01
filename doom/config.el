@@ -122,6 +122,13 @@
 (use-package! centered-window
   :bind ("M-o" . 'centered-window-mode))
 
+
+(use-package! evil
+  :bind ("C->" . 'evil-window-increase-width))
+
+(use-package! evil
+  :bind ("C-<" . 'evil-window-decrease-width))
+
 (use-package! org-roam
   ;; :ensure t
   ;; :init
