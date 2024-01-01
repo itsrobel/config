@@ -23,7 +23,6 @@ run "volumeicon"
 run "~/.screenlayout/default.sh"
 run "nitrogen --restore"
 run "emacs --daemon"
-#run "conky -c $HOME/.config/awesome/system-overview"
 #you can set wallpapers in themes as well
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #run applications from startup

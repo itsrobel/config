@@ -30,22 +30,22 @@ theme.bg_focus                                  = "#44475A"
 theme.border_marked                             = "#FFB86C"
 
 
+ -- do not set these to use the fg vars
+theme.border_normal                             = "#44475A"
+theme.border_focus                              = "#BD93F9"
 
-theme.border_focus                              = fg_focus
 theme.tasklist_bg_focus                         = bg_focus
 theme.bg_urgent                                 = fg_urget
-theme.border_normal                             = bg_normal
 
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
-theme.border_width                              = dpi(2)
+theme.border_width                              = dpi(3)
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(140)
-theme.menu_submenu_icon                         = "false"
+theme.menu_disable_icon                         = true
 theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
-theme.useless_gap                               = dpi(0)
 
 local markup = lain.util.markup
 local separators = lain.util.separators
