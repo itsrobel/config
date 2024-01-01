@@ -28,7 +28,6 @@ theme.fg_urgent                                 = "#FF5555"
 theme.bg_normal                                 = "#282A36"
 theme.bg_focus                                  = "#44475A"
 theme.bg_urgent                                 = "#FF5555"
-theme.border_width                              = dpi(2)
 theme.border_normal                             = "#282A36"
 theme.border_focus                              = "#BD93F9"
 theme.border_marked                             = "#FFB86C"
@@ -36,6 +35,7 @@ theme.tasklist_bg_focus                         = "#44475A"
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
+theme.border_width                              = dpi(2)
 theme.menu_height                               = dpi(16)
 theme.menu_width                                = dpi(140)
 theme.menu_submenu_icon                         = "false"
@@ -60,7 +60,7 @@ local clock = awful.widget.watch(
 
 theme.icon_size = 16
 theme.icon_font = "Font Awesome 5 Free-Solid-900 " -- attention to space at the end!
-theme.icon_color = theme.fg_normal
+theme.icon_color = theme.fg_focus
 
 
 -- Fonts Awesome Icons
