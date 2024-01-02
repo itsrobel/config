@@ -70,7 +70,7 @@ require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
 
-  -- 'yorickpeterse/nvim-window',
+  'yorickpeterse/nvim-window',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -98,6 +98,39 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+
+  {
+  'nvim-orgmode/orgmode',
+  dependencies = {
+    { 'nvim-treesitter/nvim-treesitter', lazy = true },
+  },
+  event = 'VeryLazy',
+  config = function()
+    -- Load treesitter grammar for org
+    require('orgmode').setup_ts_grammar()
+
+    -- Setup treesitter
+    require('nvim-treesitter.configs').setup({
+      sync_install = true,
+      auto_install = true,
+      modules = {''},
+      ignore_install = {''},
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = { 'org' },
+      },
+      ensure_installed = { 'org' },
+    })
+
+    -- Setup orgmode
+    require('orgmode').setup({
+      org_agenda_files = '~/orgfiles/**/*',
+      org_default_notes_file = '~/orgfiles/refile.org',
+    })
+  end,
+  },
+
+
 
   {
     -- Autocompletion
@@ -324,7 +357,7 @@ require('lazy').setup({
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -476,11 +509,15 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
+    sync_install = true,
+    ignore_install = {''},
+    modules = {''},
+
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = {'zig','r','ocaml','markdown','latex','julia','go','html','dart','fish','dockerfile','java','c_sharp','c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
 
     highlight = { enable = true },
     indent = { enable = true },
@@ -741,6 +778,8 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

@@ -1,18 +1,12 @@
---[[
-
-     Awesome WM configuration template
---]]
-
--- {{{ Required libraries
 
 -- If LuaRocks is installed, make sure that packages installed through it are
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
-pcall(require, "luarocks.loader")
+-- pcall(require, "luarocks.loader")
+
 
 local gears         = require("gears")
 local awful         = require("awful")
                       require("awful.autofocus")
-local wibox         = require("wibox")
 local beautiful     = require("beautiful")
 local naughty       = require("naughty")
 local lain          = require("lain")
@@ -72,17 +66,13 @@ local modkey       = "Mod4"
 local altkey       = "Mod1"
 local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
-local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
-local editor       = os.getenv("EDITOR") or "emacs"
-
-local browser           = "firefox"
-local editor            = "emacsclient -c"
-local filemanager       = "thunar"
-local rofi             = "rofi -show run" --"dmenu_run"
-local mailclient        = "evolution"
-local mediaplayer       = "spotify"
-local terminal          = "alacritty"
-local virtualmachine    = "virtualbox"
+-- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
+local editor        = "alacritty -e nvim"
+local browser       = "firefox"
+local filemanager   = "thunar"
+local termbroswer   = "alacritty -e ranger"
+local rofi          = "rofi -show run" --"dmenu_run"
+local mediaplayer   = "spotify"
 
 awful.util.terminal = terminal
 
@@ -180,11 +170,13 @@ root.buttons(mytable.join(
 globalkeys = mytable.join(
     -- Destroy all notifications
     awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser ) end,
-        {description = browser1, group = "function keys"}),
+        {description = "open browser", group = "launcher"}),
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
         {description = "run editor", group = "launcher"}),
     awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
         {description = "open file manager" , group ="laucher"}),
+    awful.key({ modkey }, "e" , function () awful.spawn.with_shell(termbroswer) end,
+        {description = "open terminal file manager" , group ="laucher"}),
     awful.key({ modkey }, "r", function  () awful.spawn.with_shell(rofi) end,
         {description = "show the runlauncher", group = "launcher"}),
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
@@ -193,7 +185,7 @@ globalkeys = mytable.join(
         {description = "pulseaudio control", group = "super"}),
 
     -- screenshots
-    awful.key({ modkey1           }, "Print", function () awful.util.spawn( "xfce4-screenshooter" ) end,
+    awful.key({ modkey           }, "Print", function () awful.util.spawn( "xfce4-screenshooter" ) end,
         {description = "Xfce screenshot", group = "screenshots"}),
 
     -- Personal keybindings}}}

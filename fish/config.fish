@@ -1,3 +1,5 @@
+set -Ux EDITOR nvim
+
 
 #genral shortcuts
 alias l='eza -lah'
