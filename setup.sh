@@ -36,8 +36,8 @@ gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
 # set all config files
-ln -s $(pwd)/.face ~/
-ln -s $(pwd)/.Xresources ~/
+ln -s $(pwd)/conf/.face ~/
+ln -s $(pwd)/conf/.Xresources ~/
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
@@ -49,8 +49,8 @@ ln -s $(pwd)/cava ~/.config/
 ln -s $(pwd)/zathura ~/.config/
 
 sudo ln -s $(pwd)/lemurs /etc/
-sudo ln -s $(pwd)/paru.conf /etc/
-sudo ln -s $(pwd)/pacman.conf /etc/
+sudo ln -s $(pwd)/conf/paru.conf /etc/
+sudo ln -s $(pwd)/conf/pacman.conf /etc/
 
 
 ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
