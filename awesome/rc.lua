@@ -79,8 +79,8 @@ awful.util.terminal = terminal
 awful.util.tagnames = {"I", "II", "III", "IV", "V", "VI", "VII",
                         "VIII", "IX"}
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.floating,
 }
 
 
