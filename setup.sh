@@ -7,8 +7,6 @@ yay -i paru
 # System
 paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
-# Dooom Emacs
-paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs
 
 
 paru -S zathura zathura-pdf-mupdf
@@ -16,6 +14,7 @@ paru -S zathura zathura-pdf-mupdf
 # Tools
 paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
+#
 paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
 # Programming langauges
 paru -S jdk
@@ -36,10 +35,6 @@ sudo chmod a+wr /opt/spotify/Apps -R
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
-# Install doom emacs
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-
 # set all config files
 ln -s $(pwd)/.face ~/
 ln -s $(pwd)/.Xresources ~/
@@ -47,7 +42,6 @@ ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/qtile ~/.config/
-ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
