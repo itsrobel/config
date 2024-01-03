@@ -7,12 +7,8 @@ yay -i paru
 # System
 paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
-
-
-paru -S zathura zathura-pdf-mupdf
-
 # Tools
-paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
+paru -S xclip onedrive zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
 #
 paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
