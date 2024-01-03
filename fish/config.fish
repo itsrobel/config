@@ -5,7 +5,7 @@ set -Ux EDITOR nvim
 alias l='eza -lah'
 alias ssn='sudo shutdown now'
 alias sr='sudo reboot'
-
+alias rd='rm -rf'
 
 
 alias update="paru -Syyu"
