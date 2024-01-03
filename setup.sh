@@ -10,6 +10,9 @@ paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish a
 # Dooom Emacs
 paru -S shellcheck marked ripgrep fd hunspell-en_us cmake emacs
 
+
+paru -S zathura zathura-pdf-mupdf
+
 # Tools
 paru -S fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
@@ -38,24 +41,25 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
 # set all config files
-cp -r ~/Documents/config/.face ~/
-cp -r ~/Documents/config/alacritty ~/.config/
-cp -r ~/Documents/config/fish ~/.config/
-cp -r ~/Documents/config/rofi ~/.config/
-cp -r ~/Documents/config/qtile ~/.config/
-cp -r ~/Documents/config/doom ~/.config/
-cp -r ~/Documents/config/awesome ~/.config/
-cp -r ~/Documents/config/nvim ~/.config/
-cp -r ~/Documents/config/spotify ~/.config/
-cp -r ~/Documents/config/qt5ct ~/.config/
-cp -r ~/Documents/config/cava ~/.config/
+ln -s $(pwd)/.face ~/
+ln -s $(pwd)/alacritty ~/.config/
+ln -s $(pwd)/fish ~/.config/
+ln -s $(pwd)/rofi ~/.config/
+ln -s $(pwd)/qtile ~/.config/
+ln -s $(pwd)/doom ~/.config/
+ln -s $(pwd)/awesome ~/.config/
+ln -s $(pwd)/nvim ~/.config/
+ln -s $(pwd)/spotify ~/.config/
+ln -s $(pwd)/qt5ct ~/.config/
+ln -s $(pwd)/cava ~/.config/
+ln -s $(pwd)/zathura ~/.config/
 
-sudo cp -r ~/Documents/config/lemurs /etc/
-sudo cp ~/Documents/config/paru.conf /etc/
-sudo cp ~/Documents/config/pacman.conf /etc/
+sudo ln -s $(pwd)/lemurs /etc/
+sudo ln -s $(pwd)/paru.conf /etc/
+sudo ln -s $(pwd)/pacman.conf /etc/
 
 
-cp -r ~/Documents/config/spicetify/Dracula ~/.config/spicetify/Themes/
+ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
 
 # set spotify theme to dracula
 spicetify config current_theme Dracula
