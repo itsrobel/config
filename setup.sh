@@ -72,6 +72,7 @@ git config --global user.email "itsrobel.schwarz@gmail.com" && git config --glob
 git config --global credential.helper store
 
 
+
 # UNCOMMENT FOR LAPTOP
 # install auto-cpufreq
 
@@ -81,4 +82,11 @@ git config --global credential.helper store
 
 # set display manager
 sudo systemctl enable lemurs
+
+# enable onedrive systemd
+systemctl --user enable onedrive
+systemctl --user start onedrive
+
+
+
 sudo reboot
