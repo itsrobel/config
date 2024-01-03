@@ -42,6 +42,7 @@ git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 
 # set all config files
 ln -s $(pwd)/.face ~/
+ln -s $(pwd)/.Xresources ~/
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
@@ -49,7 +50,6 @@ ln -s $(pwd)/qtile ~/.config/
 ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
-ln -s $(pwd)/spotify ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
 ln -s $(pwd)/cava ~/.config/
 ln -s $(pwd)/zathura ~/.config/
