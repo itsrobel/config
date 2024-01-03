@@ -38,6 +38,7 @@ ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/qtile ~/.config/
+ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
@@ -49,7 +50,12 @@ sudo ln -s $(pwd)/conf/paru.conf /etc/
 sudo ln -s $(pwd)/conf/pacman.conf /etc/
 
 
+
+
 ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
+
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
 
 # set spotify theme to dracula
 spicetify config current_theme Dracula
