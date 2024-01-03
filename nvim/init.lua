@@ -98,6 +98,49 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
+-- lazy.nvim
+  {
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+-- [[ Configure NvimTreeOpen ]]
+-- local function my_on_attach(bufnr)
+--   local api = require "nvim-tree.api"
+--
+--   local function opts(desc)
+--     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+--   end
+--
+--   -- default mappings
+--   api.config.mappings.default_on_attach(bufnr)
+--
+--   -- custom mappings
+--   -- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
+--   -- vim.keymap.set('n', '<C-h>',     api.tree.toggle_help,                  opts('Help'))
+--
+--   vim.keymap.set('n', '<leader>./', api.tree.open, opts("Open Tree"))
+-- end
+--
+-- -- pass to setup along with your other options
+-- require("nvim-tree").setup {
+--   ---
+--   on_attach = my_on_attach,
+--   ---
+-- }
+
+
+-- Example for neo-tree.nvim
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+  },
 
   {
   'nvim-orgmode/orgmode',
@@ -273,27 +316,7 @@ require('lazy').setup({
       -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
     }
 },
--- {
---   "nvim-neo-tree/neo-tree.nvim",
---     keys = {
---       { "<leader>ft", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
---     },
---     config = function()
---       require("neo-tree").setup()
---     end,
--- },
---
---   -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   version = "*",
-  --   lazy = false,
-  --   dependencies = {
-  --     "nvim-tree/nvim-web-devicons",
-  --   },
-  --   config = function()
-  --     require("nvim-tree").setup {}
-  --   end,
-  -- },
+
 
   {
     -- Add indentation guides even on blank lines
@@ -434,9 +457,29 @@ require('telescope').setup {
   },
 }
 
+-- [[ Configure Noice ]]
+require("noice").setup({
+  lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true,
+    },
+  },
+  -- you can enable a preset for easier configuration
+  presets = {
+    bottom_search = true, -- use a classic bottom cmdline for search
+    command_palette = true, -- position the cmdline and popupmenu together
+    long_message_to_split = true, -- long messages will be sent to a split
+    inc_rename = false, -- enables an input dialog for inc-rename.nvim
+    lsp_doc_border = false, -- add a border to hover docs and signature help
+  },
+})
+
 -- Enable telescope fzf native, if installed
 pcall(require('telescope').load_extension, 'fzf')
-
+pcall(require("telescope").load_extension , "noice")
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
 local function find_git_root()
@@ -514,7 +557,7 @@ vim.defer_fn(function()
     modules = {''},
 
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = {'zig','r','ocaml','markdown','latex','julia','go','html','dart','fish','dockerfile','java','c_sharp','c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = {'markdown_inline','regex','zig','r','ocaml','markdown','latex','julia','go','html','dart','fish','dockerfile','java','c_sharp','c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -579,33 +622,6 @@ end, 0)
 
 
 
--- [[ Configure NvimTreeOpen ]]
--- local function my_on_attach(bufnr)
---   local api = require "nvim-tree.api"
---
---   local function opts(desc)
---     return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
---   end
---
---   -- default mappings
---   api.config.mappings.default_on_attach(bufnr)
---
---   -- custom mappings
---   -- vim.keymap.set('n', '<C-t>', api.tree.change_root_to_parent,        opts('Up'))
---   -- vim.keymap.set('n', '<C-h>',     api.tree.toggle_help,                  opts('Help'))
---
---   vim.keymap.set('n', '<leader>./', api.tree.open, opts("Open Tree"))
--- end
---
--- -- pass to setup along with your other options
--- require("nvim-tree").setup {
---   ---
---   on_attach = my_on_attach,
---   ---
--- }
-
-
--- Example for neo-tree.nvim
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
