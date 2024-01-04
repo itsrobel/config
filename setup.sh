@@ -1,6 +1,36 @@
 #!/usr/bin/env
 #config file for endeavor
+
+
+# set all config files
+ln -s $(pwd)/conf/.face ~/
+ln -s $(pwd)/conf/.Xresources ~/
+ln -s $(pwd)/alacritty ~/.config/
+ln -s $(pwd)/fish ~/.config/
+ln -s $(pwd)/rofi ~/.config/
+ln -s $(pwd)/qtile ~/.config/
+ln -s $(pwd)/doom ~/.config/
+ln -s $(pwd)/awesome ~/.config/
+ln -s $(pwd)/nvim ~/.config/
+ln -s $(pwd)/qt5ct ~/.config/
+ln -s $(pwd)/cava ~/.config/
+ln -s $(pwd)/zathura ~/.config/
+ln -s $(pwd)/ranger ~/.config/
+ln -s $(pwd)/wallpapers ~/Pictures/
+
+sudo cp -r $(pwd)/lemurs /etc/
+sudo cp $(pwd)/conf/paru.conf /etc/
+sudo cp $(pwd)/conf/pacman.conf /etc/
+
+
+
+
+ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
+
+
+
 #sudo pacman-mirrors --fasttrack && sudo pacman -Syu
+#
 sudo pacman -Syyu
 
 yay -i paru
@@ -8,7 +38,7 @@ yay -i paru
 paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
-paru -S xclip onedrive zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
+paru -S ranger xclip onedrive zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
 #
 paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
@@ -31,28 +61,6 @@ sudo chmod a+wr /opt/spotify/Apps -R
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
-# set all config files
-ln -s $(pwd)/conf/.face ~/
-ln -s $(pwd)/conf/.Xresources ~/
-ln -s $(pwd)/alacritty ~/.config/
-ln -s $(pwd)/fish ~/.config/
-ln -s $(pwd)/rofi ~/.config/
-ln -s $(pwd)/qtile ~/.config/
-ln -s $(pwd)/doom ~/.config/
-ln -s $(pwd)/awesome ~/.config/
-ln -s $(pwd)/nvim ~/.config/
-ln -s $(pwd)/qt5ct ~/.config/
-ln -s $(pwd)/cava ~/.config/
-ln -s $(pwd)/zathura ~/.config/
-
-sudo ln -s $(pwd)/lemurs /etc/
-sudo ln -s $(pwd)/conf/paru.conf /etc/
-sudo ln -s $(pwd)/conf/pacman.conf /etc/
-
-
-
-
-ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
 
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install

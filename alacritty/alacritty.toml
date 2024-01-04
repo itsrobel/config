@@ -1,1 +1,1 @@
-import = ["/home/steph/.config/alacritty/dracula.toml"]
+import = ["~/.config/alacritty/dracula.toml"]
