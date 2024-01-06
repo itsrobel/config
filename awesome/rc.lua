@@ -68,7 +68,6 @@ local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor        = "alacritty -e nvim"
-local org           = "emacsclient -c"
 local browser       = "firefox"
 local filemanager   = "thunar"
 local termbroswer   = "alacritty -e ranger"
@@ -174,8 +173,6 @@ globalkeys = mytable.join(
         {description = "open browser", group = "launcher"}),
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
         {description = "run editor", group = "launcher"}),
-    awful.key({ modkey }, "c", function () awful.spawn.with_shell(org) end,
-        {description = "run org editor", group = "launcher"}),
     awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
         {description = "open file manager" , group ="laucher"}),
     awful.key({ modkey }, "e" , function () awful.spawn.with_shell(termbroswer) end,

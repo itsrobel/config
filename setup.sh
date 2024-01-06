@@ -9,7 +9,6 @@ ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/qtile ~/.config/
-ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
@@ -62,9 +61,6 @@ gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme 'Dracula'
 
 
-git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
-~/.config/emacs/bin/doom install
-
 # set spotify theme to dracula
 spicetify config current_theme Dracula
 spicetify backup apply
@@ -75,7 +71,7 @@ sudo gpasswd -a $(whoami) video
 # set default shell to fish
 chsh -s $(which fish)
 
-# set git config
+set git config
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
 
