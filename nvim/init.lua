@@ -71,6 +71,7 @@ require('lazy').setup({
 
 
   'yorickpeterse/nvim-window',
+  'opdavies/toggle-checkbox.nvim',
 
   -- Git related plugins
   'tpope/vim-fugitive',
@@ -548,7 +549,8 @@ end
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 
-
+-- markdown
+vim.keymap.set("n", "tt", ":lua require('toggle-checkbox').toggle()<CR>")
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
