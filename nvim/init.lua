@@ -75,9 +75,13 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-  'github/copilot.vim',
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
+
+  'folke/zen-mode.nvim', 
+
+
+  'github/copilot.vim',
 
 
 {
@@ -204,37 +208,6 @@ require('lazy').setup({
     --   If not available, we use `mini` as the fallback
     "rcarriga/nvim-notify",
     }
-  },
-
-  {
-  'nvim-orgmode/orgmode',
-  dependencies = {
-    { 'nvim-treesitter/nvim-treesitter', lazy = true },
-  },
-  event = 'VeryLazy',
-  config = function()
-    -- Load treesitter grammar for org
-    require('orgmode').setup_ts_grammar()
-
-    -- Setup treesittertreesi
-    require('nvim-treesitter.configs').setup({
-      sync_install = true,
-      auto_install = true,
-      modules = {''},
-      ignore_install = {''},
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { 'org' },
-      },
-      ensure_installed = { 'org' },
-    })
-
-    -- Setup orgmode
-    require('orgmode').setup({
-      org_agenda_files = '~/orgfiles/**/*',
-      org_default_notes_file = '~/orgfiles/refile.org',
-    })
-  end,
   },
 
 
@@ -486,7 +459,6 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -579,6 +551,7 @@ local function live_grep_git_root()
 end
 
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
+
 
 
 
