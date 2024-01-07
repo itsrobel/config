@@ -69,10 +69,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
 
-
-  'yorickpeterse/nvim-window',
-
-  -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
   -- Detect tabstop and shiftwidth automatically
@@ -459,6 +455,14 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+
+
+vim.keymap.set('n', '<C-.>', '<cmd>vertical resize +5<cr>', {silent = true })
+vim.keymap.set('n', '<C-,>', '<cmd>vertical resize -5<cr>', {silent = true })
+vim.keymap.set('n', '<leader>wv' ,'<cmd>vsplit<cr>' ,  {silent = true})
+
+-- Enable ZenMode
+vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<cr>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

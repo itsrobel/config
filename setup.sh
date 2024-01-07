@@ -37,7 +37,7 @@ yay -i paru
 paru -S arcolinux-logout ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
-paru -S ranger ripgrep xclip onedrive zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
+paru -S ranger ripgrep xclip onedrive zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
 # Themes
 #
 paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
