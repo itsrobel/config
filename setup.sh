@@ -34,7 +34,7 @@ sudo pacman -Syyu
 
 yay -i paru
 # System
-paru -S ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
+paru -S arcolinux-logout ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
 paru -S ranger ripgrep xclip onedrive zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza

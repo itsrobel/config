@@ -98,15 +98,48 @@ require('lazy').setup({
     -- see below for full list of optional dependencies 👇
   },
   opts = {
+
     workspaces = {
-    {
+      {
       name = "home",
       path = "~/Documents/home",
+      },
     },
-  },
-
+    daily_notes = {
+      -- Optional, if you keep daily notes in a separate directory.
+      folder = "notes/journal",
+      -- Optional, if you want to change the date format for the ID of daily notes.
+      date_format = "%Y-%m-%d",
+      -- Optional, if you want to change the date format of the default alias of daily notes.
+      alias_format = "%B %-d, %Y",
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = nil
+      },
     -- see below for full list of options 👇
-  },
+      --
+    follow_url_func = function(url)
+    -- Open the URL in the default web browser.
+    -- vim.fn.jobstart({"open", url})  -- Mac OS
+      vim.fn.jobstart({"firefox", url})  -- linux
+    end,
+
+    note_id_func = function(title)
+    -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+    -- In this case a note with the title 'My new note' will be given an ID that looks
+    -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+    local name = ""
+    if title ~= nil then
+      -- If title is given, transform it into valid file name.
+      name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+    else
+      -- If title is nil, just use Date
+      for _ = 1, 4 do
+        name = tostring(os.time())
+      end
+    end
+    return name
+    end,
+    },
   },
 
 
@@ -183,7 +216,7 @@ require('lazy').setup({
     -- Load treesitter grammar for org
     require('orgmode').setup_ts_grammar()
 
-    -- Setup treesitter
+    -- Setup treesittertreesi
     require('nvim-treesitter.configs').setup({
       sync_install = true,
       auto_install = true,
@@ -548,7 +581,6 @@ end
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
 
--- markdown
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })

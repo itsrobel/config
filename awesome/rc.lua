@@ -168,7 +168,6 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-    -- Destroy all notifications
     awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser ) end,
         {description = "open browser", group = "launcher"}),
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
@@ -179,6 +178,10 @@ globalkeys = mytable.join(
         {description = "open terminal file manager" , group ="laucher"}),
     awful.key({ modkey }, "r", function  () awful.spawn.with_shell(rofi) end,
         {description = "show the runlauncher", group = "launcher"}),
+    awful.key({ modkey, "Shift"   }, "x", function () awful.spawn.with_shell("archlinux-logout") end,
+             {description = "archlinux logout", group = "awesome"}),
+
+
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
     awful.key({ modkey }, "F4", function () awful.spawn.with_shell( "pavucontrol" ) end,
@@ -237,10 +240,16 @@ globalkeys = mytable.join(
               {description = "swap with next client by index", group = "client"}),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end,
               {description = "swap with previous client by index", group = "client"}),
+
+
+    -- Switch monitor focus
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end,
               {description = "focus the next screen", group = "screen"}),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end,
               {description = "focus the previous screen", group = "screen"}),
+
+
+
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = "client"}),
 
@@ -267,8 +276,6 @@ globalkeys = mytable.join(
               {description = terminal, group = "super"}),
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    -- awful.key({ modkey, "Shift"   }, "x", awesome.quit,
-    --          {description = "quit awesome", group = "awesome"}),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
         {description = "increase master width factor", group = "layout"}),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
@@ -277,10 +284,17 @@ globalkeys = mytable.join(
         {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
         {description = "decrease the number of master clients", group = "layout"}),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
-        {description = "increase the number of columns", group = "layout"}),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
-        {description = "decrease the number of columns", group = "layout"}),
+
+
+
+    -- Ewwww 
+    -- awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1, nil, true)    end,
+    --     {description = "increase the number of columns", group = "layout"}),
+    -- awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
+    --     {description = "decrease the number of columns", group = "layout"}),
+    --
+
+
     awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
         {description = "select next", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
