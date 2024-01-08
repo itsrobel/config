@@ -74,13 +74,9 @@ require('lazy').setup({
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
-  'folke/zen-mode.nvim', 
-
-
+  'folke/zen-mode.nvim',
   'github/copilot.vim',
-
-
-{
+  {
   "epwalsh/obsidian.nvim",
   version = "*",  -- recommended, use latest release instead of latest commit
   lazy = true,
@@ -95,10 +91,15 @@ require('lazy').setup({
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
+    "hrsh7th/nvim-cmp",
+    "nvim-telescope/telescope.nvim",
+    "nvim-treesitter/nvim-treesitter",
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-
+    completion = {
+    nvim_cmp = true,
+        },
     workspaces = {
       {
       name = "home",
@@ -140,6 +141,40 @@ require('lazy').setup({
     return name
     end,
     },
+    mappings = {
+    -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+    ["gf"] = {
+      action = function()
+        return require("obsidian").util.gf_passthrough()
+      end,
+      opts = { noremap = false, expr = true, buffer = true },
+    },
+    -- Toggle check-boxes.
+    ["<leader>ch"] = {
+      action = function()
+        return require("obsidian").util.toggle_checkbox()
+      end,
+      opts = { buffer = true },
+    },
+
+    },
+    finder = "telescope.nvim",
+
+    -- Optional, configure key mappings for the finder. These are the defaults.
+    -- If you don't want to set any mappings this way then set
+    finder_mappings = {
+    -- Create a new note from your query with `:ObsidianSearch` and `:ObsidianQuickSwitch`.
+    -- Currently only telescope supports this.
+    new = "<C-x>",
+    },
+
+    sort_by = "modified",
+    sort_reversed = true,
+    -- Optional, determines how certain commands open notes. The valid options are:
+    -- 1. "current" (the default) - to always open in the current window
+    -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
+    -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
+    open_notes_in = "current",
   },
 
 
@@ -455,7 +490,7 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
+vim.keymap.set({ "n", "x" }, "<Space>ch", "<cmd>lua require('toggle-checkbox').toggle()<cr>" , { silent = true })
 
 vim.keymap.set('n', '<C-.>', '<cmd>vertical resize +5<cr>', {silent = true })
 vim.keymap.set('n', '<C-,>', '<cmd>vertical resize -5<cr>', {silent = true })
