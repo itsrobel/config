@@ -490,7 +490,6 @@ vim.o.termguicolors = true
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set({ "n", "x" }, "<Space>ch", "<cmd>lua require('toggle-checkbox').toggle()<cr>" , { silent = true })
 
 vim.keymap.set('n', '<C-.>', '<cmd>vertical resize +5<cr>', {silent = true })
 vim.keymap.set('n', '<C-,>', '<cmd>vertical resize -5<cr>', {silent = true })
