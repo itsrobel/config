@@ -104,6 +104,12 @@ require('lazy').setup({
       {
       name = "home",
       path = "~/Documents/home",
+
+      },
+      {
+      name = "OneDrive",
+      path = "~/OneDrive/notes",
+
       },
     },
     daily_notes = {
