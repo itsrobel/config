@@ -101,17 +101,20 @@ require('lazy').setup({
     nvim_cmp = true,
         },
     workspaces = {
-      {
-      name = "home",
-      path = "~/Documents/home",
-
-      },
+      -- {
+      -- name = "home",
+      -- path = "~/Documents/home",
+      --
+      -- },
       {
       name = "OneDrive",
       path = "~/OneDrive/notes",
-
       },
     },
+    templates = {
+      subdir = "templates",
+      date_format = "%Y-%m-%d-%a",
+      },
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
       folder = "notes/journal",
