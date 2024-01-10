@@ -5,6 +5,7 @@
 # set all config files
 ln -s $(pwd)/conf/.face ~/
 ln -s $(pwd)/conf/.Xresources ~/
+
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
@@ -15,7 +16,11 @@ ln -s $(pwd)/qt5ct ~/.config/
 ln -s $(pwd)/cava ~/.config/
 ln -s $(pwd)/zathura ~/.config/
 ln -s $(pwd)/ranger ~/.config/
+
+ln -s $(pwd)/pandoc ~/.local/share/
+
 ln -s $(pwd)/wallpapers ~/Pictures/
+
 
 sudo cp -r $(pwd)/lemurs /etc/
 sudo cp $(pwd)/conf/paru.conf /etc/
