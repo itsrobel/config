@@ -42,7 +42,7 @@ yay -i paru
 paru -S arcolinux-logout archlinux-keyring ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
-paru -S ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
+paru -S neovim ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
 
 # One drive
 # paru -S  onedrive
