@@ -101,15 +101,14 @@ require('lazy').setup({
     nvim_cmp = true,
         },
     workspaces = {
-      -- {
-      -- name = "home",
-      -- path = "~/Documents/home",
-      --
-      -- },
       {
-      name = "OneDrive",
-      path = "~/OneDrive/notes",
+      name = "notes",
+      path = "~/Documents/notes",
       },
+      -- {
+      -- name = "OneDrive",
+      -- path = "~/OneDrive/notes",
+      -- },
     },
     templates = {
       subdir = "templates",
@@ -117,7 +116,7 @@ require('lazy').setup({
       },
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = "notes/journal",
+      folder = "journal",
       -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%Y-%m-%d",
       -- Optional, if you want to change the date format of the default alias of daily notes.

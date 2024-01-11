@@ -42,10 +42,14 @@ yay -i paru
 paru -S arcolinux-logout archlinux-keyring ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
-paru -S ranger ripgrep xclip unoconv onedrive feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
+paru -S ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
+
+# One drive
+# paru -S  onedrive
+
 # Themes
 #
-paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
+paru -S spicetify-cli lxappearance dracula-gtk-theme dracula-icons-git
 # Programming langauges
 paru -S jdk
 #
@@ -93,8 +97,8 @@ git config --global credential.helper store
 sudo systemctl enable lemurs
 
 # enable onedrive systemd
-systemctl --user enable onedrive
-systemctl --user start onedrive
+# systemctl --user enable onedrive
+# systemctl --user start onedrive
 
 
 
