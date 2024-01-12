@@ -5,18 +5,19 @@
 # set all config files
 ln -s $(pwd)/conf/.face ~/
 ln -s $(pwd)/conf/.Xresources ~/
-
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/qtile ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
+ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
 ln -s $(pwd)/cava ~/.config/
 ln -s $(pwd)/zathura ~/.config/
 ln -s $(pwd)/ranger ~/.config/
 
+ln -s $(pwd)/bashtop/dracula.theme ~/.config/bashtop/user_themes/
 ln -s $(pwd)/pandoc ~/.local/share/
 
 ln -s $(pwd)/wallpapers ~/Pictures/
@@ -25,8 +26,6 @@ ln -s $(pwd)/wallpapers ~/Pictures/
 sudo cp -r $(pwd)/lemurs /etc/
 sudo cp $(pwd)/conf/paru.conf /etc/
 sudo cp $(pwd)/conf/pacman.conf /etc/
-
-
 
 
 ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
@@ -44,12 +43,18 @@ paru -S arcolinux-logout archlinux-keyring ttf-font-awesome acpilight network-ma
 # Tools
 paru -S ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
 
+# emacs
+paru -S emacs
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+
+
 # One drive
 # paru -S  onedrive
 
 # Themes
 #
-paru -S spicetify-cli lxappearance dracula-gtk-theme dracula-icons-git
+paru -S bashtop spicetify-cli lxappearance dracula-gtk-theme dracula-icons-git
 # Programming langauges
 paru -S jdk
 #

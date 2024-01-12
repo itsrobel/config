@@ -69,6 +69,7 @@ local vi_focus     = false -- vi-like client focus https://github.com/lcpz/aweso
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local editor        = "alacritty -e nvim"
 local browser       = "firefox"
+local org           = "emacsclient -c"
 local filemanager   = "thunar"
 local termbroswer   = "alacritty -e ranger"
 local rofi          = "rofi -show run" --"dmenu_run"
@@ -172,6 +173,8 @@ globalkeys = mytable.join(
         {description = "open browser", group = "launcher"}),
     awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
         {description = "run editor", group = "launcher"}),
+    awful.key({ modkey }, "c", function () awful.spawn.with_shell(org) end,
+        {description = "run org editor", group = "launcher"}),
     awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
         {description = "open file manager" , group ="laucher"}),
     awful.key({ modkey }, "e" , function () awful.spawn.with_shell(termbroswer) end,
@@ -628,6 +631,19 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
+-- Autorun programs
+-- local autorun = true
+-- local autorunApps =
+-- {
+--    "emacs --daemon",
+-- }
+-- if autorun then
+--    for app = 1, #autorunApps do
+--        awful.util.spawn(autorunApps[app])
+--    end
+-- end
+--
+--
 
 awful.spawn.with_shell("~/.config/awesome/autostart.sh")
 awful.spawn.with_shell("picom -b --config  $HOME/.config/awesome/picom.conf")
