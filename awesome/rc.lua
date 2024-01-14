@@ -73,7 +73,7 @@ local firefox       = "firefox"
 local thunar        = "thunar"
 local ranger        = "alacritty -e ranger"
 local rofi          = "rofi -show run" --"dmenu_run"
-local mediaplayer   = "spotify"
+local spotify       = "spotify"
 
 awful.util.terminal = terminal
 
