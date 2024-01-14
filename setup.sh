@@ -5,6 +5,7 @@
 # set all config files
 ln -s $(pwd)/conf/.face ~/
 ln -s $(pwd)/conf/.Xresources ~/
+ln -s $(pwd)/conf/.zshrc ~/
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
@@ -38,16 +39,19 @@ sudo pacman -Syyu
 
 yay -i paru
 # System
-paru -S arcolinux-logout archlinux-keyring ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
+paru -S arcolinux-logout blueman archlinux-keyring ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
 paru -S neovim ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
 
 # emacs
-paru -S emacs
+paru -S emacs gopls gomodifytags gotests gore guru python-black python-pyflakes rust-analyzer shfmt tidy stylelint js-beautify sbcl
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
+
+# zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # One drive
 # paru -S  onedrive
