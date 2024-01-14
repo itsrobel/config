@@ -171,22 +171,24 @@ root.buttons(mytable.join(
 globalkeys = mytable.join(
     awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
         {description = "Open Firefox", group = "launcher"}),
-    awful.key({ modkey }, "v", function () awful.spawn.with_shell(nvim) end,
+    awful.key({ modkey }, "n", function () awful.spawn.with_shell(nvim) end,
         {description = "Open Neovim", group = "launcher"}),
     awful.key({ modkey }, "e", function () awful.spawn.with_shell(emacs) end,
         {description = "Open Emacs", group = "launcher"}),
-    awful.key({ modkey }, "n" , function () awful.spawn.with_shell(thunar) end,
+    awful.key({ modkey }, "t" , function () awful.spawn.with_shell(thunar) end,
         {description = "Open Thunar" , group ="laucher"}),
     awful.key({ modkey }, "r" , function () awful.spawn.with_shell(ranger) end,
         {description = "Open Ranger" , group ="laucher"}),
     awful.key({ modkey }, "p", function  () awful.spawn.with_shell(rofi) end,
         {description = "Open Rofi", group = "launcher"}),
+    awful.key({ modkey }, "F7", function () awful.spawn.with_shell( spotify ) end,
+        {description = "Open spotify" , group = "launcher" }),
+
+
     awful.key({ modkey, "Shift"   }, "x", function () awful.spawn.with_shell("archlinux-logout") end,
              {description = "Open archlinux logout", group = "awesome"}),
 
 
-    awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,
-        {description = mediaplayer , group = "function keys" }),
     awful.key({ modkey }, "F4", function () awful.spawn.with_shell( "pavucontrol" ) end,
         {description = "pulseaudio control", group = "super"}),
 
