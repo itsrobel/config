@@ -169,7 +169,7 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-    awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
+    awful.key({ modkey }, "f", function () awful.spawn.with_shell( firefox ) end,
         {description = "Open Firefox", group = "launcher"}),
     awful.key({ modkey }, "n", function () awful.spawn.with_shell(nvim) end,
         {description = "Open Neovim", group = "launcher"}),
@@ -181,7 +181,7 @@ globalkeys = mytable.join(
         {description = "Open Ranger" , group ="laucher"}),
     awful.key({ modkey }, "p", function  () awful.spawn.with_shell(rofi) end,
         {description = "Open Rofi", group = "launcher"}),
-    awful.key({ modkey }, "F7", function () awful.spawn.with_shell( spotify ) end,
+    awful.key({ modkey }, "y", function () awful.spawn.with_shell( spotify ) end,
         {description = "Open spotify" , group = "launcher" }),
 
 
