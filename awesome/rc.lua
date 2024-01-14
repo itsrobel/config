@@ -67,11 +67,11 @@ local altkey       = "Mod1"
 local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
-local editor        = "alacritty -e nvim"
-local browser       = "firefox"
-local editor2       = "emacsclient -c"
-local filemanager   = "thunar"
-local termfilemanger= "alacritty -e ranger"
+local nvim          = "alacritty -e nvim"
+local emacs         = "emacsclient -c"
+local firefox       = "firefox"
+local thunar        = "thunar"
+local ranger        = "alacritty -e ranger"
 local rofi          = "rofi -show run" --"dmenu_run"
 local mediaplayer   = "spotify"
 
@@ -169,20 +169,20 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-    awful.key({ modkey }, "b", function () awful.spawn.with_shell( browser ) end,
-        {description = "open browser", group = "launcher"}),
-    awful.key({ modkey }, "v", function () awful.spawn.with_shell(editor) end,
-        {description = "run editor", group = "launcher"}),
-    awful.key({ modkey }, "e", function () awful.spawn.with_shell(editor2) end,
-        {description = "run emacs editor", group = "launcher"}),
-    awful.key({ modkey }, "n" , function () awful.spawn.with_shell(filemanager) end,
-        {description = "open file manager" , group ="laucher"}),
-    awful.key({ modkey }, "r" , function () awful.spawn.with_shell(termfilemanager) end,
-        {description = "open terminal file manager" , group ="laucher"}),
+    awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
+        {description = "Open Firefox", group = "launcher"}),
+    awful.key({ modkey }, "v", function () awful.spawn.with_shell(nvim) end,
+        {description = "Open Neovim", group = "launcher"}),
+    awful.key({ modkey }, "e", function () awful.spawn.with_shell(emacs) end,
+        {description = "Open Emacs", group = "launcher"}),
+    awful.key({ modkey }, "n" , function () awful.spawn.with_shell(thunar) end,
+        {description = "Open Thunar" , group ="laucher"}),
+    awful.key({ modkey }, "r" , function () awful.spawn.with_shell(ranger) end,
+        {description = "Open Ranger" , group ="laucher"}),
     awful.key({ modkey }, "p", function  () awful.spawn.with_shell(rofi) end,
-        {description = "show the runlauncher", group = "launcher"}),
+        {description = "Open Rofi", group = "launcher"}),
     awful.key({ modkey, "Shift"   }, "x", function () awful.spawn.with_shell("archlinux-logout") end,
-             {description = "archlinux logout", group = "awesome"}),
+             {description = "Open archlinux logout", group = "awesome"}),
 
 
     awful.key({ modkey }, "F7", function () awful.spawn.with_shell( mediaplayer ) end,

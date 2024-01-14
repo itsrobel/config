@@ -14,7 +14,7 @@ function run {
 run "nm-applet"
 #run "caffeine"
 run "pamac-tray"
-run "blueman-tray"
+run "blueman-applet"
 #run "variety"
 run "xfce4-power-manager"
 run "blueberry-tray"
