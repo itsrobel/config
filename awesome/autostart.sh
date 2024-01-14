@@ -14,6 +14,7 @@ function run {
 run "nm-applet"
 #run "caffeine"
 run "pamac-tray"
+run "blueman-applet"
 #run "variety"
 run "xfce4-power-manager"
 run "blueberry-tray"
@@ -21,8 +22,8 @@ run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "numlockx on"
 run "volumeicon"
 run "~/.screenlayout/default.sh"
-run "nitrogen --restore"
-run "onedrive"
+# run "nitrogen --restore"
+# run "onedrive"
 run "emacs --daemon"
 #you can set wallpapers in themes as well
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &

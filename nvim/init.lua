@@ -76,114 +76,137 @@ require('lazy').setup({
 
   'folke/zen-mode.nvim',
   'github/copilot.vim',
-  {
-  "epwalsh/obsidian.nvim",
-  version = "*",  -- recommended, use latest release instead of latest commit
-  lazy = true,
-  ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  -- event = {
-  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-  --   "BufReadPre path/to/my-vault/**.md",
-  --   "BufNewFile path/to/my-vault/**.md",
+  -- {
+  --
+  'jakewvincent/mkdnflow.nvim',
+  -- "epwalsh/obsidian.nvim",
+  -- version = "*",  -- recommended, use latest release instead of latest commit
+  -- lazy = true,
+  -- ft = "markdown",
+  -- -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  -- -- event = {
+  -- --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  -- --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  -- --   "BufReadPre path/to/my-vault/**.md",
+  -- --   "BufNewFile path/to/my-vault/**.md",
+  -- -- },
+  -- dependencies = {
+  --   -- Required.
+  --   "nvim-lua/plenary.nvim",
+  --   "hrsh7th/nvim-cmp",
+  --   "nvim-telescope/telescope.nvim",
+  --   "nvim-treesitter/nvim-treesitter",
+  --   -- see below for full list of optional dependencies 👇
   -- },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-    "hrsh7th/nvim-cmp",
-    "nvim-telescope/telescope.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    -- see below for full list of optional dependencies 👇
+  -- opts = {
+  --   completion = {
+  --   nvim_cmp = true,
+  --       },
+  --   workspaces = {
+  --     {
+  --     name = "notes",
+  --     path = "~/Documents/notes",
+  --     },
+  --     -- {
+  --     -- name = "OneDrive",
+  --     -- path = "~/OneDrive/notes",
+  --     -- },
+  --   },
+  --   templates = {
+  --     subdir = "templates",
+  --     date_format = "%Y-%m-%d-%a",
+  --     },
+  --   daily_notes = {
+  --     -- Optional, if you keep daily notes in a separate directory.
+  --     folder = "journal",
+  --     -- Optional, if you want to change the date format for the ID of daily notes.
+  --     date_format = "%Y-%m-%d",
+  --     -- Optional, if you want to change the date format of the default alias of daily notes.
+  --     alias_format = "%B %-d, %Y",
+  --     -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+  --     template = nil
+  --     },
+  --   -- see below for full list of options 👇
+  --     --
+  --   follow_url_func = function(url)
+  --   -- Open the URL in the default web browser.
+  --   -- vim.fn.jobstart({"open", url})  -- Mac OS
+  --     vim.fn.jobstart({"firefox", url})  -- linux
+  --   end,
+  --
+  --   note_id_func = function(title)
+  --   -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
+  --   -- In this case a note with the title 'My new note' will be given an ID that looks
+  --   -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
+  --   local name = ""
+  --   if title ~= nil then
+  --     -- If title is given, transform it into valid file name.
+  --     name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+  --   else
+  --     -- If title is nil, just use Date
+  --     for _ = 1, 4 do
+  --       name = tostring(os.time())
+  --     end
+  --   end
+  --   return name
+  --   end,
+  --   },
+  --   mappings = {
+  --   -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+  --   ["gf"] = {
+  --     action = function()
+  --       return require("obsidian").util.gf_passthrough()
+  --     end,
+  --     opts = { noremap = false, expr = true, buffer = true },
+  --   },
+  --   -- Toggle check-boxes.
+  --   ["<leader>ch"] = {
+  --     action = function()
+  --       return require("obsidian").util.toggle_checkbox()
+  --     end,
+  --     opts = { buffer = true },
+  --   },
+  --
+  --   },
+  --   finder = "telescope.nvim",
+  --
+  --   -- Optional, configure key mappings for the finder. These are the defaults.
+  --   -- If you don't want to set any mappings this way then set
+  --   finder_mappings = {
+  --   -- Create a new note from your query with `:ObsidianSearch` and `:ObsidianQuickSwitch`.
+  --   -- Currently only telescope supports this.
+  --   new = "<C-x>",
+  --   },
+  --
+  --   sort_by = "modified",
+  --   sort_reversed = true,
+  --   -- Optional, determines how certain commands open notes. The valid options are:
+  --   -- 1. "current" (the default) - to always open in the current window
+  --   -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
+  --   -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
+  --   open_notes_in = "vsplit",
+  --   disable_frontmatter = true,
+  --   note_frontmatter_func = function(note)
+  --   -- This is equivalent to the default frontmatter function.
+  --   local out = { id = note.id, tags = note.tags }
+  --   -- `note.metadata` contains any manually added fields in the frontmatter.
+  --   -- So here we just make sure those fields are kept in the frontmatter.
+  --   -- if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+  --   --   for k, v in pairs(note.metadata) do
+  --   --     out[k] = v
+  --   --   end
+  --   -- end
+  --   return out
+  -- end,
+  -- },
+  --
+  --
+  --
+  --
+  {
+  "startup-nvim/startup.nvim",
+  dependencies = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"}
   },
-  opts = {
-    completion = {
-    nvim_cmp = true,
-        },
-    workspaces = {
-      {
-      name = "home",
-      path = "~/Documents/home",
-
-      },
-      {
-      name = "OneDrive",
-      path = "~/OneDrive/notes",
-
-      },
-    },
-    daily_notes = {
-      -- Optional, if you keep daily notes in a separate directory.
-      folder = "notes/journal",
-      -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = "%Y-%m-%d",
-      -- Optional, if you want to change the date format of the default alias of daily notes.
-      alias_format = "%B %-d, %Y",
-      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = nil
-      },
-    -- see below for full list of options 👇
-      --
-    follow_url_func = function(url)
-    -- Open the URL in the default web browser.
-    -- vim.fn.jobstart({"open", url})  -- Mac OS
-      vim.fn.jobstart({"firefox", url})  -- linux
-    end,
-
-    note_id_func = function(title)
-    -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-    -- In this case a note with the title 'My new note' will be given an ID that looks
-    -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-    local name = ""
-    if title ~= nil then
-      -- If title is given, transform it into valid file name.
-      name = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-    else
-      -- If title is nil, just use Date
-      for _ = 1, 4 do
-        name = tostring(os.time())
-      end
-    end
-    return name
-    end,
-    },
-    mappings = {
-    -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-    ["gf"] = {
-      action = function()
-        return require("obsidian").util.gf_passthrough()
-      end,
-      opts = { noremap = false, expr = true, buffer = true },
-    },
-    -- Toggle check-boxes.
-    ["<leader>ch"] = {
-      action = function()
-        return require("obsidian").util.toggle_checkbox()
-      end,
-      opts = { buffer = true },
-    },
-
-    },
-    finder = "telescope.nvim",
-
-    -- Optional, configure key mappings for the finder. These are the defaults.
-    -- If you don't want to set any mappings this way then set
-    finder_mappings = {
-    -- Create a new note from your query with `:ObsidianSearch` and `:ObsidianQuickSwitch`.
-    -- Currently only telescope supports this.
-    new = "<C-x>",
-    },
-
-    sort_by = "modified",
-    sort_reversed = true,
-    -- Optional, determines how certain commands open notes. The valid options are:
-    -- 1. "current" (the default) - to always open in the current window
-    -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
-    -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
-    open_notes_in = "current",
-  },
-
-
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -260,7 +283,6 @@ require('lazy').setup({
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
@@ -536,6 +558,16 @@ require('telescope').setup {
     },
   },
 }
+
+require("startup").setup({theme = "evil"}) -- put theme name here
+-- [[ Configure mkdnflow ]]
+require('mkdnflow').setup({
+  tables = {
+    auto_extend_rows = true,
+    auto_extend_cols = true,
+  }
+})
+
 
 -- [[ Configure Noice ]]
 require("noice").setup({
@@ -872,6 +904,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+    { name = 'mkdnflow' },
   },
 }
 

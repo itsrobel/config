@@ -17,7 +17,7 @@ alias i="paru"
 
 
 
-alias emacs="emacsclient -c -nw"
+# alias emacs="emacsclient -c -nw"
 #code shortcuts
 alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
 
@@ -25,4 +25,3 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 
 
 #scripts
-alias mi='cd ~/Documents/scripts/node-dl/ && node index.js && cd ~/'

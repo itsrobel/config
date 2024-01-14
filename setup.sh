@@ -5,18 +5,20 @@
 # set all config files
 ln -s $(pwd)/conf/.face ~/
 ln -s $(pwd)/conf/.Xresources ~/
-
+ln -s $(pwd)/conf/.zshrc ~/
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/qtile ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
+ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
 ln -s $(pwd)/cava ~/.config/
 ln -s $(pwd)/zathura ~/.config/
 ln -s $(pwd)/ranger ~/.config/
 
+ln -s $(pwd)/bashtop/dracula.theme ~/.config/bashtop/user_themes/
 ln -s $(pwd)/pandoc ~/.local/share/
 
 ln -s $(pwd)/wallpapers ~/Pictures/
@@ -25,8 +27,6 @@ ln -s $(pwd)/wallpapers ~/Pictures/
 sudo cp -r $(pwd)/lemurs /etc/
 sudo cp $(pwd)/conf/paru.conf /etc/
 sudo cp $(pwd)/conf/pacman.conf /etc/
-
-
 
 
 ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
@@ -39,13 +39,26 @@ sudo pacman -Syyu
 
 yay -i paru
 # System
-paru -S arcolinux-logout ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
+paru -S arcolinux-logout blueman archlinux-keyring ttf-font-awesome acpilight network-manager-applet picom alacritty fish awesome rofi base-devel thunar thunar-volman gvfs gvfs-afc lemurs qt5ct
 
 # Tools
-paru -S ranger ripgrep xclip unoconv onedrive feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify google-messages obsidian microsoft-edge-stable-bin cava eza
+paru -S neovim ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
+
+# emacs
+paru -S emacs gopls gomodifytags gotests gore guru python-black python-pyflakes rust-analyzer shfmt tidy stylelint js-beautify sbcl
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
+~/.config/emacs/bin/doom install
+
+
+# zsh
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+# One drive
+# paru -S  onedrive
+
 # Themes
 #
-paru -S spicetify-cli lxappearance dracula-gtk-theme nitrogen dracula-icons-git
+paru -S bashtop spicetify-cli lxappearance dracula-gtk-theme dracula-icons-git
 # Programming langauges
 paru -S jdk
 #
@@ -93,8 +106,8 @@ git config --global credential.helper store
 sudo systemctl enable lemurs
 
 # enable onedrive systemd
-systemctl --user enable onedrive
-systemctl --user start onedrive
+# systemctl --user enable onedrive
+# systemctl --user start onedrive
 
 
 
