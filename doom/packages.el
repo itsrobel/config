@@ -62,6 +62,5 @@
 (package! latex-change-env)
 (package! evil-multiedit)
 (package! go-guru)
-
 (package! centered-window-mode)
 (package! centered-cursor-mode)

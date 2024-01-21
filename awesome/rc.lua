@@ -68,7 +68,7 @@ local terminal     = "alacritty"
 local vi_focus     = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local nvim          = "alacritty -e nvim"
-local emacs         = "emacsclient -c"
+local emacs         = "emacsclient -c -n"
 local firefox       = "firefox"
 local thunar        = "thunar"
 local ranger        = "alacritty -e ranger"
@@ -169,11 +169,11 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-    awful.key({ modkey }, "f", function () awful.spawn.with_shell( firefox ) end,
+    awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
         {description = "Open Firefox", group = "launcher"}),
     awful.key({ modkey }, "n", function () awful.spawn.with_shell(nvim) end,
         {description = "Open Neovim", group = "launcher"}),
-    awful.key({ modkey }, "e", function () awful.spawn.with_shell(emacs) end,
+    awful.key({ modkey }, "e", function () awful.spawn(emacs) end,
         {description = "Open Emacs", group = "launcher"}),
     awful.key({ modkey }, "t" , function () awful.spawn.with_shell(thunar) end,
         {description = "Open Thunar" , group ="laucher"}),
