@@ -184,7 +184,6 @@ globalkeys = mytable.join(
     awful.key({ modkey }, "y", function () awful.spawn.with_shell( spotify ) end,
         {description = "Open spotify" , group = "launcher" }),
 
-
     awful.key({ modkey, "Shift"   }, "x", function () awful.spawn.with_shell("archlinux-logout") end,
              {description = "Open archlinux logout", group = "awesome"}),
 
