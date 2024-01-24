@@ -21,10 +21,23 @@ run "blueberry-tray"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "numlockx on"
 run "volumeicon"
+
 run "~/.screenlayout/default.sh"
+run "emacs --daemon"
+
+
+
+
+
+# killall -q polybar
+
+
+# while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+# polybar left &
+# polybar right &
+
 # run "nitrogen --restore"
 # run "onedrive"
-run "emacs --daemon"
 #you can set wallpapers in themes as well
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #run applications from startup
