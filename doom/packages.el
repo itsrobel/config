@@ -54,7 +54,7 @@
 (package! org-pretty-tags)
 (package! org-preview-html)
 (package! org-bullets)
-(package! org-roam)
+;; (package! org-roam)
 (package! vterm)
 (package! saveplace-pdf-view)
 (package! pdf-tools)

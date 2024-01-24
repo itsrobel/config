@@ -1,3 +1,4 @@
+jjuuq
 #!/usr/bin/env
 #config file for endeavor
 
@@ -26,7 +27,7 @@ ln -s $(pwd)/wallpapers ~/Pictures/
 
 sudo cp -r $(pwd)/lemurs /etc/
 sudo cp $(pwd)/conf/paru.conf /etc/
-#sudo cp $(pwd)/conf/pacman.conf /etc/
+sudo cp $(pwd)/conf/pacman.conf /etc/
 
 
 ln -s $(pwd)/spicetify/Dracula ~/.config/spicetify/Themes/Dracula
@@ -45,7 +46,7 @@ paru -S arcolinux-logout blueman archlinux-keyring ttf-font-awesome acpilight ne
 paru -S neovim ranger ripgrep xclip unoconv feh zaread-git zathura zathura-pdf-mupdf fastfetch thunderbird spotify obsidian microsoft-edge-stable-bin cava eza
 
 # emacs
-paru -S emacs-nativecomp gopls gomodifytags gotests gore python-black python-pyflakes rust-analyzer shfmt tidy stylelint js-beautify sbcl
+paru -S emacs gopls gomodifytags gotests gore guru python-black python-pyflakes rust-analyzer shfmt tidy stylelint js-beautify sbcl
 git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 ~/.config/emacs/bin/doom install
 
