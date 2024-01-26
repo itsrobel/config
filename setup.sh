@@ -9,7 +9,6 @@ ln -s $(pwd)/conf/.zshrc ~/
 ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
-ln -s $(pwd)/qtile ~/.config/
 ln -s $(pwd)/awesome ~/.config/
 ln -s $(pwd)/nvim ~/.config/
 ln -s $(pwd)/doom ~/.config/
@@ -42,7 +41,7 @@ sudo pacman -Syyu
 
 
 
-paru -S $(cat packages.sh | cut -d' ' -f1) --needed
+paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
 
 
 # System

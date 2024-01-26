@@ -148,7 +148,6 @@ python-pyqt5
 python-pytest
 python-setuptools
 qt5ct
-qtile
 ranger
 rebuild-detector
 reflector
