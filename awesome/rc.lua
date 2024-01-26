@@ -69,11 +69,12 @@ local vi_focus     = false -- vi-like client focus https://github.com/lcpz/aweso
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local nvim          = "alacritty -e nvim"
 local emacs         = "emacsclient -c -n"
-local firefox       = "firefox"
+-- local firefox       = "firefox"
 local thunar        = "thunar"
 local ranger        = "alacritty -e ranger"
 local rofi          = "rofi -show run" --"dmenu_run"
 local spotify       = "spotify"
+local qute          = "qutebrowser"
 
 awful.util.terminal = terminal
 
@@ -169,8 +170,11 @@ root.buttons(mytable.join(
 -- {{{ Key bindings
 
 globalkeys = mytable.join(
-    awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
-        {description = "Open Firefox", group = "launcher"}),
+
+    awful.key({ modkey }, "b", function () awful.spawn.with_shell( qute ) end,
+        {description = "open qutebrowser", group = "launcher"}),
+    -- awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
+    --     {description = "open firefox", group = "launcher"}),
     awful.key({ modkey }, "n", function () awful.spawn.with_shell(nvim) end,
         {description = "Open Neovim", group = "launcher"}),
     awful.key({ modkey }, "e", function () awful.spawn(emacs) end,

@@ -54,13 +54,16 @@
 (package! org-pretty-tags)
 (package! org-preview-html)
 (package! org-bullets)
+
 ;; (package! org-roam)
+;;
 (package! vterm)
 (package! saveplace-pdf-view)
 (package! pdf-tools)
 (package! latex-preview-pane)
 (package! latex-change-env)
 (package! evil-multiedit)
-(package! go-guru)
+(package! go-mode)
+(package! go-guru)                      ;
 (package! centered-window-mode)
 (package! centered-cursor-mode)

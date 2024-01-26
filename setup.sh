@@ -10,6 +10,7 @@ ln -s $(pwd)/alacritty ~/.config/
 ln -s $(pwd)/fish ~/.config/
 ln -s $(pwd)/rofi ~/.config/
 ln -s $(pwd)/awesome ~/.config/
+ln -s $(pwd)/spicetify ~/.config/
 ln -s $(pwd)/nvim ~/.config/
 ln -s $(pwd)/doom ~/.config/
 ln -s $(pwd)/qt5ct ~/.config/
