@@ -21,15 +21,12 @@ theme.fg_urgent                                 = "#FF5555"
 theme.bg_normal                                 = "#282A36"
 theme.bg_focus                                  = "#44475A"
 theme.border_marked                             = "#FFB86C"
-
-
  -- do not set these to use the fg vars
 theme.border_normal                             = "#44475A"
 theme.border_focus                              = "#BD93F9"
 
-theme.tasklist_bg_focus                         = bg_focus
-theme.bg_urgent                                 = fg_urget
-
+theme.tasklist_bg_focus                         = theme.bg_focus
+theme.bg_urgent                                 = theme.fg_urget
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
@@ -115,7 +112,7 @@ local cpu = lain.widget.cpu({
 })
 
 -- Coretemp
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
+-- local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
