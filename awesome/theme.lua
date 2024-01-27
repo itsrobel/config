@@ -13,23 +13,20 @@ local theme                                     = {}
 
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/theme/"
 theme.wallpaper                                 = "~/Pictures/wallpapers/yourname.jpg"
-theme.font                                      = "Noto Sans Mono Bold 13"
--- theme.font                                      = "DejaVu Sans Mono Bold 13"
+-- theme.font                                      = "Noto Sans Mono Bold 13"
+theme.font                                      = "DejaVu Sans Mono Bold 13"
 theme.fg_normal                                 = "#F8F8F2"
 theme.fg_focus                                  = "#BD93F9"
 theme.fg_urgent                                 = "#FF5555"
 theme.bg_normal                                 = "#282A36"
 theme.bg_focus                                  = "#44475A"
 theme.border_marked                             = "#FFB86C"
-
-
  -- do not set these to use the fg vars
 theme.border_normal                             = "#44475A"
 theme.border_focus                              = "#BD93F9"
 
-theme.tasklist_bg_focus                         = bg_focus
-theme.bg_urgent                                 = fg_urget
-
+theme.tasklist_bg_focus                         = theme.bg_focus
+theme.bg_urgent                                 = theme.fg_urget
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
@@ -41,12 +38,12 @@ theme.tasklist_plain_task_name                  = true
 theme.tasklist_disable_icon                     = true
 
 local markup = lain.util.markup
-local separators = lain.util.separators
+-- local separators = lain.util.separators
 
-local keyboardlayout = awful.widget.keyboardlayout:new()
+-- local keyboardlayout = awful.widget.keyboardlayout:new()
 theme.useless_gap = 8
 -- Textclock
-local clockicon = wibox.widget.imagebox(theme.widget_clock)
+-- local clockicon = wibox.widget.imagebox(theme.widget_clock)
 local clock = awful.widget.watch(
     "date +'%a %d %b %R'", 60,
     function(widget, stdout)
@@ -56,7 +53,7 @@ local clock = awful.widget.watch(
 
 
 theme.icon_size = 16
-theme.icon_font = "Font Awesome 5 Free-Solid-900 " -- attention to space at the end!
+theme.icon_font = "Font Awesome 6 Free-Solid-900 " -- attention to space at the end!
 theme.icon_color = theme.fg_focus
 
 
@@ -72,16 +69,20 @@ local function make_fa_icon( code )
 end
 
 local facpuicon = make_fa_icon('\u{f2db}')
-local famemicon = make_fa_icon('\u{f538}')
+local famemicon = make_fa_icon('\u{f085}')
 local fatempicon = make_fa_icon('\u{f2c9}')
-local faweathericon = make_fa_icon('\u{f6c4}')
-local facalicon = make_fa_icon('\u{f783}' )
+-- local faweathericon = make_fa_icon('\u{f6c4}')
+-- local facalicon = make_fa_icon('\u{f783}' )
 local fatimeicon = make_fa_icon('\u{f017}' )
 local famusicicon = make_fa_icon('\u{f025}' )
 
 
+-- local favolmut = make_fa_icon('\u{f204}' )
+-- local favoloff = make_fa_icon('\u{f715}' )
+-- local favollow = make_fa_icon('\u{f105}' )
+-- local favolhig = make_fa_icon('\u{f101}' )
 
-local favolmut = make_fa_icon('\u{f6a9}' )
+local favolmut = make_fa_icon('\u{f410}' )
 local favoloff = make_fa_icon('\u{f026}' )
 local favollow = make_fa_icon('\u{f027}' )
 local favolhig = make_fa_icon('\u{f028}' )
@@ -96,7 +97,7 @@ local batna     = make_fa_icon('\u{f0e7}' )
 local batplug   = make_fa_icon('\u{f1e6}')
 
 -- MEM
-local memicon = wibox.widget.imagebox(theme.widget_mem)
+-- local memicon = wibox.widget.imagebox(theme.widget_mem)
 local mem = lain.widget.mem({
     settings = function()
         widget:set_markup(markup.font(theme.font, " " .. mem_now.used .. "MB "))
@@ -111,7 +112,7 @@ local cpu = lain.widget.cpu({
 })
 
 -- Coretemp
-local tempicon = wibox.widget.imagebox(theme.widget_temp)
+-- local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local temp = lain.widget.temp({
     settings = function()
         widget:set_markup(markup.font(theme.font, " " .. coretemp_now .. "°C "))
@@ -154,9 +155,7 @@ theme.volume = lain.widget.alsa({
         if volume_now.status == "off" then
             -- volicon:set_markup(markup.font(theme.font, favolmut))
             --
-            volicon:set_markup_silently(
-                favolmut.markup
-            )
+            volicon:set_markup_silently(favolmut.markup)
             -- volicon:set_markup(markup.font(theme.font, favolmut.markup))
         elseif tonumber(volume_now.level) == 0 then
 
@@ -225,15 +224,15 @@ function theme.at_screen_connect(s)
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist(s,
         awful.widget.taglist.filter.all,
-        arrl_ld,
+        -- arrl_ld,
         awful.util.taglist_buttons
-    )
+        )
 
     -- Create a tasklist widget
     s.mytasklist = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, awful.util.tasklist_buttons)
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ border_width = 16, position = "bottom", screen = s, height = dpi(32), bg = theme.bg_normal, fg = theme.fg_normal })
+    -- Create the wibox 
+    s.mywibox = awful.wibar({ ontop = true, border_width = 16, position = "bottom", screen = s, height = dpi(32), bg = theme.bg_normal, fg = theme.fg_normal })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
