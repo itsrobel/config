@@ -69,7 +69,7 @@ local function make_fa_icon( code )
 end
 
 local facpuicon = make_fa_icon('\u{f2db}')
-local famemicon = make_fa_icon('\u{f085}')
+local famemicon = make_fa_icon('\u{f538}')
 local fatempicon = make_fa_icon('\u{f2c9}')
 -- local faweathericon = make_fa_icon('\u{f6c4}')
 -- local facalicon = make_fa_icon('\u{f783}' )
@@ -82,7 +82,8 @@ local famusicicon = make_fa_icon('\u{f025}' )
 -- local favollow = make_fa_icon('\u{f105}' )
 -- local favolhig = make_fa_icon('\u{f101}' )
 
-local favolmut = make_fa_icon('\u{f410}' )
+local favolmut = make_fa_icon('\u{f6a9}' )
+-- local favolmut = make_fa_icon('\u{f410}' )
 local favoloff = make_fa_icon('\u{f026}' )
 local favollow = make_fa_icon('\u{f027}' )
 local favolhig = make_fa_icon('\u{f028}' )
