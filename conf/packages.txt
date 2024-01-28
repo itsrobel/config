@@ -18,7 +18,6 @@ bluez
 bluez-utils
 btrfs-progs
 cantarell-fonts
-cava
 cli-visualizer
 cmake
 cryptsetup
@@ -36,7 +35,6 @@ duf
 e2fsprogs
 efibootmgr
 efitools
-emacs-nativecomp
 ethtool
 exfatprogs
 eza
@@ -76,7 +74,6 @@ jdk
 jfsutils
 js-beautify
 kvantum-theme-dracula-git
-lemurs
 less
 libdvdcss
 libgsf
@@ -198,7 +195,6 @@ texlive-xetex
 tidy
 tldr
 tmux
-tor-browser-bin
 tracker3-miners
 ttf-all-the-icons
 ttf-bitstream-vera
@@ -237,3 +233,4 @@ zathura-pdf-mupdf
 zig
 zip
 zsh
+fish

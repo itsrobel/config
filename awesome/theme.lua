@@ -246,7 +246,7 @@ function theme.at_screen_connect(s)
             layout = wibox.layout.fixed.horizontal,
             spr,
             spr,
-            wibox.widget.systray(),
+            -- wibox.widget.systray(),
             volicon,
             theme.volume.widget,
             famemicon,
