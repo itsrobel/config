@@ -1,0 +1,1 @@
+{AMD/AMD Radeon RX 6600 (radeonsi, navi23, LLVM 16.0.6, DRM 3.56, 6.7.1-arch1-1)/4.6 (Core Profile) Mesa 23.3.4-arch1.2}=SUPPORTED

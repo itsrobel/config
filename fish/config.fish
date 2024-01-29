@@ -9,7 +9,7 @@ alias l='eza -lah'
 alias ssn='sudo shutdown now'
 alias sr='sudo reboot'
 alias rd='rm -rf'
-
+alias doom='~/.config//emacs/bin/doom'
 
 alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
