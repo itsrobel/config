@@ -199,6 +199,7 @@ tracker3-miners
 ttf-all-the-icons
 ttf-bitstream-vera
 ttf-dejavu
+ttf-dejavu-nerd
 ttf-dejavu-sans-code
 ttf-font-awesome
 ttf-liberation
