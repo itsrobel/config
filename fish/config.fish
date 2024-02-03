@@ -1,8 +1,9 @@
 set fish_greeting
 
 
-set -Ux EDITOR nvim
-
+set -gx EDITOR nvim
+export EDITOR=nvim
+export VISUAL=nvim
 
 #genral shortcuts
 alias l='eza -lah'
