@@ -559,7 +559,7 @@ require('telescope').setup {
   },
 }
 
-require("startup").setup({theme = "evil"}) -- put theme name here
+require("startup").setup({theme = "dashboard"}) -- put theme name here
 -- [[ Configure mkdnflow ]]
 require('mkdnflow').setup({
   tables = {
