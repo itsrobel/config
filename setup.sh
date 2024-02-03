@@ -79,7 +79,8 @@ set git config
 git config --global user.email "itsrobel.schwarz@gmail.com" && git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
 
-
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+omf install sushi
 
 # UNCOMMENT FOR LAPTOP
 # install auto-cpufreq
