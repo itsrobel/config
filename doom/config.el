@@ -1,6 +1,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-(setq shell-file-name (executable-find "zsh"))
-
+(setq shell-file-name (executable-find "bash"))
+(setq-default vterm-shell (executable-find "fish"))
+(setq-default explicit-shell-file-name (executable-find "fish"))
 
 ;; (setq-default vterm-shell (executable-find "fish"))
 ;; (setq-default explicit-shell-file-name (executable-find "fish"))
