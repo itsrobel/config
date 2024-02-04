@@ -4,7 +4,7 @@ set fish_greeting
 set -gx EDITOR nvim
 export EDITOR=nvim
 export VISUAL=nvim
-
+export BROWSER=qutebrowser
 #genral shortcuts
 alias l='eza -lah'
 alias ssn='sudo shutdown now'
