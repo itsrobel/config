@@ -1,8 +1,8 @@
 --[[
 
 =====================================================================
-==================== READ THIS BEFORE CONTINUING ====================
 =====================================================================
+==================== READ THIS BEFORE CONTINUING ====================
 
 Kickstart.nvim is *not* a distribution.
 
@@ -76,6 +76,10 @@ require('lazy').setup({
 
   'folke/zen-mode.nvim',
   'github/copilot.vim',
+  {
+    'willothy/moveline.nvim',
+    build = 'make',
+  },
   -- {
   --
   'jakewvincent/mkdnflow.nvim',
@@ -733,8 +737,12 @@ vim.defer_fn(function()
 end, 0)
 
 
-
-
+-- [[ Configure MoveLine]]
+local moveline = require('moveline')
+vim.keymap.set('n', '<M-k>', moveline.up)
+vim.keymap.set('n', '<M-j>', moveline.down)
+vim.keymap.set('v', '<M-k>', moveline.block_up)
+vim.keymap.set('v', '<M-j>', moveline.block_down)
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
