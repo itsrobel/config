@@ -87,10 +87,12 @@ omf install sushi
 
 # paru -S auto-cpufreq
 # sudo auto-cpufreq --install
+i bluetooth-autoconnect
 
+sudo systemctl enable bluetooth-autoconnect
 
 # set display manager
-sudo systemctl enable lemurs
+# sudo systemctl enable lemurs
 
 # enable onedrive systemd
 # systemctl --user enable onedrive
