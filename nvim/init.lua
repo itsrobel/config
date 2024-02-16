@@ -59,6 +59,8 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
