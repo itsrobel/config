@@ -106,16 +106,16 @@ require('lazy').setup({
 
     -- see below for full list of optional dependencies 👇
   },
-  opts = {
-    workspaces = {
-      {
-      name = "notes",
-      path = "~/documents/notes",
-      },
-    },
-
-    -- see below for full list of options 👇
-  },
+  -- opts = {
+  --   workspaces = {
+  --     {
+  --     name = "notes",
+  --     path = "~/Documents/notes",
+  --     },
+  --   },
+  --
+  --   -- see below for full list of options 👇
+  -- },
 },
   {
   "epwalsh/obsidian.nvim",
