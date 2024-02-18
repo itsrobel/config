@@ -6,7 +6,8 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser
 #genral shortcuts
-alias l='eza -lah'
+alias l='eza -lh -s type '
+alias la='eza -lah -s type '
 alias ssn='sudo shutdown now'
 alias sr='sudo reboot'
 alias rd='rm -rf'
