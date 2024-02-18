@@ -10,5 +10,6 @@ bash $(pwd)/sysd.sh
 git config --global user.email "itsrobel.schwarz@gmail.com" 
 git config --global user.name "Robel Schwarz"
 git config --global credential.helper store
+curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 chsh -s $(which fish)
 
