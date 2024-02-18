@@ -1,11 +1,11 @@
 #!/usr/bin/env
 
-exal $(pwd)/iparu.sh
+bash $(pwd)/iparu.sh
 paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
 
-eval $(pwd)/links.sh
-eval $(pwd)/spicetify/spice.sh
-eval $(pwd)/sysd.sh
+bash $(pwd)/links.sh
+bash $(pwd)/spicetify/spice.sh
+bash $(pwd)/sysd.sh
 
 git config --global user.email "itsrobel.schwarz@gmail.com" 
 git config --global user.name "Robel Schwarz"
