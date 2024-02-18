@@ -1,5 +1,6 @@
 #!/usr/bin/env
 
+exal $(pwd)/iparu.sh
 paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
 
 eval $(pwd)/links.sh
