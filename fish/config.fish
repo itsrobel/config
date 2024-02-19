@@ -2,6 +2,7 @@ set fish_greeting
 
 
 set -gx EDITOR nvim
+set -Ux JAVAFX $HOME/config/java/javafx-sdk-21.0.2/lib
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser

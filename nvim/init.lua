@@ -59,7 +59,7 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = "en_us"
 
 -- [[ Configure plugins ]]
@@ -461,6 +461,9 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<C-.>', '<cmd>vertical resize +5<cr>', {silent = true })
 vim.keymap.set('n', '<C-,>', '<cmd>vertical resize -5<cr>', {silent = true })
 vim.keymap.set('n', '<leader>wv' ,'<cmd>vsplit<cr>' ,  {silent = true})
+
+-- Enable Spell checking
+vim.keymap.set('n', '<leader>sc', '<cmd>setlocal spell! spelllang=en_us<cr>', { silent = true })
 
 -- Enable ZenMode
 vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<cr>', { silent = true })
