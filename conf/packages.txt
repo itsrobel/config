@@ -554,6 +554,7 @@ jq
 json-c
 json-glib
 jsoncpp
+julia
 kbd
 kconfig5
 kcoreaddons5
@@ -569,6 +570,7 @@ l-smash
 lame
 lapack
 laptop-detect
+lazygit
 lbzip2
 lcms2
 ldb
@@ -933,6 +935,7 @@ lsb-release
 lshw
 lsscsi
 lua
+luarocks
 lua-lpeg
 lua52
 lua53
@@ -1228,6 +1231,7 @@ python-wheel
 python-xcffib
 python-xkbcommon
 python-yaml
+pynvim
 qbittorrent
 qemu-audio-alsa
 qemu-audio-dbus
