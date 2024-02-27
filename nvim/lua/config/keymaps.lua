@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --
---
+vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { silent = true })
 -- local conform = require("conform")
 -- -- local lint = require("lint")
 -- vim.keymap.set({ "n", "v" }, "<leader>mp", function()
