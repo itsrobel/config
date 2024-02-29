@@ -1,7 +1,10 @@
 #!/usr/bin/env
 
 bash $(pwd)/iparu.sh
-paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
+yes | paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
+
+rm -rf ~/.local/share/
+git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
 bash $(pwd)/links.sh
 bash $(pwd)/spicetify/spice.sh
@@ -13,9 +16,5 @@ git config --global credential.helper store
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install | fish
 chsh -s $(which fish)
 
-sudo npm install -g neovim
-gem install mdl
-export GEM_HOME="$(ruby -e 'puts Gem.user_dir')"
-export PATH="$PATH:$GEM_HOME/bin"
-gem list
-gem update
+# Neovim things
+yes | sudo npm install -g neovim
