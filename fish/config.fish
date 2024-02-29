@@ -18,7 +18,7 @@ alias doom='~/.config//emacs/bin/doom'
 
 alias update="yes | paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
-alias i="yes | paru"
+alias i="paru"
 
 
 
