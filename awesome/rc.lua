@@ -68,12 +68,12 @@ local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-c
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 local nvim = "alacritty -e nvim"
 local emacs = "emacsclient -c -n"
--- local firefox       = "firefox"
+local firefox = "firefox"
 local thunar = "thunar"
 local ranger = "alacritty -e ranger"
 local rofi = "rofi -show run" --"dmenu_run"
 local spotify = "spotify"
-local qute = "qutebrowser"
+-- local qute = "qutebrowser"
 
 awful.util.terminal = terminal
 
@@ -196,8 +196,8 @@ root.buttons(mytable.join(
 globalkeys = mytable.join(
 
 	awful.key({ modkey }, "g", function()
-		awful.spawn.with_shell(qute)
-	end, { description = "open qutebrowser", group = "launcher" }),
+		awful.spawn.with_shell(firefox)
+	end, { description = "open firefox", group = "launcher" }),
 	-- awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
 	--     {description = "open firefox", group = "launcher"}),
 	awful.key({ modkey }, "n", function()
