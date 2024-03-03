@@ -84,6 +84,10 @@ local plugins = {
 
 	{
 		"jakewvincent/mkdnflow.nvim",
+		ft = "markdown",
+		config = function()
+			require("mkdnflow").setup()
+		end,
 	},
 	{
 		"epwalsh/obsidian.nvim",
@@ -134,6 +138,7 @@ local plugins = {
 				{ name = "buffer", group_index = 2 },
 				{ name = "nvim_lua", group_index = 2 },
 				{ name = "path", group_index = 2 },
+				{ name = "mkdnflow", group_index = 2 },
 			},
 		},
 	},
