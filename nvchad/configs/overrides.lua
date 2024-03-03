@@ -17,12 +17,21 @@ M.treesitter = {
 		"python",
 		"cpp",
 		"java",
+		"mermaid",
+		"dockerfile",
+		"diff",
+		"csv",
+		"bash",
 	},
 	indent = {
 		enable = true,
 		-- disable = {
 		--   "python"
 		-- },
+	},
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = true,
 	},
 }
 
@@ -181,7 +190,7 @@ M.obsidian = {
 	end,
 
 	-- Either 'wiki' or 'markdown'.
-	preferred_link_style = "markdown",
+	preferred_link_style = "wiki",
 
 	-- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
 	---@return string

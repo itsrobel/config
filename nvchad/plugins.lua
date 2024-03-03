@@ -81,7 +81,6 @@ local plugins = {
 			})
 		end,
 	},
-
 	{
 		"jakewvincent/mkdnflow.nvim",
 		ft = "markdown",
@@ -139,6 +138,7 @@ local plugins = {
 				{ name = "luasnip", group_index = 2 },
 				{ name = "buffer", group_index = 2 },
 				{ name = "nvim_lua", group_index = 2 },
+				{ name = "obsidian", group_index = 2 },
 				{ name = "path", group_index = 2 },
 			},
 		},
