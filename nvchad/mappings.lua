@@ -14,7 +14,9 @@ M.general = {
 			end,
 			"formatting",
 		},
-
+		["<leader>sc"] = {
+			":setlocal spell! spelllang=en_us<CR>",
+		},
 		["<leader>z"] = {
 			function()
 				require("zen-mode").toggle()

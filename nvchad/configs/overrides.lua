@@ -33,19 +33,27 @@ M.mason = {
 		"ltex-ls",
 		"stylua",
 
+		-- python
+		"mypy",
+		"ruff",
+		"pyright",
+		"isort",
 		-- web dev stuff
 		"css-lsp",
 		"html-lsp",
 		"typescript-language-server",
 		"deno",
 		"prettier",
-		"isort",
 		-- c/cpp stuff
 		"clangd",
 		"clang-format",
 
 		-- shell stuff
 		"shfmt",
+		-- other
+		"impl",
+		"marksman",
+		"yaml-language-server",
 	},
 }
 
