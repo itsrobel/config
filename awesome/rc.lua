@@ -94,12 +94,12 @@ awful.util.tagnames = {
 	tags.code,
 	tags.terminal,
 	tags.browser,
-	tags.university,
+	tags.write,
 	tags.reading,
+	tags.university,
 	tags.video,
 	tags.message,
 	tags.music,
-	tags.write,
 }
 
 awful.layout.layouts = {
