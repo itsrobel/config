@@ -5,9 +5,7 @@ local plugins = {
 
 	-- Override plugin definition options
 
-	{
-		"folke/zen-mode.nvim",
-	},
+	-- System Basics
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -15,7 +13,6 @@ local plugins = {
 			require("custom.configs.lspconfig")
 		end, -- Override to setup mason-lspconfig
 	},
-	-- override plugin configs
 	{
 		"williamboman/mason.nvim",
 		opts = overrides.mason,
@@ -30,30 +27,6 @@ local plugins = {
 		"nvim-tree/nvim-tree.lua",
 		opts = overrides.nvimtree,
 	},
-
-	-- Install a plugin
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("better_escape").setup()
-		end,
-	},
-
-	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
-		config = true, -- or `opts = {}`
-		ft = { "markdown" },
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-		ft = { "markdown" },
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
 	{
 		"stevearc/conform.nvim",
 		--  for users those who want auto-save conform + lazyloading!
@@ -63,51 +36,13 @@ local plugins = {
 		end,
 	},
 
+	-- Install a plugin
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"max397574/better-escape.nvim",
+		event = "InsertEnter",
 		config = function()
-			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.eslint_d,
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.isort,
-				null_ls.builtins.completion.spell,
-				null_ls.builtins.diagnostics.shellcheck,
-				null_ls.builtins.diagnostics.mypy,
-				null_ls.builtins.diagnostics.ruff,
-			})
+			require("better_escape").setup()
 		end,
-	},
-	{
-		"jakewvincent/mkdnflow.nvim",
-		ft = "markdown",
-		config = function()
-			require("mkdnflow").setup()
-		end,
-	},
-	{
-		"epwalsh/obsidian.nvim",
-		version = "*", -- recommended, use latest release instead of latest commit
-		lazy = false,
-		ft = "markdown",
-		opts = overrides.obsidian,
-		dependencies = {
-			-- Required.
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-			"nvim-telescope/telescope.nvim",
-			"nvim-treesitter/nvim-treesitter",
-			-- see below for full list of optional dependencies 👇
-		},
-	},
-
-	{
-		"willothy/moveline.nvim",
-		build = "make",
-		lazy = false,
 	},
 
 	{
@@ -142,6 +77,92 @@ local plugins = {
 				{ name = "path", group_index = 2 },
 			},
 		},
+	},
+	{
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			local null_ls = require("null-ls")
+
+			null_ls.setup({
+				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.prettier,
+				null_ls.builtins.formatting.eslint_d,
+				null_ls.builtins.formatting.black,
+				null_ls.builtins.formatting.isort,
+				null_ls.builtins.completion.spell,
+				null_ls.builtins.diagnostics.shellcheck,
+				null_ls.builtins.diagnostics.mypy,
+				null_ls.builtins.diagnostics.ruff,
+			})
+		end,
+		lazy = false,
+	},
+	-- Editor enhancement
+	{
+		"willothy/moveline.nvim",
+		build = "make",
+		lazy = false,
+	},
+
+	{
+		"folke/zen-mode.nvim",
+	},
+
+	-- Markdown
+	{
+		"lukas-reineke/headlines.nvim",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = true, -- or `opts = {}`
+		ft = { "markdown" },
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+		ft = { "markdown" },
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
+
+	{
+		"jakewvincent/mkdnflow.nvim",
+		ft = "markdown",
+		config = function()
+			require("mkdnflow").setup()
+		end,
+	},
+	{
+		"epwalsh/obsidian.nvim",
+		version = "*", -- recommended, use latest release instead of latest commit
+		lazy = false,
+		ft = "markdown",
+		opts = overrides.obsidian,
+		dependencies = {
+			-- Required.
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			-- see below for full list of optional dependencies 👇
+		},
+	},
+	-- Latex
+	{
+		"lervag/vimtex",
+		ft = "tex",
+	},
+	{
+		"KeitaNakamura/tex-conceal.vim",
+		ft = "tex",
+	},
+	{
+		"iurimateus/luasnip-latex-snippets.nvim",
+		dependencies = { "L3MON4D3/LuaSnip" },
+		config = function()
+			require("luasnip-latex-snippets").setup({ use_treesitter = true, allow_on_markdown = true })
+			require("luasnip").config.setup({ enable_autosnippets = true })
+		end,
+		lazy = false,
 	},
 	-- All NvChad plugins are lazy-loaded by default
 	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
