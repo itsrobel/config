@@ -16,10 +16,10 @@ alias on="cd ~/Documents/notes && nvim"
 alias oc="cd ~/config && nvim"
 alias doom='~/.config//emacs/bin/doom'
 
-alias update="yes | paru -Syyu"
+alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias i="paru"
-
+alias nosleep="xset s off -dpms"
 
 
 # alias emacs="emacsclient -c -nw"
