@@ -72,7 +72,7 @@ function fish_prompt
     end
 
     echo -n -s " " $directory_color $cwd $normal_color
-    echo -n -s $success_color " Σ " $repository_color (git_branch_name) $normal_color " "
+    echo -n -s $success_color " " $repository_color [(git_branch_name)] $normal_color " "
 
 
     set -l list

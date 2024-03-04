@@ -77,15 +77,17 @@ local spotify = "spotify"
 
 awful.util.terminal = terminal
 local tags = {
-	code = " |",
+	code = "  |",
 	terminal = " |",
-	browser = " |",
-	video = " |",
-	reading = " |",
-	university = " |",
+	browser = "  |",
+	write = " |",
+	reading = "  |",
+	university = "  |",
+	video = "  |",
 	message = " |",
 	music = " |",
 	photography = " |",
+	math = " ",
 }
 
 awful.util.tagnames = {
@@ -97,7 +99,7 @@ awful.util.tagnames = {
 	tags.video,
 	tags.message,
 	tags.music,
-	tags.photography,
+	tags.write,
 }
 
 awful.layout.layouts = {
