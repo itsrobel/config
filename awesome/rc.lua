@@ -76,8 +76,30 @@ local spotify = "spotify"
 -- local qute = "qutebrowser"
 
 awful.util.terminal = terminal
+local tags = {
+	code = " |",
+	terminal = " |",
+	browser = " |",
+	video = " |",
+	reading = " |",
+	university = " |",
+	message = " |",
+	music = " |",
+	photography = " |",
+}
 
-awful.util.tagnames = { "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX" }
+awful.util.tagnames = {
+	tags.code,
+	tags.terminal,
+	tags.browser,
+	tags.university,
+	tags.reading,
+	tags.video,
+	tags.message,
+	tags.music,
+	tags.photography,
+}
+
 awful.layout.layouts = {
 	awful.layout.suit.tile,
 	awful.layout.suit.floating,
