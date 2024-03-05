@@ -157,12 +157,16 @@ local plugins = {
 	},
 	{
 		"iurimateus/luasnip-latex-snippets.nvim",
-		dependencies = { "L3MON4D3/LuaSnip" },
+		dependencies = { "L3MON4D3/LuaSnip", "neovim/nvim-lspconfig" },
 		config = function()
-			require("luasnip-latex-snippets").setup({ use_treesitter = true, allow_on_markdown = true })
-			require("luasnip").config.setup({ enable_autosnippets = false })
+			require("luasnip-latex-snippets").setup({
+				use_treesitter = true,
+				allow_on_markdown = true,
+			})
+			require("luasnip").config.setup({ enable_autosnippets = true })
 		end,
-		lazy = false,
+		ft = { "tex", "markdown" },
+		-- lazy = false,
 	},
 	-- All NvChad plugins are lazy-loaded by default
 	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
