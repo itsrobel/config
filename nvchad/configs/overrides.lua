@@ -42,6 +42,7 @@ M.mason = {
 		"java-language-server",
 		"ltex-ls",
 		"stylua",
+		"jdtls",
 
 		-- python
 		"mypy",
