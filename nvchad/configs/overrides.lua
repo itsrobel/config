@@ -23,6 +23,7 @@ M.treesitter = {
 		"csv",
 		"bash",
 		"toml",
+		"julia",
 	},
 	indent = {
 		enable = true,
@@ -43,6 +44,7 @@ M.mason = {
 		"java-language-server",
 		"ltex-ls",
 		"stylua",
+		"julia-lsp",
 
 		-- python
 		"mypy",
