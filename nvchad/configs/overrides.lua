@@ -22,6 +22,7 @@ M.treesitter = {
 		"diff",
 		"csv",
 		"bash",
+		"toml",
 	},
 	indent = {
 		enable = true,
