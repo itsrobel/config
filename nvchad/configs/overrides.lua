@@ -45,8 +45,8 @@ M.mason = {
 		"ltex-ls",
 		"stylua",
 		"julia-lsp",
+		"jdtls",
 
-		-- python
 		"mypy",
 		"ruff",
 		"pyright",
