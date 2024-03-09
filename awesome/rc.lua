@@ -90,30 +90,31 @@ local tags_icons = {
 	math = "   ",
 }
 
-local tags = {
-	code = "١",
-	terminal = "٢",
-	browser = "٣",
-	write = "٤",
-	reading = "٥",
-	university = "٦",
-	video = "٧",
-	message = "٨",
-	music = "٩",
-	photography = "١٠",
-	math = "   ",
+local tags_arabic = {
+	"١",
+	"٢",
+	"٣",
+	"٤",
+	"٥",
+	"٦",
+	"٧",
+	"٨",
+	"٩",
+	"١٠",
 }
-awful.util.tagnames = {
-	tags.code,
-	tags.terminal,
-	tags.browser,
-	tags.write,
-	tags.reading,
-	tags.university,
-	tags.video,
-	tags.message,
-	tags.music,
+
+local tags_arabic_sudanese = {
+	"᮱ ",
+	"᮲ ",
+	"᮳ ",
+	"᮴ ",
+	"᮵ ",
+	"᮶ ",
+	"᮷ ",
+	"᮸ ",
+	"᮹ ",
 }
+awful.util.tagnames = tags_arabic_sudanese
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
