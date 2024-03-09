@@ -4,7 +4,8 @@ COLORSCHEME=GruvboxDark
 
 ### AUTOSTART PROGRAMS ###
 # lxsession &
-picom --daemon &
+# picom --daemon &
+picom --config ~/.config/picom/picom.conf &
 greenclip daemon &
 #/usr/bin/emacs --daemon &
 #nm-applet &
