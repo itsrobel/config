@@ -5,12 +5,13 @@ COLORSCHEME=GruvboxDark
 ### AUTOSTART PROGRAMS ###
 # lxsession &
 picom --daemon &
+greenclip daemon &
 #/usr/bin/emacs --daemon &
 #nm-applet &
 #"$HOME"/.screenlayout/layout.sh &
 #sleep 1
 #conky -c "$HOME"/.config/conky/qtile/01/"$COLORSCHEME".conf || echo "Couldn't start conky."
-
+###
 ### UNCOMMENT ONLY ONE OF THE FOLLOWING THREE OPTIONS! ###
 # 1. Uncomment to restore last saved wallpaper
 #xargs xwallpaper --stretch < ~/.cache/wall &
@@ -55,7 +56,6 @@ feh --bg-fill ~/config/wallpapers/forest.png &
 run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 
 #starting utility applications at boot time
-run variety &
 run nm-applet &
 #run pamac-tray &
 run xfce4-power-manager &
@@ -67,7 +67,7 @@ blueberry-tray &
 #starting user applications at boot time
 run volumeicon &
 #run discord &
-nitrogen --restore &
+# nitrogen --restore &
 #run caffeine -a &
 #run vivaldi-stable &
 #run firefox &
