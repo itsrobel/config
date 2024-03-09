@@ -6,13 +6,13 @@ local M = {}
 local highlights = require("custom.highlights")
 
 M.ui = {
-	theme = "chadracula",
-	theme_toggle = { "chadracula", "one_light" },
+    theme = "gruvbox",
+    theme_toggle = { "gruvbox", "gruvbox_light" },
 
-	hl_override = highlights.override,
-	hl_add = highlights.add,
-	statusline = { theme = "minimal" },
-	nvdash = { load_on_startup = true },
+    hl_override = highlights.override,
+    hl_add = highlights.add,
+    statusline = { theme = "minimal" },
+    nvdash = { load_on_startup = true },
 }
 
 M.plugins = "custom.plugins"
