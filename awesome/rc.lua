@@ -76,20 +76,33 @@ local spotify = "spotify"
 -- local qute = "qutebrowser"
 
 awful.util.terminal = terminal
-local tags = {
-	code = "  |",
-	terminal = " |",
-	browser = "  |",
-	write = " |",
-	reading = "  |",
-	university = "  |",
-	video = "  |",
-	message = " |",
-	music = " |",
-	photography = " |",
-	math = " ",
+local tags_icons = {
+	code = "   ",
+	terminal = "   ",
+	browser = "   ",
+	write = "   ",
+	reading = "   ",
+	university = "    ",
+	video = "   ",
+	message = "   ",
+	music = "   ",
+	photography = "   ",
+	math = "   ",
 }
 
+local tags = {
+	code = "١",
+	terminal = "٢",
+	browser = "٣",
+	write = "٤",
+	reading = "٥",
+	university = "٦",
+	video = "٧",
+	message = "٨",
+	music = "٩",
+	photography = "١٠",
+	math = "   ",
+}
 awful.util.tagnames = {
 	tags.code,
 	tags.terminal,
