@@ -26,16 +26,23 @@
 
 import os
 import subprocess
+computer_type = subprocess.run(
+    ["./comp-type.sh"], stdout=subprocess.PIPE, shell=True, text=True
+).stdout
+
 from libqtile import bar, extension, hook, layout, qtile, widget
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
-
+from libqtile.log_utils import logger
 # Make sure 'qtile-extras' is installed or this config will not work.
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
 # from qtile_extras.widget import StatusNotifier
 import colors
+
+
+
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"  # My terminal of choice
@@ -221,48 +228,25 @@ widget_defaults = dict(font="Ubuntu Bold", fontsize=12, padding=0, background=co
 extension_defaults = widget_defaults.copy()
 
 
-def get_bat():
-    computer_type = subprocess.run(
-        ["./comp-type.sh"], stdout=subprocess.PIPE, shell=True
-    ).stdout.decode("utf-8")
-    print(computer_type)
-    if computer_type == "Laptop":
-        return widget.Battery(
-            format="  Bat: {percent:2.0%}",
-            foreground=colors[5],
-            decorations=[
-                BorderDecoration(
-                    colour=colors[5],
-                    border_width=[0, 0, 2, 0],
-                )
-            ],
-        )
-    if computer_type == "Desktop":
-        return (
-            widget.TextBox(
-                text=" AC",
-                foreground=colors[5],
-                decorations=[
-                    BorderDecoration(
-                        colour=colors[5],
-                        border_width=[0, 0, 2, 0],
-                    )
-                ],
-            ),
-        )
-    else:
-        return widget.Spacer(length=8)
+# computer_type = subprocess.run(["./comp-type.sh"], stdout=subprocess.PIPE, shell=True)
+logger.warning("Computer type: " + computer_type)
+
+computer_type = subprocess.run("laptop-detect", shell=True).returncode
+
+if computer_type == 0:
+    logger.warning("is laptop")
 
 
-bat = get_bat()
+
+# print(subprocess.run("laptop-detect", shell=True).stdout)
 
 
 def init_widgets_list():
     widgets_list = [
         widget.Image(
-            filename="~/.config/qtile/icons/logo.png",
+            filename="~/.config/qtile/icons/python-white.png",
             scale="False",
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(myTerm)},
+            mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm)},
         ),
         widget.Prompt(font="Ubuntu Mono", fontsize=14, foreground=colors[1]),
         widget.GroupBox(
@@ -335,7 +319,7 @@ def init_widgets_list():
         widget.Spacer(length=8),
         widget.Memory(
             foreground=colors[8],
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(myTerm + " -e htop")},
+            mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm + " -e htop")},
             format="{MemUsed: .0f}{mm}",
             fmt="🖥  Mem: {} used",
             decorations=[
@@ -349,7 +333,7 @@ def init_widgets_list():
         widget.DF(
             update_interval=60,
             foreground=colors[5],
-            mouse_callbacks={"Button1": lambda: qtile.cmd_spawn(myTerm + " -e df")},
+            mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm + " -e df")},
             partition="/",
             # format = '[{p}] {uf}{m} ({r:.0f}%)',
             format="{uf}{m} free",
@@ -395,10 +379,33 @@ def init_widgets_list():
                 )
             ],
         ),
-        bat,
-        widget.Systray(padding=3),
+
         widget.Spacer(length=8),
-    ]
+    ] + [ widget.Battery(
+            format="  Bat: {percent:2.0%}",
+            foreground=colors[5],
+            decorations=[
+                BorderDecoration(
+                    colour=colors[5],
+                    border_width=[0, 0, 2, 0],
+                )
+            ],
+        ) if computer_type == 0 else widget.TextBox(
+            text=" AC",
+            foreground=colors[5],
+            decorations=[
+            BorderDecoration(
+                colour=colors[5],
+                border_width=[0, 0, 2, 0],
+            )
+            ],
+        ),
+
+    ] + [ 
+            widget.Spacer(length=8),
+            widget.Systray(padding=3),
+            widget.Spacer(length=8),
+        ]
     return widgets_list
 
 
