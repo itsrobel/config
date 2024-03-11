@@ -221,6 +221,42 @@ widget_defaults = dict(font="Ubuntu Bold", fontsize=12, padding=0, background=co
 extension_defaults = widget_defaults.copy()
 
 
+def get_bat():
+    computer_type = subprocess.run(
+        ["./comp-type.sh"], stdout=subprocess.PIPE, shell=True
+    ).stdout.decode("utf-8")
+    print(computer_type)
+    if computer_type == "Laptop":
+        return widget.Battery(
+            format="  Bat: {percent:2.0%}",
+            foreground=colors[5],
+            decorations=[
+                BorderDecoration(
+                    colour=colors[5],
+                    border_width=[0, 0, 2, 0],
+                )
+            ],
+        )
+    if computer_type == "Desktop":
+        return (
+            widget.TextBox(
+                text=" AC",
+                foreground=colors[5],
+                decorations=[
+                    BorderDecoration(
+                        colour=colors[5],
+                        border_width=[0, 0, 2, 0],
+                    )
+                ],
+            ),
+        )
+    else:
+        return widget.Spacer(length=8)
+
+
+bat = get_bat()
+
+
 def init_widgets_list():
     widgets_list = [
         widget.Image(
@@ -276,7 +312,7 @@ def init_widgets_list():
         ),
         widget.Spacer(length=8),
         widget.CPU(
-            format="▓  Cpu: {load_percent}%",
+            format=" Cpu: {load_percent}%",
             foreground=colors[6],
             decorations=[
                 BorderDecoration(
@@ -285,18 +321,17 @@ def init_widgets_list():
                 )
             ],
         ),
-        widget.Spacer(length=8),
-        widget.Battery(
-            format="  Bat: {percent:2.0%}",
-            foreground=colors[5],
-            decorations=[
-                BorderDecoration(
-                colour=colors[5],
-                border_width=[0, 0, 2, 0],
-            )
-            ],
-        ),
-
+        # widget.CPUGraph(
+        #     graph_color=colors[6],
+        #     border_color=colors[6],
+        #     type="line",
+        #     decorations=[
+        #         BorderDecoration(
+        #             colour=colors[6],
+        #             border_width=[0, 0, 2, 0],
+        #         )
+        #     ],
+        # ),
         widget.Spacer(length=8),
         widget.Memory(
             foreground=colors[8],
@@ -360,7 +395,7 @@ def init_widgets_list():
                 )
             ],
         ),
-        widget.Spacer(length=8),
+        bat,
         widget.Systray(padding=3),
         widget.Spacer(length=8),
     ]
@@ -375,7 +410,7 @@ def init_widgets_screen1():
 # All other monitors' bars will display everything but widgets 22 (systray) and 23 (spacer).
 def init_widgets_screen2():
     widgets_screen2 = init_widgets_list()
-    del widgets_screen2[22:24]
+    del widgets_screen2[21:23]
     return widgets_screen2
 
 
