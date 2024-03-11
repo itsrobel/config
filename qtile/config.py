@@ -163,12 +163,12 @@ group_labels = [
     "DEV",
     "WWW",
     "SYS",
+    "ZEN",
     "DOC",
-    "VBOX",
-    "CHAT",
-    "MUS",
     "VID",
     "GFX",
+    "TEL",
+    "MUS",
 ]
 # group_labels = ["", "", "", "", "", "", "", "", "",]
 
