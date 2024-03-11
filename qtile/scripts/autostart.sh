@@ -59,9 +59,9 @@ run sxhkd -c ~/.config/qtile/sxhkd/sxhkdrc &
 #starting utility applications at boot time
 run nm-applet &
 #run pamac-tray &
-run xfce4-power-manager &
+# run xfce4-power-manager &
 numlockx on &
-blueberry-tray &
+blueman-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
