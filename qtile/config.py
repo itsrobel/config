@@ -277,14 +277,26 @@ def init_widgets_list():
         widget.Spacer(length=8),
         widget.CPU(
             format="▓  Cpu: {load_percent}%",
-            foreground=colors[4],
+            foreground=colors[6],
             decorations=[
                 BorderDecoration(
-                    colour=colors[4],
+                    colour=colors[6],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
+        widget.Spacer(length=8),
+        widget.Battery(
+            format="  Bat: {percent:2.0%}",
+            foreground=colors[5],
+            decorations=[
+                BorderDecoration(
+                colour=colors[5],
+                border_width=[0, 0, 2, 0],
+            )
+            ],
+        ),
+
         widget.Spacer(length=8),
         widget.Memory(
             foreground=colors[8],
@@ -328,11 +340,11 @@ def init_widgets_list():
         ),
         widget.Spacer(length=8),
         widget.KeyboardLayout(
-            foreground=colors[4],
+            foreground=colors[3],
             fmt="⌨  Kbd: {}",
             decorations=[
                 BorderDecoration(
-                    colour=colors[4],
+                    colour=colors[3],
                     border_width=[0, 0, 2, 0],
                 )
             ],
