@@ -18,3 +18,6 @@ chsh -s $(which fish)
 
 # Neovim things
 yes | sudo npm install -g neovim
+
+## For laptops you need to copy the login.conf file to /etc/systemd/
+#then run systemctl restart systemd-logind
