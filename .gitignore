@@ -2,4 +2,5 @@ pandoc/backgrounds/blankwhite.jpg
 ytp/key.sh
 keychain/decrypted
 keychain/__pycache__
+qtile/__pycache__
 java/javafx-sdk-21.0.2
