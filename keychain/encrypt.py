@@ -4,11 +4,12 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import os
 import base64
 from keyhelper import KeyTable
+import sys
 
-get_table = input("Enter table name: ")
-
-
-table = KeyTable(get_table)
+if len(sys.argv) == 1:
+    table = KeyTable("keychain")
+else:
+    table = KeyTable(sys.argv[1])
 
 if table.is_table() == False:
     table.create_table()
