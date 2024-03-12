@@ -20,3 +20,4 @@ python-setproctitle
 python-xdg
 python-xkbcommon
 xorg-xwayland
+laptop-detect
