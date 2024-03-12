@@ -41,12 +41,15 @@ M.mason = {
 	ensure_installed = {
 		-- lua stuff
 		"lua-language-server",
+
+		-- java
+		"jdtls",
 		"java-language-server",
-		"ltex-ls",
 		"stylua",
 		"julia-lsp",
-		"jdtls",
 
+		-- python
+		"black",
 		"mypy",
 		"ruff",
 		"pyright",
@@ -65,7 +68,8 @@ M.mason = {
 		"shfmt",
 		-- other
 		"impl",
-		"marksman",
+		--markdown
+		"ltex-ls",
 		"yaml-language-server",
 	},
 }
@@ -204,7 +208,7 @@ M.obsidian = {
 
 	-- Optional, boolean or a function that takes a filename and returns a boolean.
 	-- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-	disable_frontmatter = false,
+	disable_frontmatter = true,
 
 	-- Optional, alternatively you can customize the frontmatter data.
 	---@return table

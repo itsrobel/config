@@ -164,6 +164,12 @@ local plugins = {
 			-- see below for full list of optional dependencies 👇
 		},
 	},
+	{
+		"jghauser/auto-pandoc.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		ft = "markdown",
+	},
+
 	-- Latex
 	{
 		"lervag/vimtex",
