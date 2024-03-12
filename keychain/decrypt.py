@@ -2,6 +2,7 @@ from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
+import sys
 from keyhelper import KeyTable
 from keyhelper import check_directory
 
@@ -25,7 +26,11 @@ def get_key(table, name, password):
 
 
 def get_all_keys():
-    table = KeyTable(input("Enter table name: "))
+    if len(sys.argv) == 1:
+        table = KeyTable("keychain")
+    else:
+        table = KeyTable(sys.argv[1])
+
     if table.is_table() == False:
         print("Table does not exist")
         exit()
