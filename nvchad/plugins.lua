@@ -28,6 +28,42 @@ local plugins = {
 		opts = overrides.nvimtree,
 	},
 	{
+		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
+		dependencies = "mfussenegger/nvim-dap",
+		config = function()
+			local dap = require("dap")
+			local dapui = require("dapui")
+			dapui.setup()
+			dap.listeners.after.event_initialized["dapui_config"] = function()
+				dapui.open()
+			end
+			dap.listeners.before.event_terminated["dapui_config"] = function()
+				dapui.close()
+			end
+			dap.listeners.before.event_exited["dapui_config"] = function()
+				dapui.close()
+			end
+		end,
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
+		},
+		opts = {
+			handlers = {},
+		},
+	},
+	{
+		"mfussenegger/nvim-dap",
+		config = function(_, _)
+			require("core.utils").load_mappings("dap")
+		end,
+	},
+	{
 		"stevearc/conform.nvim",
 		--  for users those who want auto-save conform + lazyloading!
 		event = "BufWritePre",
@@ -80,22 +116,11 @@ local plugins = {
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			local null_ls = require("null-ls")
-
-			null_ls.setup({
-				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.prettier,
-				null_ls.builtins.formatting.eslint_d,
-				null_ls.builtins.formatting.black,
-				null_ls.builtins.formatting.isort,
-				null_ls.builtins.completion.spell,
-				null_ls.builtins.diagnostics.shellcheck,
-				null_ls.builtins.diagnostics.mypy,
-				null_ls.builtins.diagnostics.ruff,
-			})
+		event = "VeryLazy",
+		opts = function()
+			return require("custom.configs.null-ls")
 		end,
-		lazy = false,
+		-- lazy = false,
 	},
 	-- Editor enhancement
 	{
