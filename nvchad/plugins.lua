@@ -96,6 +96,7 @@ local plugins = {
 	{
 		"hrsh7th/nvim-cmp",
 		lazy = false,
+		dependencies = { "hrsh7th/cmp-emoji" },
 		opts = function(_, opts)
 			local cmp = require("cmp")
 			opts.sources = {
@@ -238,21 +239,16 @@ local plugins = {
 			require("luasnip").config.setup({ enable_autosnippets = true })
 		end,
 		ft = { "tex", "markdown" },
-		-- lazy = false,
 	},
-	-- All NvChad plugins are lazy-loaded by default
-	-- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-	-- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-	-- {
-	--   "mg979/vim-visual-multi",
-	--   lazy = false,
-	-- }
-	-- {
-	-- 	"windwp/nvim-autopairs",
-	-- 	ft = { "disable" },
-	-- },
-
-	-- go    -- go
+	{
+		"NvChad/nvim-colorizer.lua",
+		opts = {
+			user_default_options = {
+				names = false,
+			},
+		},
+	},
+	{ "windwp/nvim-autopairs", enabled = false },
 }
 
 return plugins
