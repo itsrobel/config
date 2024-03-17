@@ -1,8 +1,9 @@
-# system things
+#! /bin/bash
 sudo systemctl enable bluetooth-autoconnect
 sudo systemctl enable sshd
 sudo systemctl enable libvirtd
 sudo systemctl enable NetworkManager
+
 # sudo systemctl enable docker
 # sudo systemctl enable firewalld
 

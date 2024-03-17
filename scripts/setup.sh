@@ -1,12 +1,11 @@
-#!/usr/bin/env
+#!/bin/bash
 
 bash $(pwd)/iparu.sh
-yes | paru -S $(cat conf/packages.txt | cut -d' ' -f1) --needed
+yes | paru -S $(cut -d' ' -f1 <conf/packages.txt) --needed
 
 rm -rf ~/.local/share/
 git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 
-bash $(pwd)/links.sh
 bash $(pwd)/spicetify/spice.sh
 bash $(pwd)/sysd.sh
 
