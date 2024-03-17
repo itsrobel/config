@@ -116,7 +116,9 @@ local plugins = {
         ["<C-e>"] = cmp.mapping.close(),
         ["<S-Tab>"] = cmp.mapping.select_next_item(),
         ["<A-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<S-CR>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
+        -- ["<C-Return>"] = cmp.mapping.confirm({ select = true }),
+        ["<C-y>"] = cmp.mapping.confirm({ select = true }),
       }
     end,
   },
@@ -252,6 +254,7 @@ local plugins = {
     },
   },
   { "windwp/nvim-autopairs", enabled = false },
+  { "NvChad/nvterm",         enabled = false },
 }
 
 return plugins
