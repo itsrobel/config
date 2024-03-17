@@ -3,3 +3,5 @@ keychain/decrypted
 keychain/__pycache__
 qtile/__pycache__
 java/javafx-sdk-21.0.2
+ranger/colorschemes/__pycache__
+ranger/colorschemes/__init__.py
