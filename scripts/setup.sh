@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /bin/bash
 
 bash $(pwd)/iparu.sh
 yes | paru -S $(cut -d' ' -f1 <conf/packages.txt) --needed
