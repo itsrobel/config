@@ -31,18 +31,16 @@ computer_type = subprocess.run(
     ["./comp-type.sh"], stdout=subprocess.PIPE, shell=True, text=True
 ).stdout
 
-from libqtile import bar, extension, hook, layout, qtile, widget
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
+# from qtile_extras.widget import StatusNotifier
+import colors
+from libqtile import bar, hook, layout, qtile, widget
+from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.log_utils import logger
 
 # Make sure 'qtile-extras' is installed or this config will not work.
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
-
-# from qtile_extras.widget import StatusNotifier
-import colors
-
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
 myTerm = "kitty"  # My terminal of choice
@@ -67,14 +65,6 @@ def minimize_all(qtile):
 
 
 # A function for toggling between MAX and MONADTALL layouts
-@lazy.function
-def maximize_by_switching_layout(qtile):
-    current_layout_name = qtile.current_group.layout.name
-    if current_layout_name == "monadtall":
-        qtile.current_group.layout = "max"
-    elif current_layout_name == "max":
-        qtile.current_group.layout = "monadtall"
-
 
 keys = [
     # The essentials
@@ -98,20 +88,10 @@ keys = [
     Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key([mod, "shift"], "x", lazy.spawn("archlinux-logout"), desc="Logout menu"),
     Key([mod, "shift"], "x", lazy.shutdown(), desc="Shutdown Qtile"),
-    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    # Switch between windows
-    # Some layouts like 'monadtall' only need to use j/k to move
-    # through the stack, but other layouts like 'columns' will
-    # require all four directions h/j/k/l to move around.
-    Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
+    Key([mod], "n", lazy.layout.reset(), desc="Reset all window sizes"),
+    Key([mod], "m", lazy.layout.maximize(), desc="Toggle between min and max sizes"),
     Key([mod], "k", lazy.layout.next(), desc="Move window focus to other window"),
     Key([mod], "j", lazy.layout.previous(), desc="Move window focus to other window"),
-    # Key([mod], "j", lazy.layout.left(), desc="Move focus to left"),
-    # Key([mod], "k", lazy.layout.right(), desc="Move focus to right"),
-    # Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
-    # Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    # Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    # Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key(
         [mod, "shift"], "j", lazy.layout.shuffle_left(), desc="Move window to the left"
     ),
@@ -121,18 +101,7 @@ keys = [
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    # Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
-    # Key([mod], "m", lazy.layout.maximize(), desc='Toggle between min and max sizes'),
-    Key([mod], "m", lazy.window.toggle_maximize(), desc="Toggle maximize"),
-    # Key([mod, "shift"], "m", minimize_all(), desc="Toggle hide/show all windows on current group"),
     Key([mod], "space", lazy.window.toggle_floating(), desc="toggle floating"),
-    Key(
-        [mod],
-        "f",
-        maximize_by_switching_layout(),
-        lazy.window.toggle_fullscreen(),
-        desc="toggle fullscreen",
-    ),
     Key([mod, "control"], "k", lazy.next_screen(), desc="Move focus to next monitor"),
     Key([mod, "control"], "j", lazy.prev_screen(), desc="Move focus to prev monitor"),
     Key(
