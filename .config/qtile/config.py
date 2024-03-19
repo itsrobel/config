@@ -33,7 +33,7 @@ computer_type = subprocess.run(
 
 # from qtile_extras.widget import StatusNotifier
 import colors
-from libqtile import bar, hook, layout, qtile, widget
+from libqtile import bar, hook, layout, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.log_utils import logger
