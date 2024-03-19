@@ -66,7 +66,7 @@ blueman-applet &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 #starting user applications at boot time
-run volumeicon &
+# run volumeicon &
 #run discord &
 # nitrogen --restore &
 #run caffeine -a &
