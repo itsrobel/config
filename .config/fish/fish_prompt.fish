@@ -8,11 +8,11 @@ function fish_prompt
   set -l last_command_status $status
   set -l cwd
 
-  if test "$theme_short_path" = 'yes'
-    set cwd (basename (prompt_pwd))
-  else
-    set cwd (prompt_pwd)
-  end
+  # if test "$theme_short_path" = 'yes'
+  #   set cwd (basename (prompt_pwd))
+  # else
+  # end
+  set cwd (basename (prompt_pwd))
 
   set -l fish     " λ"
   set -l ahead    "↑"
@@ -48,7 +48,7 @@ function fish_prompt
     end
 
     echo -n -s " " $directory_color $cwd $normal_color
-    echo -n -s $success_color " Σ " $repository_color (git_branch_name) $normal_color " "
+    echo -n -s $success_color " " $repository_color [(git_branch_name)] $normal_color " "
 
 
     set -l list
