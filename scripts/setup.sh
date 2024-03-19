@@ -2,6 +2,9 @@
 
 bash $(pwd)/iparu.sh
 paru -S $(cut -d' ' -f1 <./conf/package.conf) --needed
+sudo npm install -g neovim
+stow .
+ln -s ~/config/nvchad/ ~/config/.config/nvim/lua/custom
 
 # rm -rf ~/.local/share/
 # git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
@@ -14,7 +17,6 @@ git config --global credential.helper store
 chsh -s $(which fish)
 
 # Neovim things
-sudo npm install -g neovim
 
 ## For laptops you need to copy the login.conf file to /etc/systemd/
 #then run systemctl restart systemd-logind

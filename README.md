@@ -2,10 +2,18 @@
 
 add stuff here some time idk
 
-# DO NOT
+# The Don't
 
-ever install nerd-fonts-source-code-pro
-it sucks and messes up font awesome rendering
+A note to myself
+
+- do not ever install nerd-fonts-source-code-pro
+  it sucks and messes up font awesome rendering
+
+For anyone else who reads this thats not me
+
+- Do not run anything in the scripts folder
+  - All of that is for my personal set up
+  - Because I am lazy, way to many things are run in root
 
 # Special Notes
 
