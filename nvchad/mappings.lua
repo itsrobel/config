@@ -129,6 +129,34 @@ M.gopher = {
 	},
 }
 
+M.python = {
+	plugin = true,
+	n = {
+		-- ["<leader>py"] = {
+		--   function()
+		--     require("dap-python").test_method()
+		--   end,
+		--   "Test Method",
+		-- },
+		-- ["<leader>pt"] = {
+		--   function()
+		--     require("dap-python").test_class()
+		--   end,
+		--   "Test Class",
+		-- },
+		-- ["<leader>pl"] = {
+		--   function()
+		--     require("dap-python").test_last()
+		--   end,
+		--   "Test Last",
+		-- },
+		["<leader>ce"] = {
+			":lua require('swenv.api').pick_venv()<CR>",
+			"Choose Env",
+		},
+	},
+}
+
 -- M.abc = {
 --   n = {
 --     ["<C-s>"] = { ":Telescope Files <CR>", "Telescope Files" }
