@@ -23,6 +23,8 @@ local plugins = {
 	{ require("custom.plugins.zen") },
 	-- AI
 	{ require("custom.plugins.gpt") },
+	-- python
+	{ require("custom.plugins.venv") },
 	-- Golang
 	{ require("custom.plugins.dap-go") },
 	{ require("custom.plugins.gopher") },
@@ -38,6 +40,7 @@ local plugins = {
 	{ require("custom.plugins.latex-snippets") },
 	-- Diabled stuff
 	{ require("custom.plugins.colorizer") },
+
 	-- { require("custom.plugins.trouble") },
 	-- { "windwp/nvim-autopairs", enabled = false },
 	{ "NvChad/nvterm", enabled = false },
