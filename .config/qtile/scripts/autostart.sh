@@ -49,7 +49,7 @@ function run {
 #Some ways to set your wallpaper besides variety or nitrogen
 # feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
 # feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
-feh --bg-fill ~/config/wallpapers/forest.png &
+feh --bg-fill ~/pictures/wallpapers/camera.png &
 #wallpaper for other Arch based systems
 #feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
 
@@ -66,7 +66,7 @@ blueman-applet &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 
 #starting user applications at boot time
-run volumeicon &
+# run volumeicon &
 #run discord &
 # nitrogen --restore &
 #run caffeine -a &

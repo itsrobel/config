@@ -33,7 +33,7 @@ computer_type = subprocess.run(
 
 # from qtile_extras.widget import StatusNotifier
 import colors
-from libqtile import bar, hook, layout, qtile, widget
+from libqtile import bar, hook, layout, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.log_utils import logger
@@ -43,9 +43,8 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
-myTerm = "kitty"  # My terminal of choice
+myTerm = "kitty -e tmux"  # My terminal of choice
 myBrowser = "firefox"  # My browser of choice
-myEditor = "kitty -e nvim"  # The space at the end is IMPORTANT!
 myRun = "rofi -show run"  # My application launcher
 
 
@@ -80,7 +79,7 @@ keys = [
     ),
     Key([mod], "g", lazy.spawn(myBrowser), desc="Web browser"),
     Key([mod], "p", lazy.spawn(myRun), desc="Run Launcher"),
-    Key([mod], "n", lazy.spawn(myEditor), desc="Text editor"),
+    # Key([mod], "e", lazy.spawn(myEditor), desc="Text editor"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
