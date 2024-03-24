@@ -96,7 +96,8 @@ alias z=__zoxide_z
 
 abbr --erase zi &>/dev/null
 alias zi=__zoxide_zi
-
+alias cd=z
+alias cdi=zi
 # =============================================================================
 #
 # To initialize zoxide, add this to your configuration (usually

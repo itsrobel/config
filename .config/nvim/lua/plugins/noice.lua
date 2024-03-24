@@ -1,4 +1,5 @@
 return {
   "folke/noice.nvim",
-  -- keys = { "<C-f>", false },
+  enabled = false,
+  -- keys = { "<c-f>", false },
 }
