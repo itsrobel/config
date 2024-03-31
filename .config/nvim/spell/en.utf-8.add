@@ -1,4 +1,5 @@
 LLSList
+<<<<<<< HEAD
 subtrees
 subtree
 BST
@@ -8,3 +9,13 @@ PutItem
 ArrayList
 ArrayLists
 privote
+=======
+TODO
+SRAS
+ResetTree
+BST
+GetNextItem
+Generatorss
+responsiblity
+CPP
+>>>>>>> 91449de87071022013c9da704dd811282dfaf683

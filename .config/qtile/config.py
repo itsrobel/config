@@ -37,6 +37,7 @@ from libqtile import bar, hook, layout, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.log_utils import logger
+from libqtile.widget import backlight
 
 # Make sure 'qtile-extras' is installed or this config will not work.
 from qtile_extras import widget
@@ -120,6 +121,16 @@ keys = [
     Key([], "XF86AudioRaiseVolume", lazy.widget["volume"].increase_vol()),
     Key([], "XF86AudioLowerVolume", lazy.widget["volume"].decrease_vol()),
     Key([], "XF86AudioMute", lazy.widget["volume"].mute()),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.UP),
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.widget["backlight"].change_backlight(backlight.ChangeDirection.DOWN),
+    ),
 ]
 
 groups = []
@@ -261,7 +272,7 @@ def init_widgets_list():
                 update_interval=300,
                 func=lambda: subprocess.check_output(
                     "printf $(uname -r)", shell=True, text=True
-                ),
+                ).upper(),
                 foreground=colors[3],
                 fmt="❤  {}",
                 decorations=[
@@ -273,7 +284,7 @@ def init_widgets_list():
             ),
             widget.Spacer(length=8),
             widget.CPU(
-                format=" Cpu: {load_percent}%",
+                format=" CPU: {load_percent}%",
                 foreground=colors[6],
                 decorations=[
                     BorderDecoration(
@@ -297,8 +308,8 @@ def init_widgets_list():
             widget.Memory(
                 foreground=colors[8],
                 mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm + " -e htop")},
-                format="{MemUsed: .0f}{mm}",
-                fmt="🖥  Mem: {} used",
+                # format="{MemUsed: .0f}{mm}",
+                fmt="🖥  MEM: {}",
                 decorations=[
                     BorderDecoration(
                         colour=colors[8],
@@ -314,7 +325,7 @@ def init_widgets_list():
                 partition="/",
                 # format = '[{p}] {uf}{m} ({r:.0f}%)',
                 format="{uf}{m} free",
-                fmt="🖴  Disk: {}",
+                fmt="🖴  DSK: {}",
                 visible_on_warn=False,
                 decorations=[
                     BorderDecoration(
@@ -326,7 +337,7 @@ def init_widgets_list():
             widget.Spacer(length=8),
             widget.Volume(
                 foreground=colors[7],
-                fmt="🕫  Vol: {}",
+                fmt="   VOL: {}",
                 decorations=[
                     BorderDecoration(
                         colour=colors[7],
@@ -335,9 +346,21 @@ def init_widgets_list():
                 ],
             ),
             widget.Spacer(length=8),
+            widget.Backlight(
+                backlight_name="intel_backlight",
+                foreground=colors[6],
+                fmt="   BRT: {}",
+                decorations=[
+                    BorderDecoration(
+                        colour=colors[6],
+                        border_width=[0, 0, 2, 0],
+                    )
+                ],
+            ),
+            widget.Spacer(length=8),
             widget.KeyboardLayout(
                 foreground=colors[3],
-                fmt="⌨  Kbd: {}",
+                fmt="⌨  KBD: {}",
                 decorations=[
                     BorderDecoration(
                         colour=colors[3],
@@ -348,7 +371,8 @@ def init_widgets_list():
             widget.Spacer(length=8),
             widget.Clock(
                 foreground=colors[8],
-                format="⏱  %a, %b %d - %H:%M",
+                # format="⏱  %A, %b %d - %H:%M",
+                format="⏱  %H:%M",
                 decorations=[
                     BorderDecoration(
                         colour=colors[8],
@@ -361,7 +385,7 @@ def init_widgets_list():
         + [
             (
                 widget.Battery(
-                    format="  Bat: {percent:2.0%}",
+                    format="  BAT: {percent:2.0%}",
                     foreground=colors[5],
                     decorations=[
                         BorderDecoration(
