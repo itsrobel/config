@@ -147,14 +147,14 @@ group_names = [
 ]
 
 group_labels = [
-    "DEV",
-    "WWW",
-    "SYS",
-    "ZEN",
     "DOC",
+    "DEV",
+    "ZEN",
+    "WWW",
     "VID",
-    "GFX",
+    "SYS",
     "TEL",
+    "GFX",
     "MUS",
 ]
 # group_labels = ["", "", "", "", "", "", "", "", "",]
@@ -164,7 +164,7 @@ for i in range(len(group_names)):
     groups.append(
         Group(
             layout=group_layout,
-            label=group_labels[i],
+            label=group_labels[i] + f" ({group_names[i]})",
             name=group_names[i],
         )
     )
