@@ -3,3 +3,10 @@
 -- Add any additional options here
 
 -- vim.g.lazyvim__python_lsp = "basedpyright"
+--
+--
+vim.filetype.add({
+  extension = {
+    mdx = "mdx",
+  },
+})
