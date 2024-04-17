@@ -154,7 +154,7 @@ group_labels = [
     "VID",
     "SYS",
     "TEL",
-    "GFX",
+    "OBS",
     "MUS",
 ]
 # group_labels = ["", "", "", "", "", "", "", "", "",]
