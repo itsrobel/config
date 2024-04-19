@@ -147,10 +147,10 @@ group_names = [
 ]
 
 group_labels = [
-    "DOC",
     "DEV",
-    "ZEN",
     "WWW",
+    "DOC",
+    "ZEN",
     "VID",
     "SYS",
     "TEL",
