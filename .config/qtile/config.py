@@ -68,8 +68,8 @@ def minimize_all(qtile):
 
 keys = [
     # The essentials
-    Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
-    Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"), desc="Run Launcher"),
+    Key([mod], "t", lazy.spawn(myTerm), desc="Terminal"),
+    # Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"), desc="Run Launcher"),
     Key(
         [mod, "shift"],
         "c",
@@ -102,8 +102,8 @@ keys = [
         desc="Move window to the right",
     ),
     Key([mod], "space", lazy.window.toggle_floating(), desc="toggle floating"),
-    Key([mod, "control"], "k", lazy.next_screen(), desc="Move focus to next monitor"),
-    Key([mod, "control"], "j", lazy.prev_screen(), desc="Move focus to prev monitor"),
+    Key([mod, "control"], "l", lazy.next_screen(), desc="Move focus to next monitor"),
+    Key([mod, "control"], "h", lazy.prev_screen(), desc="Move focus to prev monitor"),
     Key(
         [mod],
         "comma",
