@@ -63,10 +63,10 @@ run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
 
 local modkey = "Mod4"
 local altkey = "Mod1"
-local terminal = "alacritty"
+local terminal = "kitty -e tmux"
 local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
-local nvim = "alacritty -e nvim"
+-- local nvim = "kitty -e (tmux -e nvim)"
 local emacs = "emacsclient -c -n"
 local firefox = "firefox"
 local thunar = "thunar"
@@ -231,16 +231,16 @@ root.buttons(mytable.join(
 
 -- {{{ Key bindings
 
-globalkeys = mytable.join(
+Globalkeys = mytable.join(
 
 	awful.key({ modkey }, "g", function()
 		awful.spawn.with_shell(firefox)
 	end, { description = "open firefox", group = "launcher" }),
 	-- awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
 	--     {description = "open firefox", group = "launcher"}),
-	awful.key({ modkey }, "n", function()
-		awful.spawn.with_shell(nvim)
-	end, { description = "Open Neovim", group = "launcher" }),
+	-- awful.key({ modkey }, "n", function()
+	-- 	awful.spawn.with_shell(nvim)
+	-- end, { description = "Open Neovim", group = "launcher" }),
 	awful.key({ modkey }, "e", function()
 		awful.spawn(emacs)
 	end, { description = "Open Emacs", group = "launcher" }),
@@ -563,8 +563,8 @@ for i = 1, 9 do
 		descr_move = { description = "move focused client to tag #", group = "tag" }
 		descr_toggle_focus = { description = "toggle focused client on tag #", group = "tag" }
 	end
-	globalkeys = mytable.join(
-		globalkeys,
+	Globalkeys = mytable.join(
+		Globalkeys,
 		-- View tag only.
 		awful.key({ modkey }, "#" .. i + 9, function()
 			local screen = awful.screen.focused()
@@ -618,7 +618,7 @@ clientbuttons = mytable.join(
 )
 
 -- Set keys
-root.keys(globalkeys)
+root.keys(Globalkeys)
 
 -- }}}
 
