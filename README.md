@@ -1,3 +1,5 @@
+This is the macos setup for my dotfiles, for arch linux see the main branch
+
 # Setup Script
 
 add stuff here some time idk
