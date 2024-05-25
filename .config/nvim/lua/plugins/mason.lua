@@ -29,6 +29,7 @@ return {
       },
     },
     setup = {
+
       ruff_lsp = function()
         LazyVim.lsp.on_attach(function(client, _)
           if client.name == "ruff_lsp" then

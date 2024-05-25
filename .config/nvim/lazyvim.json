@@ -4,10 +4,7 @@
     "lazyvim.plugins.extras.editor.mini-diff",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.clangd",
-    "lazyvim.plugins.extras.lang.go",
-    "lazyvim.plugins.extras.lang.haskell",
     "lazyvim.plugins.extras.lang.markdown",
-    "lazyvim.plugins.extras.lang.tex",
     "lazyvim.plugins.extras.util.gitui"
   ],
   "news": {
@@ -15,3 +12,4 @@
   },
   "version": 4
 }
+
