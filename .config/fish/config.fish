@@ -13,8 +13,15 @@ alias ssn='sudo shutdown now'
 alias sr='sudo reboot'
 alias rd='rm -rf'
 alias on="cd ~/Documents/notes && nvim"
+alias vim="nvim"
+
 alias oc="cd ~/config && nvim"
 alias doom='~/.config//emacs/bin/doom'
+
+
+
+
+
 
 alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
