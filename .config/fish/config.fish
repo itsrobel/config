@@ -1,11 +1,12 @@
 set fish_greeting
 
 
-set -gx EDITOR nvim
-set -Ux JAVAFX $HOME/config/java/javafx-sdk-21.0.2/lib
+export JAVAFX="$HOME/config/java/javafx-sdk-21.0.2/lib"
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser
+
+
 #genral shortcuts
 alias l='eza -lh -s type '
 alias la='eza -lah -s type '
@@ -17,11 +18,6 @@ alias vim="nvim"
 
 alias oc="cd ~/config && nvim"
 alias doom='~/.config//emacs/bin/doom'
-
-
-
-
-
 
 alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
@@ -38,7 +34,8 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 source "$HOME/.config/fish/git.fish"
 source "$HOME/.config/fish/fish_prompt.fish"
 source "$HOME/.config/fish/zoxide.fish"
-
+source "$HOME/.config/fish/python.fish"
+source "$HOME/.config/fish/aws.fish"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
