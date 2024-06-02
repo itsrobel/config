@@ -4,6 +4,7 @@
 .config/fish/aws.fish
 .config/qtile/__pycache__
 .config/tmux/plugins
+.oh-my-zsh/custom/aws.zsh
 keychain/decrypted
 keychain/__pycache__
 java/javafx-sdk-21.0.2
