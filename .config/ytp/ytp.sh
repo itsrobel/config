@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 ## ytp
 ## by drew
 ## also anjune
@@ -7,7 +7,42 @@
 ## https://gitlab.com/uoou/ytp
 ## GPL v. 2
 # source key.sh
-api_key=$(cat ../keychain/decrypted/ytp.txt)
+
+dependency=(jq youtube-dl mpv)
+for item in "${dependency[@]}"
+do
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    for dep in "${dependency[@]}"; do
+        if ! brew list "$dep" &>/dev/null; then
+            brew install "$dep"
+        fi
+    done
+elif [[ "$OSTYPE" == "linux-gnu" && "$(uname -m)" == "x86_64" ]]; then
+    for dep in "${dependency[@]}"; do
+        if ! pacman -Qs "$dep" &>/dev/null; then
+            sudo pacman -S "$dep"
+        fi
+    done
+fi
+done
+
+# if [ -n "$ZSH_VERSION" ]; then
+#     # Define a mapfile function for zsh
+    # function mapfile {
+    #     local file=$1
+    #     local -a array
+    #     local i=0
+    #     while IFS= read -r line; do
+    #         array[i++]="$line"
+    #     done < "$file"
+    #     print -l "${array[@]}"
+    # }
+# fi
+
+
+
+
+api_key=$(pass show API/ytp)
 # These API keys have limits. If the script inexplicably fails
 # create your own here: https://console.developers.google.com/
 # following these instructions: https://www.slickremix.com/docs/get-api-key-for-youtube/
@@ -46,6 +81,13 @@ searchterm=$1
 if [[ "$searchterm" = "" ]]; then
 	searchterm="friday"
 fi
+
+
+
+
+
+
+
 
 api_url="https://www.googleapis.com/youtube/v3/"
 video_url="https://www.youtube.com/watch?v="
@@ -87,7 +129,7 @@ compose_data() {
 	mapfile -t descriptions_array < <(printf "%s\n" "$descriptions")
 	printf -v vidids_csv ",%s" "${vidids_array[@]}"
 	vidids_csv=${vidids_csv:1}
-	durations=$(curl -G "${api_url}videos/" --data-urlencode "key=$api_key" --data-urlencode "id=$vidids_csv" --data-urlencode "part=contentDetails" --data-urlencode "fields=items(contentDetails/duration)" 2>/dev/null | jq -r "[.][].items[].contentDetails.duration" | iso8601_duration_to_seconds | seconds_duration_to_h)
+	durations=$(curl -G "${api_url}videos/" --data-urlencode "key=$api_key" --data-urlencode "id=$vidids_csv" --data-urlencode "part=contentDetails" --data-urlencode "fields=items(contentDetails/duration)" 2>/dev/null | jq -r "[.][].items[].contentDetails.duration" | iso8601_duration_to_seconds )
 	mapfile -t durations_array < <(printf "%s\n" "$durations")
 	draw_search
 }
@@ -139,14 +181,9 @@ iso8601_duration_to_seconds() {
 			s/([[:digit:]]+)H([[:digit:]]*)M?([[:digit:]]*)S?/\3-\2-\1/;
 			s/([[:digit:]]+)M([[:digit:]]*)S?/\2-\1-/;
 			s/([[:digit:]]+)S/\1--/' |
-		awk --field-separator='-' '{ print $1+$2*60+$3*3600 }'
+		awk  '{ print $1+$2*60+$3*3600 }'
 }
 
-seconds_duration_to_h() {
-	while read -r seconds; do
-		date --date="0 + $seconds seconds" +%T | sed -E 's/^[0:]{0,4}//g'
-	done
-}
 
 draw_details() {
 	vidid=${vidids_array[$1]}
