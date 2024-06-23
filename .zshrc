@@ -2,6 +2,11 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -80,6 +85,7 @@ plugins=(
 	zoxide
 )
 ZSH_TMUX_AUTOSTART=true
+ZOXIDE_CMD_OVERRIDE=cd
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -112,9 +118,19 @@ alias l='eza -lh -s type '
 alias la='eza -lah -s type '
 alias ls=la
 alias vim=nvim
+alias ytp='bash ~/config/.config/ytp/ytp.sh'
 # alias la = "eza -la"
 # alias ll = "eza -l"
 # alias ls = "eza -lah"
 # alias l = "eza -lah"
 
 export PATH="/opt/homebrew/bin:$PATH"
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/Users/scrobel/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

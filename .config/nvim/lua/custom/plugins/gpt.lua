@@ -9,6 +9,8 @@ return {
   },
 
   config = function()
-    require('chatgpt').setup { api_key_cmd = 'pass API/openai/nvim', api_model = 'gpt-3.5-turbo' }
+    require('chatgpt').setup { api_key_cmd = 'pass API/openai/nvim', api_model = 'gpt-3.5-turbo', popup_input = {
+      submit = '<CR>',
+    } }
   end,
 }
