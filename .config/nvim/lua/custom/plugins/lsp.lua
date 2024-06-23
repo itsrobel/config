@@ -58,6 +58,7 @@ return { -- LSP Configuration & Plugins
         --
         -- In this case, we create a function that lets us more easily define mappings specific
         -- for LSP related items. It sets the mode, buffer and description for us each time.
+        vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: Signature Help' })
         local map = function(keys, func, desc)
           vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
@@ -86,9 +87,7 @@ return { -- LSP Configuration & Plugins
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
         map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
         -- Rename the variable under your cursor.
-        --
         --  Most Language Servers support renaming across files, etc.
         map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 
@@ -99,6 +98,7 @@ return { -- LSP Configuration & Plugins
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap.
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('gK', vim.lsp.buf.signature_help, 'Signature Help')
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header.
@@ -132,7 +132,6 @@ return { -- LSP Configuration & Plugins
             end,
           })
         end
-
         -- The following autocommand is used to enable inlay hints in your
         -- code, if the language server you are using supports them
         --
@@ -152,6 +151,12 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+    capabilities.signatureHelp = {
+      -- Enable signature help
+      --  This is the little popup that shows you the signature of the function you're calling
+      --  as you type it.
+      enabled = true,
+    }
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -174,7 +179,7 @@ return { -- LSP Configuration & Plugins
       --     },
       --   },
       -- },
-      basedpyright = {
+      pyright = {
         analysis = {
           autoSearchPaths = true,
           useLibraryCodeForTypes = true,
