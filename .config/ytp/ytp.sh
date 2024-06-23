@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 ## ytp
 ## by drew
 ## also anjune
@@ -8,22 +7,24 @@ export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
 ## GPL v. 2
 # source key.sh
 
-dependency=(jq youtube-dl mpv)
+dependency=(jq youtube-dl mpv bash)
 for item in "${dependency[@]}"
 do
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    for dep in "${dependency[@]}"; do
-        if ! brew list "$dep" &>/dev/null; then
-            brew install "$dep"
-        fi
-    done
+
+	export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+	for dep in "${dependency[@]}"; do
+		if ! brew list "$dep" &>/dev/null; then
+			brew install "$dep"
+	        fi
+	    done
 elif [[ "$OSTYPE" == "linux-gnu" && "$(uname -m)" == "x86_64" ]]; then
-    for dep in "${dependency[@]}"; do
-        if ! pacman -Qs "$dep" &>/dev/null; then
-            sudo pacman -S "$dep"
-        fi
-    done
-fi
+	for dep in "${dependency[@]}"; do
+		if ! pacman -Qs "$dep" &>/dev/null; then
+			sudo pacman -S "$dep"
+		fi
+	done
+	fi
 done
 
 # if [ -n "$ZSH_VERSION" ]; then
