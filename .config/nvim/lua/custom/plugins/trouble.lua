@@ -34,6 +34,6 @@ return {
       desc = 'Quickfix List (Trouble)',
     },
     { '[d', vim.diagnostic.goto_prev, desc = 'Previous Trouble/Quickfix Item' },
-    { ']d', vim.diagnostic.goto_prev, desc = 'Next Trouble/Quickfix Item' },
+    { ']d', vim.diagnostic.goto_next, desc = 'Next Trouble/Quickfix Item' },
   },
 }

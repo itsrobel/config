@@ -110,6 +110,7 @@ return { -- Autocompletioncmp
         { name = 'luasnip' },
         { name = 'path' },
         { name = 'cmdline' },
+        { name = 'emoji' },
         -- { name = 'copilot' },
       },
     }

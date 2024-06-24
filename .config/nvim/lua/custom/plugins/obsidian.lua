@@ -31,5 +31,44 @@ return {
   opts = {
     workspaces = GetWorkspaces(),
     -- see below for full list of options 👇
+    daily_notes = {
+      folder = 'journal',
+      date_format = '%Y-%m-%d',
+      -- Optional, if you want to change the date format of the default alias of daily notes.
+      alias_format = '%B %-d, %Y',
+      -- Optional, default tags to add to each new daily note created.
+      default_tags = { 'journal' },
+      -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
+      template = nil, --TODO: I ned to create templates later
+    },
+    completion = {
+      -- Set to false to disable completion.
+      nvim_cmp = true,
+      -- Trigger completion at 2 chars.
+      min_chars = 2,
+    },
+    mappings = {
+      -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
+      ['gf'] = {
+        action = function()
+          return require('obsidian').util.gf_passthrough()
+        end,
+        opts = { noremap = false, expr = true, buffer = true },
+      },
+      -- Toggle check-boxes.
+      ['<leader>ch'] = {
+        action = function()
+          return require('obsidian').util.toggle_checkbox()
+        end,
+        opts = { buffer = true },
+      },
+      -- Smart action depending on context, either follow link or toggle checkbox.
+      ['<cr>'] = {
+        action = function()
+          return require('obsidian').util.smart_action()
+        end,
+        opts = { buffer = true, expr = true },
+      },
+    },
   },
 }
