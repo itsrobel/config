@@ -10,18 +10,21 @@ function GetWorkspaces()
   return workspaces
 end
 
+function IsEnabled()
+  local workspaces = GetWorkspaces()
+  for _, value in ipairs(workspaces) do
+    if vim.fn.getcwd():match(value['path']) then
+      return true
+    end
+  end
+  return false
+end
+
 return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
-  lazy = true,
-  ft = 'markdown',
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  -- event = {
-  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-  --   "BufReadPre path/to/my-vault/**.md",
-  --   "BufNewFile path/to/my-vault/**.md",
-  -- },
+  lazy = false,
+  enabled = IsEnabled(),
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
@@ -39,8 +42,14 @@ return {
       -- Optional, default tags to add to each new daily note created.
       default_tags = { 'journal' },
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = nil, --TODO: I ned to create templates later
+      template = 'journal.md', --TODO: I ned to create templates later
     },
+
+    -- templates = {
+    --     folder = 'templates',
+    --     date_format = '%Y-%m-%d-%a',
+    --     time_format = '%H:%M',
+    --   },
     completion = {
       -- Set to false to disable completion.
       nvim_cmp = true,
@@ -86,7 +95,7 @@ return {
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. '-' .. suffix
+      return suffix
     end,
 
     -- Optional, customize how wiki links are formatted.
@@ -189,7 +198,7 @@ return {
     open_notes_in = 'vsplit',
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
-    conceallevel = 1,
+    conceallevel = 2,
     -- Specify how to handle attachments.
     attachments = {
       -- The default folder to place images in via `:ObsidianPasteImg`.
