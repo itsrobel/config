@@ -10,10 +10,37 @@ function GetWorkspaces()
   return workspaces
 end
 
+function AddKeymaps()
+  local wk = require 'which-key'
+  wk.register {
+    ['<leader>o'] = {
+      name = '[O]bsidian',
+      _ = 'which_key_ignore',
+      n = { '<cmd>ObsidianNew<CR>', 'Obsidian New File' },
+      l = {
+        name = 'Obsidian Link',
+        i = { '<cmd>ObsidianLink<CR>', 'Link', mode = { 'v' } },
+        n = { '<cmd>ObsidianLinkNew<CR>', 'Link New', mode = { 'v' } },
+      },
+      e = { '<cmd>ObsidianExtractNote<CR>', 'Extract Note', mode = { 'v' } },
+      t = { '<cmd>ObsidianTemplate<CR>', 'Obsidian Template' },
+      j = {
+        name = '[J]ournal',
+        t = {
+          '<cmd>ObsidianToday<CR>',
+          'Obsidian Today',
+        },
+        l = { '<cmd>ObsidianDailies<CR>', 'Obsidian Journal List' },
+      },
+    },
+  }
+end
+
 function IsEnabled()
   local workspaces = GetWorkspaces()
   for _, value in ipairs(workspaces) do
     if vim.fn.getcwd():match(value['path']) then
+      AddKeymaps()
       return true
     end
   end
@@ -28,6 +55,7 @@ return {
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
+    'folke/which-key.nvim',
     -- see below for full list of optional dependencies 👇
   },
   --TODO: create a function that returns the folders in a directory
@@ -56,6 +84,11 @@ return {
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
+
+    --    config = function ()
+    --      require('which-key').register( ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+    -- )
+    --    end,
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ['gf'] = {
@@ -195,7 +228,7 @@ return {
     -- 1. "current" (the default) - to always open in the current window
     -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
     -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
-    open_notes_in = 'vsplit',
+    open_notes_in = 'current',
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
     conceallevel = 2,
