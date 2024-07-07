@@ -46,7 +46,7 @@ return {
             icon = ' ',
             key = 'c',
           },
-          { action = 'lua require("persistence").load()', desc = ' Restore Session', icon = ' ', key = 's' },
+          -- { action = 'lua require("persistence").load()', desc = ' Restore Session', icon = ' ', key = 's' },
           { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'l' },
           { action = 'qa', desc = ' Quit', icon = ' ', key = 'q' },
         },
