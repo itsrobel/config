@@ -158,7 +158,20 @@ return { -- LSP Configuration & Plugins
     --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
     local servers = {
       -- clangd = {},
-      -- gopls = {},
+      -- gopls = {
+      --   cmd = { 'gopls' },
+      --   filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+      --   root_dir = require('lspconfig.util').root_pattern('go.mod', 'go.work', '.git'),
+      --   settings = {
+      --     gopls = {
+      --       analyses = {
+      --         unusedparams = true,
+      --       },
+      --       staticcheck = true,
+      --       completeUnimported = true,
+      --     },
+      --   },
+      -- },
       -- pyright = {
       --   settings = {
       --     python = {
@@ -169,6 +182,7 @@ return { -- LSP Configuration & Plugins
       --     },
       --   },
       -- },
+
       pyright = {
         analysis = {
           autoSearchPaths = true,
@@ -183,7 +197,7 @@ return { -- LSP Configuration & Plugins
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
       tsserver = {},
-      --
+      astro = {},
 
       lua_ls = {
         -- cmd = {...},

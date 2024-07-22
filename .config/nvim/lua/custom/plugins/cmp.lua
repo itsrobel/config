@@ -111,7 +111,7 @@ return { -- Autocompletioncmp
         { name = 'path' },
         { name = 'cmdline' },
         { name = 'emoji' },
-        { name = 'copilot' },
+        -- { name = 'copilot' },
       },
     }
   end,

@@ -158,6 +158,21 @@ vim.opt.scrolloff = 16
 
 vim.opt.conceallevel = 2
 
+-- vim.g.do_filetype_lua = 1
+-- vim.g.did_load_filetypes = 0
+-- webdev
+vim.filetype.add {
+  extension = {
+    astro = 'astro',
+  },
+}
+
+vim.filetype.add {
+  extension = {
+    mdx = 'mdx',
+  },
+}
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -302,6 +317,23 @@ require('lazy').setup({
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>x'] = { name = 'Trouble fi[X] ', _ = 'which_key_ignore' },
         ['<leader>g'] = { name = '[G]it Hunk', _ = 'which_key_ignore' },
+        ['<leader>h'] = { name = '[H]arpoon', _ = 'which_key_ignore' },
+        -- t = {
+        --   name = 'ChatGPT',
+        --   c = { '<cmd>ChatGPT<CR>', 'ChatGPT' },
+        --   e = { '<cmd>ChatGPTEditWithInstruction<CR>', 'Edit with instruction', mode = { 'n', 'v' } },
+        --   g = { '<cmd>ChatGPTRun grammar_correction<CR>', 'Grammar Correction', mode = { 'n', 'v' } },
+        --   t = { '<cmd>ChatGPTRun translate<CR>', 'Translate', mode = { 'n', 'v' } },
+        --   k = { '<cmd>ChatGPTRun keywords<CR>', 'Keywords', mode = { 'n', 'v' } },
+        --   d = { '<cmd>ChatGPTRun docstring<CR>', 'Docstring', mode = { 'n', 'v' } },
+        --   a = { '<cmd>ChatGPTRun add_tests<CR>', 'Add Tests', mode = { 'n', 'v' } },
+        --   o = { '<cmd>ChatGPTRun optimize_code<CR>', 'Optimize Code', mode = { 'n', 'v' } },
+        --   s = { '<cmd>ChatGPTRun summarize<CR>', 'Summarize', mode = { 'n', 'v' } },
+        --   f = { '<cmd>ChatGPTRun fix_bugs<CR>', 'Fix Bugs', mode = { 'n', 'v' } },
+        --   x = { '<cmd>ChatGPTRun explain_code<CR>', 'Explain Code', mode = { 'n', 'v' } },
+        --   r = { '<cmd>ChatGPTRun roxygen_edit<CR>', 'Roxygen Edit', mode = { 'n', 'v' } },
+        --   l = { '<cmd>ChatGPTRun code_readability_analysis<CR>', 'Code Readability Analysis', mode = { 'n', 'v' } },
+        -- },
       }
       -- visual mode
       require('which-key').register({
@@ -339,6 +371,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'black' },
+        golang = { 'gofmt', 'gofumpt' },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
@@ -575,16 +608,34 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
-      -- Autoinstall languages that are not installed
       auto_install = true,
+      sync_install = true,
+      ensure_installed = {
+        -- 'bash',
+        -- 'c',
+        -- 'diff',
+        'html',
+        'lua',
+        -- 'luadoc',
+        -- 'markdown',
+        -- 'astro',
+        'javascript',
+        'typescript',
+        'tsx',
+        -- 'vim',
+        -- 'vimdoc',
+      },
       highlight = {
         enable = true,
         -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
         --  If you are experiencing weird indenting issues, add the language to
         --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { 'ruby' },
+        additional_vim_regex_highlighting = { 'ruby', 'astro' },
       },
+      textsubjects = {
+        enable = true,
+      },
+      -- Autoinstall languages that are not installed
       indent = { enable = true, disable = { 'ruby' } },
       incremental_selection = {
         enable = true,
@@ -600,7 +651,7 @@ require('lazy').setup({
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       -- Prefer git instead of curl in order to improve connectivity in some environments
-      require('nvim-treesitter.install').prefer_git = true
+      -- require('nvim-treesitter.install').prefer_git = true
       ---@diagnostic disable-next-line: missing-fields
       require('nvim-treesitter.configs').setup(opts)
 
@@ -625,7 +676,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
