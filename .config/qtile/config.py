@@ -68,7 +68,7 @@ def minimize_all(qtile):
 
 keys = [
     # The essentials
-    Key([mod], "t", lazy.spawn(myTerm), desc="Terminal"),
+    Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
     # Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"), desc="Run Launcher"),
     Key(
         [mod, "shift"],
