@@ -1,48 +1,83 @@
+function GetWorkspaces()
+  local workspaces = {}
+  for dir in io.popen([[ls -p $HOME/vaults ]]):lines() do
+    local sdir = dir:sub(1, -2)
+    local entry = {}
+    entry["name"] = sdir
+    entry["path"] = string.format("%s/vaults/%s", os.getenv("HOME"), sdir)
+    table.insert(workspaces, entry)
+  end
+  return workspaces
+end
+
+function AddKeymaps()
+  local wk = require("which-key")
+  wk.register({
+    ["<leader>o"] = {
+      name = "[O]bsidian",
+      _ = "which_key_ignore",
+      n = { "<cmd>ObsidianNew<CR>", "Obsidian New File" },
+      l = {
+        name = "Obsidian Link",
+        i = { "<cmd>ObsidianLink<CR>", "Link", mode = { "v" } },
+        n = { "<cmd>ObsidianLinkNew<CR>", "Link New", mode = { "v" } },
+      },
+      e = { "<cmd>ObsidianExtractNote<CR>", "Extract Note", mode = { "v" } },
+      t = { "<cmd>ObsidianTemplate<CR>", "Obsidian Template" },
+      j = {
+        name = "[J]ournal",
+        t = {
+          "<cmd>ObsidianToday<CR>",
+          "Obsidian Today",
+        },
+        l = { "<cmd>ObsidianDailies<CR>", "Obsidian Journal List" },
+      },
+    },
+  })
+end
+
+function IsEnabled()
+  local workspaces = GetWorkspaces()
+  for _, value in ipairs(workspaces) do
+    if vim.fn.getcwd():match(value["path"]) then
+      AddKeymaps()
+      return true
+    end
+  end
+  return false
+end
+
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
-  ft = "markdown",
-  keys = {
-
-    {
-      "<leader>ch",
-      function()
-        return require("obsidian").util.toggle_checkbox()
-      end,
-      desc = "Checkbox",
-      -- opts = { buffer = true },
-    },
+  lazy = false,
+  enabled = IsEnabled(),
+  dependencies = {
+    -- Required.
+    "nvim-lua/plenary.nvim",
+    "folke/which-key.nvim",
+    -- see below for full list of optional dependencies 👇
   },
+  --TODO: create a function that returns the folders in a directory
   opts = {
-    workspaces = {
-      {
-        name = "notes",
-        path = "~/notes",
-      },
-    },
-
-    -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
-    -- 'workspaces'. For example:
-    -- dir = "~/vaults/work",
-
-    -- Optional, if you keep notes in a specific subdirectory of your vault.
-
-    -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
-    -- levels defined by "vim.log.levels.*".
-
+    workspaces = GetWorkspaces(),
+    -- see below for full list of options 👇
     daily_notes = {
-      -- Optional, if you keep daily notes in a separate directory.
       folder = "journal",
-      -- Optional, if you want to change the date format for the ID of daily notes.
       date_format = "%Y-%m-%d",
       -- Optional, if you want to change the date format of the default alias of daily notes.
       alias_format = "%B %-d, %Y",
+      -- Optional, default tags to add to each new daily note created.
+      default_tags = { "journal" },
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = nil,
+      template = "journal.md", --TODO: I ned to create templates later
     },
 
-    -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
+    -- templates = {
+    --     folder = 'templates',
+    --     date_format = '%Y-%m-%d-%a',
+    --     time_format = '%H:%M',
+    --   },
     completion = {
       -- Set to false to disable completion.
       nvim_cmp = true,
@@ -50,8 +85,10 @@ return {
       min_chars = 2,
     },
 
-    -- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
-    -- way then set 'mappings = {}'.
+    --    config = function ()
+    --      require('which-key').register( ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
+    -- )
+    --    end,
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
       ["gf"] = {
@@ -67,14 +104,16 @@ return {
         end,
         opts = { buffer = true },
       },
+      -- Smart action depending on context, either follow link or toggle checkbox.
+      ["<cr>"] = {
+        action = function()
+          return require("obsidian").util.smart_action()
+        end,
+        opts = { buffer = true, expr = true },
+      },
     },
-
-    -- Where to put new notes. Valid options are
-    --  * "current_dir" - put new notes in same directory as the current buffer.
-    --  * "notes_subdir" - put new notes in the default notes subdirectory.
+    notes_subdir = "fresh",
     new_notes_location = "notes_subdir",
-
-    -- Optional, customize how names/IDs for new notes are created.
     note_id_func = function(title)
       -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
       -- In this case a note with the title 'My new note' will be given an ID that looks
@@ -89,7 +128,7 @@ return {
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return suffix
     end,
 
     -- Optional, customize how wiki links are formatted.
@@ -160,18 +199,14 @@ return {
     -- URL it will be ignored but you can customize this behavior here.
     ---@param url string
     follow_url_func = function(url)
-      -- Open the URL in the default web browser.
-      -- vim.fn.jobstart({ "open", url }) -- Mac OS
-      vim.fn.jobstart({ "firefox", "--new-window", url }) -- linux // create a defaults folder in ~/config/ repo some day
+      vim.fn.jobstart({ "open", url }) -- Mac OS
+      -- vim.fn.jobstart { 'firefox', '--new-window', url } -- linux // create a defaults folder in ~/config/ repo some day
     end,
-
     -- Optional, set to true if you use the Obsidian Advanced URI plugin.
     -- https://github.com/Vinzent03/obsidian-advanced-uri
     use_advanced_uri = false,
-
     -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
     open_app_foreground = false,
-
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
       name = "telescope.nvim",
@@ -184,60 +219,19 @@ return {
         insert_link = "<C-l>",
       },
     },
-
     -- Optional, sort search results by "path", "modified", "accessed", or "created".
     -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
     -- that `:ObsidianQuickSwitch` will show the notes sorted by latest modified time
     sort_by = "modified",
     sort_reversed = true,
-
     -- Optional, determines how certain commands open notes. The valid options are:
     -- 1. "current" (the default) - to always open in the current window
     -- 2. "vsplit" - to open in a vertical split if there's not already a vertical split
     -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
     open_notes_in = "current",
-
     -- Optional, configure additional syntax highlighting / extmarks.
     -- This requires you have `conceallevel` set to 1 or 2. See `:help conceallevel` for more details.
-    conceallevel = 1,
-    ui = {
-      enable = true, -- set to false to disable all additional syntax features
-      update_debounce = 200, -- update delay after a text change (in milliseconds)
-      -- Define how various check-boxes are displayed
-      checkboxes = {
-        -- NOTE: the 'char' value has to be a single character, and the highlight groups are defined below.
-        [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-        ["x"] = { char = "", hl_group = "ObsidianDone" },
-        [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-        ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-        -- Replace the above with this if you don't have a patched font:
-        -- [" "] = { char = "☐", hl_group = "ObsidianTodo" },
-        -- ["x"] = { char = "✔", hl_group = "ObsidianDone" },
-
-        -- You can also add more custom ones...
-      },
-      -- Use bullet marks for non-checkbox lists.
-      bullets = { char = "•", hl_group = "ObsidianBullet" },
-      external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-      -- Replace the above with this if you don't have a patched font:
-      -- external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
-      reference_text = { hl_group = "ObsidianRefText" },
-      highlight_text = { hl_group = "ObsidianHighlightText" },
-      tags = { hl_group = "ObsidianTag" },
-      hl_groups = {
-        -- The options are passed directly to `vim.api.nvim_set_hl()`. See `:help nvim_set_hl`.
-        ObsidianTodo = { bold = true, fg = "#f78c6c" },
-        ObsidianDone = { bold = true, fg = "#89ddff" },
-        ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-        ObsidianTilde = { bold = true, fg = "#ff5370" },
-        ObsidianBullet = { bold = true, fg = "#89ddff" },
-        ObsidianRefText = { underline = true, fg = "#c792ea" },
-        ObsidianExtLinkIcon = { fg = "#c792ea" },
-        ObsidianTag = { italic = true, fg = "#89ddff" },
-        ObsidianHighlightText = { bg = "#75662e" },
-      },
-    },
-
+    conceallevel = 2,
     -- Specify how to handle attachments.
     attachments = {
       -- The default folder to place images in via `:ObsidianPasteImg`.
@@ -251,26 +245,9 @@ return {
       ---@param path obsidian.Path the absolute path to the image file
       ---@return string
       img_text_func = function(client, path)
-        local link_path
-        local vault_relative_path = client:vault_relative_path(path)
-        if vault_relative_path ~= nil then
-          -- Use relative path if the image is saved in the vault dir.
-          link_path = vault_relative_path
-        else
-          -- Otherwise use the absolute path.
-          link_path = tostring(path)
-        end
-        local display_name = vim.fs.basename(link_path)
-        return string.format("![%s](%s)", display_name, link_path)
+        path = client:vault_relative_path(path) or path
+        return string.format("![%s](%s)", path.name, path)
       end,
     },
-  },
-  dependencies = {
-    -- Required.
-    "nvim-lua/plenary.nvim",
-    "hrsh7th/nvim-cmp",
-    "nvim-telescope/telescope.nvim",
-    "nvim-treesitter/nvim-treesitter",
-    -- see below for full list of optional dependencies 👇
   },
 }
