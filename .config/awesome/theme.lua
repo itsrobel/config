@@ -3,6 +3,7 @@ local lain = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
+local colors = require("colors")
 
 local os = os
 local my_table = awful.util.table or gears.table -- 4.{0,1} compatibility
@@ -14,15 +15,15 @@ theme.dir = os.getenv("HOME") .. "/.config/awesome/theme/"
 theme.wallpaper = "~/pictures/wallpapers/new_york_night.jpg"
 -- theme.font                                      = "Noto Sans Mono Bold 13"
 theme.font = "MesloLGS Nerd Font Mono Bold 13"
-theme.fg_normal = "#F8F8F2"
-theme.fg_focus = "#BD93F9"
-theme.fg_urgent = "#FF5555"
-theme.bg_normal = "#282A36"
-theme.bg_focus = "#44475A"
-theme.border_marked = "#FFB86C"
+theme.fg_normal = colors.tokyonight.fg_normal
+theme.fg_focus = colors.tokyonight.fg_focus
+theme.fg_urgent = colors.tokyonight.fg_urgent
+theme.bg_normal = colors.tokyonight.bg_normal
+theme.bg_focus = colors.tokyonight.bg_focus
+theme.border_marked = colors.tokyonight.border_marked
 -- do not set these to use the fg vars
-theme.border_normal = "#44475A"
-theme.border_focus = "#BD93F9"
+theme.border_normal = colors.tokyonight.bg_focus
+theme.border_focus = colors.tokyonight.fg_focus
 
 theme.tasklist_bg_focus = theme.bg_focus
 theme.bg_urgent = theme.fg_urget

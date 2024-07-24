@@ -9,7 +9,8 @@
     "lazyvim.plugins.extras.lang.go",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.tex",
-    "lazyvim.plugins.extras.util.gitui"
+    "lazyvim.plugins.extras.util.gitui",
+    "lazyvim.plugins.extras.util.mini-hipatterns"
   ],
   "news": {
     "NEWS.md": "6296"
