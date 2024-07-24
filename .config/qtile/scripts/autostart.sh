@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-COLORSCHEME=GruvboxDark
+# COLORSCHEME=GruvboxDark
 
 ### AUTOSTART PROGRAMS ###
 # lxsession &
 # picom --daemon &
-picom --config ~/.config/picom/picom.conf &
+picom --daemon --config ~/.config/picom/picom.conf &
 greenclip daemon &
 #/usr/bin/emacs --daemon &
 #nm-applet &
@@ -24,9 +24,9 @@ greenclip daemon &
 # extra from ArcoLinux
 
 function run {
-	if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
-		$@ &
-	fi
+  if ! pgrep -x $(basename $1 | head -c 15) 1>/dev/null; then
+    $@ &
+  fi
 }
 
 #Set your native resolution IF it does not exist in xrandr
@@ -49,7 +49,7 @@ function run {
 #Some ways to set your wallpaper besides variety or nitrogen
 # feh --bg-fill /usr/share/backgrounds/archlinux/arch-wallpaper.jpg &
 # feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
-feh --bg-fill ~/pictures/wallpapers/camera.png &
+feh --bg-fill ~/pictures/wallpapers/your-name-4k.jpg &
 #wallpaper for other Arch based systems
 #feh --bg-fill /usr/share/archlinux-tweak-tool/data/wallpaper/wallpaper.png &
 

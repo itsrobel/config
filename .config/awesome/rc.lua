@@ -76,31 +76,44 @@ local spotify = "spotify"
 -- local qute = "qutebrowser"
 
 awful.util.terminal = terminal
-local tags_icons = {
-	code = "   ",
-	terminal = "   ",
-	browser = "   ",
-	write = "   ",
-	reading = "   ",
-	university = "    ",
-	video = "   ",
-	message = "   ",
-	music = "   ",
-	photography = "   ",
-	math = "   ",
-}
+-- local icons = {
+-- 	code = "   ",
+-- 	terminal = "   ",
+-- 	browser = "   ",
+-- 	write = "   ",
+-- 	reading = "   ",
+-- 	university = "    ",
+-- 	video = "   ",
+-- 	message = "   ",
+-- 	music = "   ",
+-- 	photography = "   ",
+-- 	-- math = "   ",
+-- }
 
+local icons = { "[ ]", "[ ]", "[]", "[]", "[ ]", "[ ]", "[ ]", "[]", "[ ]" }
+
+local tags_substring = {
+	"[DEV]",
+	"[WWW]",
+	"[DOC]",
+	"[ZEN]",
+	"[VID]",
+	"[SYS]",
+	"[TEL]",
+	"[OBS]",
+	"[MUS]",
+}
 local tags_arabic = {
-	"١",
-	"٢",
-	"٣",
+	"(١)",
+	"(٢)",
+	"(٣",
 	"٤",
 	"٥",
 	"٦",
 	"٧",
 	"٨",
 	"٩",
-	"١٠",
+	-- "١٠",
 }
 
 local tags_arabic_sudanese = {
@@ -114,7 +127,9 @@ local tags_arabic_sudanese = {
 	"᮸ ",
 	"᮹ ",
 }
-awful.util.tagnames = tags_arabic_sudanese
+
+-- Icons are brocken ??
+awful.util.tagnames = tags_substring
 
 awful.layout.layouts = {
 	awful.layout.suit.tile,
@@ -257,9 +272,15 @@ Globalkeys = mytable.join(
 		awful.spawn.with_shell(spotify)
 	end, { description = "Open spotify", group = "launcher" }),
 
-	awful.key({ modkey, "Shift" }, "x", function()
-		awful.spawn.with_shell("archlinux-logout")
-	end, { description = "Open archlinux logout", group = "awesome" }),
+	-- awful.key({ modkey, "Shift" }, "x", function()
+	-- 	awful.spawn.with_shell("clearine")
+	-- end, { description = "Open archlinux logout", group = "awesome" }),
+	-- awful.key(
+	-- 	{ modkey, "Shift" },
+	-- 	"x",
+	-- 	require("widgets.exit_screen"),
+	-- 	{ description = "logout screen", group = "awesome" }
+	-- ),
 
 	awful.key({ modkey }, "F4", function()
 		awful.spawn.with_shell("pavucontrol")
@@ -345,6 +366,7 @@ Globalkeys = mytable.join(
 		awful.spawn(terminal)
 	end, { description = terminal, group = "super" }),
 	awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
+	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),

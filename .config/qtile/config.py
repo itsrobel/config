@@ -189,7 +189,7 @@ for i in groups:
         ]
     )
 
-colors = colors.GruvboxDark
+colors = colors.DoomOne
 
 layout_theme = {
     "border_width": 2,
