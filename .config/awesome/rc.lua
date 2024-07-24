@@ -1,5 +1,5 @@
 -- If LuaRocks is installed, make sure that packages installed through it are
--- found (e.g. lgi). If LuaRocks is not installed, do nothing.
+-- found (e.g. lgi). If LuaRocks is not installed, do nothing.rc
 -- pcall(require, "luarocks.loader")
 
 local gears = require("gears")
@@ -68,7 +68,7 @@ local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-c
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 -- local nvim = "kitty -e (tmux -e nvim)"
 local emacs = "emacsclient -c -n"
-local firefox = "firefox"
+local browser = "brave"
 local thunar = "thunar"
 local ranger = "alacritty -e ranger"
 local rofi = "rofi -show run" --"dmenu_run"
@@ -249,8 +249,8 @@ root.buttons(mytable.join(
 Globalkeys = mytable.join(
 
 	awful.key({ modkey }, "g", function()
-		awful.spawn.with_shell(firefox)
-	end, { description = "open firefox", group = "launcher" }),
+		awful.spawn.with_shell(browser)
+	end, { description = "open browser", group = "launcher" }),
 	-- awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
 	--     {description = "open firefox", group = "launcher"}),
 	-- awful.key({ modkey }, "n", function()

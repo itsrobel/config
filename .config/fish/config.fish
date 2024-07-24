@@ -21,8 +21,8 @@ alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias i="paru"
 alias nosleep="xset s off -dpms"
 
-function zo 
-        zathura $argv >/dev/null 2>&1 & disown
+function zo
+    zathura $argv >/dev/null 2>&1 & disown
 end
 # alias emacs="emacsclient -c -nw"
 #code shortcuts
@@ -36,13 +36,12 @@ source "$HOME/.config/fish/zoxide.fish"
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /opt/miniconda3/bin/conda
-    eval /opt/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+    eval /opt/miniconda3/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "/opt/miniconda3/etc/fish/conf.d/conda.fish"
         . "/opt/miniconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/opt/miniconda3/bin" $PATH
+        set -x PATH /opt/miniconda3/bin $PATH
     end
 end
 # <<< conda initialize <<<
-
