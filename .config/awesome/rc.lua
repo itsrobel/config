@@ -71,7 +71,9 @@ local emacs = "emacsclient -c -n"
 local browser = "brave"
 local thunar = "thunar"
 local ranger = "alacritty -e ranger"
-local rofi = "rofi -show run" --"dmenu_run"
+-- local run_launcher = "dmenu_run -b"
+local run_launcher = "rofi -show run"
+
 local spotify = "spotify"
 -- local qute = "qutebrowser"
 
@@ -97,16 +99,16 @@ local tags_substring = {
 	"[WWW]",
 	"[DOC]",
 	"[ZEN]",
-	"[VID]",
-	"[SYS]",
-	"[TEL]",
-	"[OBS]",
+	-- "[VID]",
+	-- "[SYS]",
+	-- "[TEL]",
+	-- "[OBS]",
 	"[MUS]",
 }
 local tags_arabic = {
-	"(١)",
-	"(٢)",
-	"(٣",
+	"١",
+	"٢",
+	"٣",
 	"٤",
 	"٥",
 	"٦",
@@ -117,15 +119,15 @@ local tags_arabic = {
 }
 
 local tags_arabic_sudanese = {
-	"᮱ ",
-	"᮲ ",
-	"᮳ ",
-	"᮴ ",
-	"᮵ ",
-	"᮶ ",
-	"᮷ ",
-	"᮸ ",
-	"᮹ ",
+	"[᮱] ",
+	"[᮲] ",
+	"[᮳] ",
+	"[᮴] ",
+	"[᮵] ",
+	"[᮶] ",
+	"[᮷] ",
+	"[᮸] ",
+	"[᮹] ",
 }
 
 -- Icons are brocken ??
@@ -249,9 +251,9 @@ root.buttons(mytable.join(
 Globalkeys = mytable.join(
 
 	awful.key({ modkey }, "g", function()
-		awful.spawn.with_shell(browser)
+		awful.spawn(browser)
 	end, { description = "open browser", group = "launcher" }),
-	-- awful.key({ modkey }, "b", function () awful.spawn.with_shell( firefox ) end,
+	-- awful.key({ modkey }, "b", function () awful.spawn( firefox ) end,
 	--     {description = "open firefox", group = "launcher"}),
 	-- awful.key({ modkey }, "n", function()
 	-- 	awful.spawn.with_shell(nvim)
@@ -260,20 +262,20 @@ Globalkeys = mytable.join(
 		awful.spawn(emacs)
 	end, { description = "Open Emacs", group = "launcher" }),
 	awful.key({ modkey }, "t", function()
-		awful.spawn.with_shell(thunar)
+		awful.spawn(thunar)
 	end, { description = "Open Thunar", group = "laucher" }),
 	awful.key({ modkey }, "r", function()
-		awful.spawn.with_shell(ranger)
+		awful.spawn(ranger)
 	end, { description = "Open Ranger", group = "laucher" }),
 	awful.key({ modkey }, "p", function()
-		awful.spawn.with_shell(rofi)
-	end, { description = "Open Rofi", group = "launcher" }),
+		awful.spawn(run_launcher)
+	end, { description = "Open Run Launcher", group = "launcher" }),
 	awful.key({ modkey }, "y", function()
-		awful.spawn.with_shell(spotify)
+		awful.spawn(spotify)
 	end, { description = "Open spotify", group = "launcher" }),
 
 	-- awful.key({ modkey, "Shift" }, "x", function()
-	-- 	awful.spawn.with_shell("clearine")
+	-- 	awful.spawn("clearine")
 	-- end, { description = "Open archlinux logout", group = "awesome" }),
 	-- awful.key(
 	-- 	{ modkey, "Shift" },
@@ -283,11 +285,11 @@ Globalkeys = mytable.join(
 	-- ),
 
 	awful.key({ modkey }, "F4", function()
-		awful.spawn.with_shell("pavucontrol")
+		awful.spawn("pavucontrol")
 	end, { description = "pulseaudio control", group = "super" }),
 
 	-- screenshots
-	awful.key({ modkey }, "Print", function()
+	awful.key({}, "Print", function()
 		awful.util.spawn("xfce4-screenshooter")
 	end, { description = "Xfce screenshot", group = "screenshots" }),
 
@@ -362,7 +364,7 @@ Globalkeys = mytable.join(
 	end, { description = "delete tag", group = "tag" }),
 
 	-- Standard program
-	awful.key({ modkey }, "Return", function()
+	awful.key({ modkey }, "space", function()
 		awful.spawn(terminal)
 	end, { description = terminal, group = "super" }),
 	awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
@@ -387,7 +389,7 @@ Globalkeys = mytable.join(
 	--     {description = "decrease the number of columns", group = "layout"}),
 	--
 
-	awful.key({ modkey }, "space", function()
+	awful.key({ modkey }, "Return", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
 	awful.key({ modkey, "Shift" }, "space", function()

@@ -1,11 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-
 function run {
-  if ! pgrep $1 ;
-  then
-    $@&
+  if ! pgrep $1; then
+    $@ &
   fi
 }
 #run "dex $HOME/.config/autostart/arcolinux-welcome-app.desktop"
@@ -20,22 +18,17 @@ run "xfce4-power-manager"
 run "blueberry-tray"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 run "numlockx on"
+run "$HOME/.screenlayout/default.sh"
+run "./scripts/external-keyboard.sh"
 # run "volumeicon"
 
-run "~/.screenlayout/default.sh"
-run "emacs --daemon"
-
-
-
-
-
 # killall -q polybar
-
 
 # while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 # polybar left &
 # polybar right &
 
+# run "emacs --daemon"
 # run "nitrogen --restore"
 # run "onedrive"
 #you can set wallpapers in themes as well

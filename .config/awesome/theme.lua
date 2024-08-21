@@ -19,8 +19,11 @@ theme.fg_normal = colors.tokyonight.fg_normal
 theme.fg_focus = colors.tokyonight.fg_focus
 theme.fg_urgent = colors.tokyonight.fg_urgent
 theme.bg_normal = colors.tokyonight.bg_normal
-theme.bg_focus = colors.tokyonight.bg_focus
+
+theme.bg_focus = colors.tokyonight.bg_normal
+
 theme.border_marked = colors.tokyonight.border_marked
+
 -- do not set these to use the fg vars
 theme.border_normal = colors.tokyonight.bg_focus
 theme.border_focus = colors.tokyonight.fg_focus

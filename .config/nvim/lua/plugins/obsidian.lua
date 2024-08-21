@@ -199,8 +199,8 @@ return {
     -- URL it will be ignored but you can customize this behavior here.
     ---@param url string
     follow_url_func = function(url)
-      vim.fn.jobstart({ "open", url }) -- Mac OS
-      -- vim.fn.jobstart { 'firefox', '--new-window', url } -- linux // create a defaults folder in ~/config/ repo some day
+      -- vim.fn.jobstart({ "open", url }) -- Mac OS
+      vim.fn.jobstart({ "brave", "--new-window", url }) -- linux // create a defaults folder in ~/config/ repo some day
     end,
     -- Optional, set to true if you use the Obsidian Advanced URI plugin.
     -- https://github.com/Vinzent03/obsidian-advanced-uri

@@ -16,6 +16,8 @@ alias on="cd ~/Documents/notes && nvim"
 alias oc="cd ~/config && nvim"
 alias doom='~/.config//emacs/bin/doom'
 
+
+alias fk="fuck"
 alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias i="paru"
@@ -45,3 +47,5 @@ else
     end
 end
 # <<< conda initialize <<<
+
+thefuck --alias | source
