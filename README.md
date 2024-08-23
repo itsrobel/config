@@ -25,3 +25,4 @@ which means to nvchad config folder needs to be symbolically linked, I.E.
 ```bash
 ln -s ~/config/nvchad/ ~/config/.config/nvim/lua/custom
 ```
+some change
