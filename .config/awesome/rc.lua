@@ -99,7 +99,7 @@ local tags_substring = {
 	"[WWW]",
 	"[DOC]",
 	"[ZEN]",
-	-- "[VID]",
+	"[VID]",
 	-- "[SYS]",
 	-- "[TEL]",
 	-- "[OBS]",
