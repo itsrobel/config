@@ -1,6 +1,8 @@
+# Amazon Q pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
-
+export PATH=$PATH:/Users/scrobel/.toolbox/bin
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
@@ -117,8 +119,10 @@ source $ZSH/oh-my-zsh.sh
 alias l='eza -lh -s type '
 alias la='eza -lah -s type '
 alias ls=la
-alias vim=nvim
+# alias vim=nvim
 alias ytp='bash ~/config/.config/ytp/ytp.sh'
+alias mupdf='mupdf-gl'
+alias bw='~/config/scripts/bw'
 # alias la = "eza -la"
 # alias ll = "eza -l"
 # alias ls = "eza -lah"
@@ -134,3 +138,9 @@ path=('/Users/scrobel/.juliaup/bin' $path)
 export PATH
 
 # <<< juliaup initialize <<<
+eval "$(/opt/homebrew/bin/brew shellenv)"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+source /Users/scrobel/.brazil_completion/zsh_completion
+
+# Amazon Q post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
