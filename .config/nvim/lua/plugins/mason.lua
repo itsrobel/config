@@ -10,6 +10,7 @@ return {
         enabled = false,
         -- enabled = vim.g.lazyvim_python_lsp == "basedpyright",
       },
+
       ruff_lsp = {
         keys = {
           {
