@@ -93,7 +93,7 @@ awful.util.terminal = terminal
 -- 	-- math = "   ",
 -- }
 
-local icons = { "[ ]", "[ ]", "[]", "[]", "[ ]", "[ ]", "[ ]", "[]", "[ ]" }
+-- local icons = { "[ ]", "[ ]", "[]", "[]", "[ ]", "[ ]", "[ ]", "[]", "[ ]" }
 
 local tags_substring = {
 	"[DEV]",
@@ -101,9 +101,9 @@ local tags_substring = {
 	"[DOC]",
 	"[ZEN]",
 	"[VID]",
-	-- "[SYS]",
-	-- "[TEL]",
-	-- "[OBS]",
+	"[SYS]",
+	"[TEL]",
+	"[OBS]",
 	"[MUS]",
 }
 local tags_arabic = {
