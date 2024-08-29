@@ -23,3 +23,21 @@ which means to nvchad config folder needs to be symbolically linked, I.E.
 ```bash
 ln -s ~/config/nvchad/ ~/config/.config/nvim/lua/custom
 ```
+
+# ZSH
+
+Install oh-my-zsh
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+```
+
+In order to get the highlighting and
+auto completion for zsh, I use oh-my-zsh plugin manager
+however we still need to pull them with the following
+
+```sh
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+```
