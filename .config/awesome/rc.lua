@@ -71,7 +71,7 @@ local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-c
 local emacs = "emacsclient -c -n"
 local browser = "brave"
 local thunar = "thunar"
-local ranger = "alacritty -e ranger"
+local ranger = "wezterm -e ranger"
 -- local run_launcher = "dmenu_run -b"
 local run_launcher = "rofi -show run"
 
