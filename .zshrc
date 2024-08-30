@@ -118,4 +118,8 @@ alias ls=la
 # alias vim=nvim
 alias ytp='bash ~/config/.config/ytp/ytp.sh'
 alias mupdf='mupdf-gl'
-alias bw='~/config/scripts/bw'
+# alias bw='~/config/scripts/bw'
+
+# Startup
+fastfetch
+
