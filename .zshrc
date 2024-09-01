@@ -118,6 +118,26 @@ alias ls=la
 # alias vim=nvim
 alias ytp='bash ~/config/.config/ytp/ytp.sh'
 alias mupdf='mupdf-gl'
+
+alias ssn='sudo shutdown now'
+alias sr='sudo reboot'
+alias rd='rm -rf'
+alias on="cd ~/Documents/notes && nvim"
+alias oc="cd ~/config && nvim"
+alias doom='~/.config//emacs/bin/doom'
+
+alias fk="fuck"
+alias update="paru -Syyu"
+alias unlock="sudo rm /var/lib/pacman/db.lck"
+alias i="paru"
+alias nosleep="xset s off -dpms"
+
+function zo
+    zathura $argv >/dev/null 2>&1 & disown
+end
+# alias emacs="emacsclient -c -nw"
+#code shortcuts
+alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
 # alias bw='~/config/scripts/bw'
 
 # Startup
