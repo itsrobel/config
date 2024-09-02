@@ -123,6 +123,13 @@ alias ls=la
 alias ytp='bash ~/config/.config/ytp/ytp.sh'
 alias mupdf='mupdf-gl'
 alias bw='~/config/scripts/bw'
+alias midway-auth='kinit -f && mwinit -o'
+alias ssh-cloud='ssh dev-dsk-scrobel-2c-9b37b519.us-west-2.amazon.com'
+
+
+
+
+
 # alias la = "eza -la"
 # alias ll = "eza -l"
 # alias ls = "eza -lah"
