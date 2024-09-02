@@ -32,7 +32,6 @@ function AddKeymaps()
         },
         l = { '<cmd>ObsidianDailies<CR>', 'Obsidian Journal List' },
       },
-      w = { '<cmd>ObsidianWorkspace<CR>', 'Obsidian Workspace' },
     },
   }
 end
