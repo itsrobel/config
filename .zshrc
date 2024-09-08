@@ -70,7 +70,16 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+	git 
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	tmux
+	zoxide
+)
+
+ZSH_TMUX_AUTOSTART=false
+ZOXIDE_CMD_OVERRIDE=cd
 
 source $ZSH/oh-my-zsh.sh
 
@@ -82,11 +91,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='nvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch $(uname -m)"
@@ -102,3 +111,33 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+alias l='eza -lh -s type '
+alias la='eza -lah -s type '
+alias ls=la
+# alias vim=nvim
+alias ytp='bash ~/config/.config/ytp/ytp.sh'
+alias mupdf='mupdf-gl'
+
+alias ssn='sudo shutdown now'
+alias sr='sudo reboot'
+alias rd='rm -rf'
+alias on="cd ~/Documents/notes && nvim"
+alias oc="cd ~/config && nvim"
+alias doom='~/.config//emacs/bin/doom'
+
+alias fk="fuck"
+alias update="paru -Syyu"
+alias unlock="sudo rm /var/lib/pacman/db.lck"
+alias i="paru"
+alias nosleep="xset s off -dpms"
+
+function zo {
+    zathura $argv >/dev/null 2>&1 & disown
+}
+# alias emacs="emacsclient -c -nw"
+#code shortcuts
+alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
+# alias bw='~/config/scripts/bw'
+
+
