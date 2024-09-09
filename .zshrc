@@ -132,14 +132,15 @@ alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias i="paru"
 alias nosleep="xset s off -dpms"
 
-function zo
+function zo {
     zathura $argv >/dev/null 2>&1 & disown
-end
+}
+
 # alias emacs="emacsclient -c -nw"
 #code shortcuts
 alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
 # alias bw='~/config/scripts/bw'
 
 # Startup
-fastfetch
+#fastfetch
 
