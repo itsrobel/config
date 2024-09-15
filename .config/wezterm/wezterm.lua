@@ -7,9 +7,13 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
-config.color_scheme = "Catppuccin Mocha"
+-- config.color_scheme = "Catppuccin Mocha"
+-- config.font = wezterm.font 'Fira Code SemiBold'
+-- config.font = wezterm.font("JetBrains Mono Font")
+-- config.font = wezterm.font("MesloLGS Nerd Font Mono")
+warn_about_missing_glyphs = false
+config.automatically_reload_config = true
 
-config.font = wezterm.font("JetBrains Mono Font")
 config.font_size = 13
 config.enable_tab_bar = false
 config.window_background_opacity = 0.9

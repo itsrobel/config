@@ -78,7 +78,7 @@ plugins=(
 	zoxide
 )
 
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 ZOXIDE_CMD_OVERRIDE=cd
 
 source $ZSH/oh-my-zsh.sh
