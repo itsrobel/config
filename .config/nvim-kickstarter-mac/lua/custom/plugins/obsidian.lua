@@ -32,6 +32,7 @@ function AddKeymaps()
         },
         l = { '<cmd>ObsidianDailies<CR>', 'Obsidian Journal List' },
       },
+      w = { '<cmd>ObsidianWorkspace<CR>', 'Obsidian Workspace' },
     },
   }
 end
@@ -51,7 +52,7 @@ return {
   'epwalsh/obsidian.nvim',
   version = '*', -- recommended, use latest release instead of latest commit
   lazy = false,
-  enabled = IsEnabled(),
+  -- enabled = IsEnabled(),
   dependencies = {
     -- Required.
     'nvim-lua/plenary.nvim',
