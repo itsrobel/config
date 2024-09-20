@@ -135,3 +135,4 @@ element-text, element-icon {
 //@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 //@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
 //@theme "/home/stef/.local/share/rofi/themes/simple-tokyonight.rasi"
+@theme "/usr/share/rofi/themes/dmenu.rasi"
