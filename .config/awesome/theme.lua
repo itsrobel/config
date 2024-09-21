@@ -14,7 +14,7 @@ theme.dir = os.getenv("HOME") .. "/.config/awesome/theme/"
 -- theme.wallpaper = "~/pictures/wallpapers/new_york_night.jpg"
 theme.wallpaper = "~/pictures/wallpapers/hungarian_parliament.jpg"
 -- theme.font                                      = "Noto Sans Mono Bold 13"
-theme.font = "MesloLGS Nerd Font Mono Bold 13"
+theme.font = "Fira Code Semibold 13"
 theme.fg_normal = colors.tokyonight.fg_normal
 theme.fg_focus = colors.tokyonight.fg_focus
 theme.fg_urgent = colors.tokyonight.fg_urgent
@@ -238,9 +238,10 @@ function theme.at_screen_connect(s)
 		shape = gears.shape.rounded_rect,
 		ontop = false,
 		border_width = 4,
-		position = "top",
+		position = "bottom",
 		screen = s,
 		height = dpi(24),
+		opacity = 0.9,
 		bg = theme.bg_normal,
 		fg = theme.fg_normal,
 	})

@@ -16,10 +16,6 @@ For anyone else who reads this thats not me
   - Because I am lazy, way to many things are run in root
 
 # Special Notes
-
-Since Nvchad exists on a folder that needs to be changed by its own repo
-which means to nvchad config folder needs to be symbolically linked, I.E.
-
 ```bash
 ln -s ~/config/nvchad/ ~/config/.config/nvim/lua/custom
 ```

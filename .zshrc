@@ -136,6 +136,10 @@ function zo {
     zathura $argv >/dev/null 2>&1 & disown
 }
 
+function bw_unlock {
+  source ~/config/scripts/bitwarden-unlock.sh
+}
+
 # alias emacs="emacsclient -c -nw"
 #code shortcuts
 alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin main"
