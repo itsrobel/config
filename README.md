@@ -2,12 +2,34 @@
 
 add stuff here some time idk
 
-# The Don't
+# Fonts
 
 A note to myself
 
 - do not ever install nerd-fonts-source-code-pro
   it sucks and messes up font awesome rendering
+
+```sh
+git clone https://github.com/shaunsingh/SFMono-Nerd-Font-Ligaturized.git && cd SFMono-Nerd-Font-Ligaturized
+cp *.otf ~/.local/share/fonts
+
+```
+
+Or
+
+```sh
+
+yay -s nerd-fonts-sf-mono
+```
+
+Without ligatures
+
+In order for the tmux theme to work you have to have your disired nerd font aswell as
+noto-fonts and noto-fonts-emoji on arch can be installed with the following
+
+```sh
+sudo pacman -S noto-fonts noto-fonts-emoji
+```
 
 For anyone else who reads this thats not me
 
@@ -16,6 +38,7 @@ For anyone else who reads this thats not me
   - Because I am lazy, way to many things are run in root
 
 # Special Notes
+
 ```bash
 ln -s ~/config/nvchad/ ~/config/.config/nvim/lua/custom
 ```
