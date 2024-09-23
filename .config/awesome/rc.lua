@@ -64,14 +64,13 @@ run_once({ "urxvtd", "unclutter -root" }) -- comma-separated entries
 local modkey = "Mod4"
 local altkey = "Mod1"
 -- local terminal = "kitty -e tmux new-session -A -s father"
-local terminal = "kitty -e tmux new-session -A -s father"
+local terminal = "wezterm -e tmux new-session -A -s father"
 local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-copycats/issues/275
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 -- local nvim = "kitty -e (tmux -e nvim)"
 local emacs = "emacsclient -c -n"
-local browser = "brave"
+local browser = "firefox"
 local thunar = "thunar"
-local ranger = "kitty -e ranger"
 -- local run_launcher = "dmenu_run -b"
 local run_launcher = "rofi -show run"
 
@@ -251,7 +250,7 @@ root.buttons(mytable.join(
 
 Globalkeys = mytable.join(
 
-	awful.key({ modkey }, "g", function()
+	awful.key({ modkey }, "i", function()
 		awful.spawn(browser)
 	end, { description = "open browser", group = "launcher" }),
 	-- awful.key({ modkey }, "b", function () awful.spawn( firefox ) end,
@@ -265,9 +264,9 @@ Globalkeys = mytable.join(
 	awful.key({ modkey }, "t", function()
 		awful.spawn(thunar)
 	end, { description = "Open Thunar", group = "laucher" }),
-	awful.key({ modkey }, "r", function()
-		awful.spawn(ranger)
-	end, { description = "Open Ranger", group = "laucher" }),
+	-- awful.key({ modkey }, "r", function()
+	-- 	awful.spawn(ranger)
+	-- end, { description = "Open Ranger", group = "laucher" }),
 	awful.key({ modkey }, "p", function()
 		awful.spawn(run_launcher)
 	end, { description = "Open Run Launcher", group = "launcher" }),

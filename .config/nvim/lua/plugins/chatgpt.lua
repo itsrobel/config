@@ -1,6 +1,5 @@
 -- local session = vim.fn.expand("$BW_SESSION")
 local bwSession = os.getenv("BW_SESSION")
-
 local checkBWSession = function()
   return bwSession ~= nil and bwSession ~= ""
 end
@@ -11,7 +10,7 @@ return {
   config = function()
     require("chatgpt").setup({
       -- this config assumes you have OPENAI_API_KEY environment variable set
-      api_key_cmd = "bw get passsword gpt --session " .. bwSession,
+      api_key_cmd = os.getenv("OPENAI_API_KEY"),
       openai_params = {
         -- NOTE: model can be a function returning the model name
         -- this is useful if you want to change the model on the fly

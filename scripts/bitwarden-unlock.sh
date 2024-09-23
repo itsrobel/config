@@ -27,6 +27,7 @@ if ! [ -n "$BW_SESSION" ]; then
 
   # Clear the password variable for security
   #echo $BW_SESSION
+  export OPENAI_API_KEY=$(bw get password gpt --session "$BW_SESSION")
   unset BW_PASSWORD
 else
   echo "BW_SESSION environment variable is already set"
