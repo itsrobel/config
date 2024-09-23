@@ -32,6 +32,29 @@ return {
         n = 1,
       },
     })
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>i", group = "ChatGPT" }, -- group
+      { "<leader>ic", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+      {
+        -- Nested mappings are allowed and can be added in any order
+        -- Most attributes can be inherited or overridden on any level
+        -- There's no limit to the depth of nesting
+        mode = { "v" }, -- NORMAL and VISUAL mode
+        { "<leader>ie", "<cmd>ChatGPTEditWithInstruction<CR>", desc = "Edit with instruction" },
+        { "<leader>ig", "<cmd>ChatGPTRun grammar_correction<CR>", desc = "Grammar Correction" },
+        { "<leader>it", "<cmd>ChatGPTRun translate<CR>", desc = "Translate" },
+        { "<leader>ik", "<cmd>ChatGPTRun keywords<CR>", desc = "Keywords" },
+        { "<leader>id", "<cmd>ChatGPTRun docstring<CR>", desc = "Docstring" },
+        { "<leader>ia", "<cmd>ChatGPTRun add_tests<CR>", desc = "Add Tests" },
+        { "<leader>io", "<cmd>ChatGPTRun optimize_code<CR>", desc = "Optimize Code" },
+        { "<leader>is", "<cmd>ChatGPTRun summarize<CR>", desc = "Summarize" },
+        { "<leader>if", "<cmd>ChatGPTRun fix_bugs<CR>", desc = "Fix Bugs" },
+        { "<leader>ix", "<cmd>ChatGPTRun explain_code<CR>", desc = "Explain Code" },
+        { "<leader>ir", "<cmd>ChatGPTRun roxygen_edit<CR>", desc = "Roxygen Edit" },
+        { "<leader>il", "<cmd>ChatGPTRun code_readability_analysis<CR>", desc = "Code Readability Analysis" },
+      },
+    })
   end,
   dependencies = {
     "MunifTanjim/nui.nvim",
