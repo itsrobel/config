@@ -69,7 +69,7 @@ local vi_focus = false -- vi-like client focus https://github.com/lcpz/awesome-c
 -- local cycle_prev   = true  -- cycle with only the previously focused client or all https://github.com/lcpz/awesome-copycats/issues/274
 -- local nvim = "kitty -e (tmux -e nvim)"
 local emacs = "emacsclient -c -n"
-local browser = "firefox"
+local browser = "chromium"
 local thunar = "thunar"
 -- local run_launcher = "dmenu_run -b"
 local run_launcher = "rofi -show run"
@@ -253,8 +253,6 @@ Globalkeys = mytable.join(
 	awful.key({ modkey }, "i", function()
 		awful.spawn(browser)
 	end, { description = "open browser", group = "launcher" }),
-	-- awful.key({ modkey }, "b", function () awful.spawn( firefox ) end,
-	--     {description = "open firefox", group = "launcher"}),
 	-- awful.key({ modkey }, "n", function()
 	-- 	awful.spawn.with_shell(nvim)
 	-- end, { description = "Open Neovim", group = "launcher" }),

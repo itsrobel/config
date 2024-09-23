@@ -12,7 +12,7 @@ local theme = {}
 
 theme.dir = os.getenv("HOME") .. "/.config/awesome/theme/"
 -- theme.wallpaper = "~/pictures/wallpapers/new_york_night.jpg"
-theme.wallpaper = "~/pictures/wallpapers/hungarian_parliament.jpg"
+theme.wallpaper = "~/pictures/wallpapers/anime-rain-girl.jpg"
 -- theme.font                                      = "Noto Sans Mono Bold 13"
 -- theme.font = "MesloLGS Nerd Font Regular 13"
 theme.font = "Liga SFMono Nerd Font Regular 13"
