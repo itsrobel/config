@@ -122,7 +122,7 @@ alias ls=la
 # alias vim=nvim
 alias ytp='bash ~/config/.config/ytp/ytp.sh'
 alias mupdf='mupdf-gl'
-alias bw='~/config/scripts/bw'
+# alias bw='~/config/scripts/bw'
 alias midway-auth='kinit -f && mwinit -o'
 alias ssh-cloud='ssh dev-dsk-scrobel-2c-9b37b519.us-west-2.amazon.com'
 
@@ -149,5 +149,8 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 source /Users/scrobel/.brazil_completion/zsh_completion
 
+function bw_unlock {
+  source ~/config/scripts/bw_unlock.sh
+}
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
