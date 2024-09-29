@@ -20,6 +20,7 @@ Or
 ```sh
 
 yay -s nerd-fonts-sf-mono
+yay -s ttf-font-icons
 ```
 
 Without ligatures
