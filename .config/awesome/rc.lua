@@ -366,7 +366,7 @@ Globalkeys = mytable.join(
 		awful.spawn(terminal)
 	end, { description = terminal, group = "super" }),
 	awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
-	awful.key({ modkey, "Shift" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
+	awful.key({ modkey, "Shift", "Control" }, "q", awesome.quit, { description = "quit awesome", group = "awesome" }),
 	awful.key({ modkey }, "l", function()
 		awful.tag.incmwfact(0.05)
 	end, { description = "increase master width factor", group = "layout" }),
@@ -531,12 +531,13 @@ clientkeys = mytable.join(
 		c.fullscreen = not c.fullscreen
 		c:raise()
 	end, { description = "toggle fullscreen", group = "client" }),
+
 	awful.key({ modkey, "Shift" }, "q", function(c)
 		c:kill()
 	end, { description = "close", group = "hotkeys" }),
-	awful.key({ modkey }, "q", function(c)
-		c:kill()
-	end, { description = "close", group = "hotkeys" }),
+	-- awful.key({ modkey }, "q", function(c)
+	-- 	c:kill()
+	-- end, { description = "close", group = "hotkeys" }),
 	awful.key(
 		{ modkey, "Shift" },
 		"space",
