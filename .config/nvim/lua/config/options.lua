@@ -4,7 +4,9 @@
 
 -- vim.g.lazyvim__python_lsp = "basedpyright"
 --
---
+
+vim.opt.clipboard = "unnamedplus"
+
 vim.filetype.add({
   extension = {
     mdx = "mdx",

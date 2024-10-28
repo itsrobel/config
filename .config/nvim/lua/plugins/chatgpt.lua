@@ -35,7 +35,7 @@ return {
     local wk = require("which-key")
     wk.add({
       { "<leader>i", group = "ChatGPT" }, -- group
-      { "<leader>ic", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+      { "<leader>ii", "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
       {
         -- Nested mappings are allowed and can be added in any order
         -- Most attributes can be inherited or overridden on any level

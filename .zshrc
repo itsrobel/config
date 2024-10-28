@@ -78,7 +78,7 @@ plugins=(
 	zoxide
 )
 
-ZSH_TMUX_AUTOSTART=false
+ZSH_TMUX_AUTOSTART=true
 ZOXIDE_CMD_OVERRIDE=cd
 
 source $ZSH/oh-my-zsh.sh
@@ -148,3 +148,10 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 # Startup
 #fastfetch
 
+
+# bun completions
+[ -s "/home/stef/.local/share/reflex/bun/_bun" ] && source "/home/stef/.local/share/reflex/bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.local/share/reflex/bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

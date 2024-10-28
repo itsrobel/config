@@ -3,7 +3,7 @@ return {
   opts = {
     servers = {
       pyright = {
-        enabled = false,
+        enabled = true,
         -- enabled = vim.g.lazyvim_python_lsp ~= "basedpyright",
       },
       basedpyright = {
