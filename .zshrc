@@ -86,9 +86,10 @@ plugins=(
 	tmux
 	zoxide
 )
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=false
 ZOXIDE_CMD_OVERRIDE=cd
 source $ZSH/oh-my-zsh.sh
+source .keys.sh
 
 # User configuration
 
@@ -154,3 +155,10 @@ function bw_unlock {
 }
 # Amazon Q post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /Users/scrobel/tests/electron-react-tailwind-app/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /Users/scrobel/tests/electron-react-tailwind-app/node_modules/tabtab/.completions/electron-forge.zshexport PATH="/opt/homebrew/opt/node@18/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
