@@ -10,6 +10,9 @@ return {
         enabled = false,
         -- enabled = vim.g.lazyvim_python_lsp == "basedpyright",
       },
+      clangd = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "hpp" },
+      },
 
       ruff_lsp = {
         keys = {
