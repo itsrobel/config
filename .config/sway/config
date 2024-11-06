@@ -224,10 +224,10 @@ gaps inner 10
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %X'; do sleep 1; done
+    # Updated status command to show date, time, and battery
+    # status_command swaystatus
 
+    status_command ~/.config/sway/status.sh
     colors {
         statusline #ffffff
         background #282A36
