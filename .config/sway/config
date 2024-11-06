@@ -17,7 +17,6 @@ set $right l
 set $term kitty
 # Your preferred application launcher
 set $menu wofi --show run
-set $editorui emacsclient -c -n
 set $browser firefox
 
 ### Output configuration
@@ -65,8 +64,7 @@ output eDP-1 enable
 #
     # Start a terminal
     bindsym $mod+Space exec $term
-    bindsym $mod+e exec  $editorui
-    bindsym $mod+i exec  $browser
+    # bindsym $mod+i exec  $browser
 
     # Kill focused window
     bindsym $mod+q kill
@@ -92,11 +90,13 @@ output eDP-1 enable
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -142,10 +142,10 @@ output eDP-1 enable
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     #bindsym $mod+e layout toggle split
 
@@ -153,7 +153,7 @@ output eDP-1 enable
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    #bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+return focus mode_toggle
@@ -167,11 +167,11 @@ output eDP-1 enable
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+i move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+i scratchpad show
 #
 # Resizing containers:
 #
@@ -235,5 +235,18 @@ bar {
     }
 }
 
-exec emacs --daemon
+
+# Border colors
+client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused       #333333 #222222 #888888 #292d2e   #222222
+client.urgent          #2f343a #900000 #ffffff #900000   #900000
+default_floating_border normal
+
+
+
+for_window [app_id=".*"] opacity 0.9
+for_window [app_id=".*"] border pixel 5
+
+
 include @sysconfdir@/sway/config.d/*
