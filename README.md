@@ -61,3 +61,19 @@ however we still need to pull them with the following
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 ```
+
+# Use via
+
+Use via has weird permission error on arch
+
+To fix this add the keyboard to the users group which can be done with the following
+
+```sh
+sudo chown $USER:$USER /dev/hidraw3
+```
+
+The number at the end of hidraw can be found by going to
+
+```
+chrome://device-log/
+```
