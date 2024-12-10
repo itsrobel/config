@@ -93,7 +93,7 @@
     ];
     shell = pkgs.zsh;
   };
-  home-manager.users.stef = import /home/stef/.config/home-manager/home.nix;
+  home-manager.users.stef = import /home/stef/home-manager/home.nix;
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
