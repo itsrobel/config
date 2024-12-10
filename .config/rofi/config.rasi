@@ -131,7 +131,3 @@ element-text, element-icon {
     background-color: inherit;
     text-color: inherit;
 }
-//@theme "/usr/share/rofi/themes/gruvbox-dark.rasi"
-//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
-//@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
-@theme "/home/stef/.local/share/rofi/themes/simple-tokyonight.rasi"

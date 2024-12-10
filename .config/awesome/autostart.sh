@@ -28,14 +28,13 @@ run "./scripts/external-keyboard.sh"
 # polybar left &
 # polybar right &
 
-# run "emacs --daemon"
+run "emacs --daemon"
 # run "nitrogen --restore"
 # run "onedrive"
 #you can set wallpapers in themes as well
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #run applications from startup
 #run "firefox"
-#run "atom"
 #run "dropbox"
 #run "insync start"
 #run "spotify"

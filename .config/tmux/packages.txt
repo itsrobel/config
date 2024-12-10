@@ -1,2 +1,0 @@
-tmux-plugin-manager
-tmux

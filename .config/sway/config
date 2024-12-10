@@ -14,14 +14,18 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term wezterm 
+set $term kitty
 # Your preferred application launcher
-set $menu wmenu-run
+set $menu wofi --show run
+set $browser firefox
+set $browser1 brave 
+set $emacs-client emacsclient -c -n
+set $emacs-server emacs -daemon
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in @datadir@/backgrounds/sway/)
-#output * bg @datadir@/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg ~/wallpaper/first-collection/arch.png fill
 #
 # Example configuration:
 #
@@ -29,7 +33,14 @@ set $menu wmenu-run
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-output eDP-1 enable
+
+
+output HDMI-A-1 position 0 0 res 1920x1080
+output eDP-1 position 1920 0 scale 1.15
+# output DP-1 position 0 0 scale 1.15
+
+
+exec $emacs-server
 ### Idle configuration
 #
 # Example configuration:
@@ -63,6 +74,10 @@ output eDP-1 enable
 #
     # Start a terminal
     bindsym $mod+Space exec $term
+    bindsym $mod+u betweenexec $emacs-client
+    bindsym $mod+o exec  $browser1
+
+
 
     # Kill focused window
     bindsym $mod+q kill
@@ -88,11 +103,13 @@ output eDP-1 enable
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
+
     # Or use $mod+[up|down|left|right]
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
+
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -138,10 +155,10 @@ output eDP-1 enable
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
     bindsym $mod+b splith
-    bindsym $mod+v splitv
+    # bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -149,7 +166,7 @@ output eDP-1 enable
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    #bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+return focus mode_toggle
@@ -163,11 +180,15 @@ output eDP-1 enable
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+Shift+i move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    bindsym $mod+i scratchpad show
+
+
+    bindsym Print exec grim -g "$(slurp)" - | wl-copy
+    bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'screenshot_%Y-%m-%d_%H-%M-%S.png')
 #
 # Resizing containers:
 #
@@ -204,28 +225,65 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec grim
 
 # Status Bar:
-bar {
-    swaybar_command waybar
-}
-# Read `man 5 sway-bar` for more information about this section.
+#bar {
+#    swaybar_command waybar
+#}
+#
+
+default_border none
+
+
+
+# Example colors from Rose Pine palette
+
+# Apply these colors to your Sway config
+# For example, for the bar:
 # bar {
-#     position top
-#
-#
-#
-#
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
+#     status_command swaybar --bar-id=bar-0 --socket=/tmp/sway-ipc.sock
 #     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
+#         background $primary
+#         statusline $text
+#         separator $secondary
 #     }
 # }
+
+
+gaps inner 10
+# Read `man 5 sway-bar` for more information about this section.
+bar {
+    position bottom 
+
+    # Updated status command to show date, time, and battery
+    # status_command swaystatus
+
+    status_command ~/.config/sway/status.sh
+    colors {
+        background #232136
+        # statusline $text
+        separator #9ccfd8
+        focused_workspace #56526e #44415a #c4a7e7
+        active_workspace #44415a #2a283e #908caa
+        inactive_workspace #44415a #2a283e #908caa
+        # focused_background 
+    }
+}
+
+# Border colors
+client.focused          #56526e #56526e #ffffff  #eb6f92
+client.focused_inactive #2a283e #2a283e #ffffff  #2a283e
+
+
+
+client.unfocused       #2a283e #2a283e #9ccfd8 #56526e   
+client.urgent          #2a283e #eb6f92 #ffffff #eb6f92  
+default_floating_border normal
+
+
+
+for_window [app_id=".*"] opacity 0.9
+for_window [app_id=".*"] border pixel 2
+
 
 include @sysconfdir@/sway/config.d/*
