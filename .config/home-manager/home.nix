@@ -5,6 +5,7 @@
     ./zsh.nix
     ./tmux.nix
     ./kitty.nix
+    ./git.nix
   ];
 
   programs.home-manager.enable = true;
