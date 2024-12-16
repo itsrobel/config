@@ -31,8 +31,20 @@ noto-fonts and noto-fonts-emoji on arch can be installed with the following
 ```sh
 sudo pacman -S noto-fonts noto-fonts-emoji
 ```
+update the font cache:
 
-For anyone else who reads this thats not me
+```sh
+fc-cache -fv
+```
+
+```sh
+gsettings set org.gnome.desktop.interface font-name 'SF Mono Nerd Font 11'
+gsettings set org.gnome.desktop.interface monospace-font-name 'SF Mono Nerd Font 10'
+```
+
+
+
+For anyone else who reads this that is not me
 
 - Do not run anything in the scripts folder
   - All of that is for my personal set up
