@@ -89,3 +89,110 @@ The number at the end of hidraw can be found by going to
 ```
 chrome://device-log/
 ```
+
+
+# GTK and theming
+
+```sh
+sudo pacman -S kvantum
+yay -S full-dracula-theme-git nerd-fonts-sf-mono
+
+# Create GTK configuration directories
+mkdir -p ~/.config/gtk-3.0
+mkdir -p ~/.config/gtk-4.0
+
+# Set GTK theme
+cat > ~/.config/gtk-3.0/settings.ini << EOF
+[Settings]
+gtk-theme-name=Dracula
+gtk-font-name=SF Mono Nerd Font 10
+EOF
+
+# Copy settings for GTK4
+cp ~/.config/gtk-3.0/settings.ini ~/.config/gtk-4.0/
+
+
+# Set up Kvantum
+mkdir -p ~/.config/Kvantum
+echo "theme=Dracula" > ~/.config/Kvantum/kvantum.kvconfig
+
+# Configure Qt5 applications
+cat > ~/.config/qt5ct/qt5ct.conf << EOF
+[Appearance]
+style=kvantum
+font="SF Mono Nerd Font,10,-1,5,50,0,0,0,0,0"
+EOF
+
+# Set Qt environment variables in ~/.profile
+echo "export QT_QPA_PLATFORMTHEME=qt5ct" >> ~/.profile
+
+
+
+gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
+gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
+gsettings set org.gnome.desktop.interface icon-theme "Dracula"
+
+```
+
+
+# Lightdm
+
+
+```sh
+sudo pacman -S lightdm lightdm-gtk-greeter 
+# Enable LightDM service
+sudo systemctl enable lightdm
+
+# Configure greeter
+sudo tee /etc/lightdm/lightdm-gtk-greeter.conf << EOF
+[greeter]
+theme-name = Dracula
+font-name = SF Mono Nerd Font 10
+active-monitor = #cursor
+EOF
+```
+
+```sh
+cd sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+
+```
+
+luarocks
+lua51
+ripgrep
+fd
+wget
+php
+rust
+ruby
+julia
+tree-sitter
+eza
+zoxide
+
+
+sudo npm install -g neovim
+
+sudo pacman -S sof-firmware alsa-firmware alsa-utils
+
+if conflicts
+```sh
+sudo rm /usr/lib/systemd/user/pulseaudio-x11.service
+sudo rm /usr/lib/systemd/user/pulseaudio.service
+sudo rm /usr/lib/systemd/user/pulseaudio.socket
+sudo rm /usr/lib/udev/rules.d/90-pulseaudio.rules
+sudo rm /usr/share/bash-completion/completions/pacmd
+sudo rm /usr/share/bash-completion/completions/pasuspender
+```
+
+
+```sh
+sudo pacman -S pulseaudio pulseaudio-alsa pavucontrol
+```
+```sh
+rm -rf ~/.config/pulse
+rm -rf ~/.pulse
+```
+
+should probably reboot
+

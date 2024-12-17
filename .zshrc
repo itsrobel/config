@@ -155,3 +155,4 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 # bun
 export BUN_INSTALL="$HOME/.local/share/reflex/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export QT_QPA_PLATFORM=wayland
