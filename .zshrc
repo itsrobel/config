@@ -79,6 +79,7 @@ plugins=(
 )
 
 ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_DEFAULT_SESSION_NAME="dev"
 ZOXIDE_CMD_OVERRIDE=cd
 
 source $ZSH/oh-my-zsh.sh
@@ -131,6 +132,25 @@ alias update="paru -Syyu"
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias i="paru"
 alias nosleep="xset s off -dpms"
+alias qsa="python ~/projects/projectscripts/qs.py"
+
+
+function killport() {
+  local pid=$(lsof -ti :"$1" | head -n1)
+  if [[ -n "$pid" ]]; then
+    echo "Killing process $pid using port $1"
+    kill -9 "$pid"
+    # Verify kill succeeded
+    sleep 1
+    if lsof -ti :"$1" &>/dev/null; then
+      echo "Failed to kill process using port $1"
+      return 1
+    fi
+  else
+    echo "No process found using port $1"
+    return 0
+  fi
+}
 
 function zo {
     zathura $argv >/dev/null 2>&1 & disown
@@ -155,4 +175,12 @@ alias gitcom="git add . && git commit -m 'update/fixes' && git push -u origin ma
 # bun
 export BUN_INSTALL="$HOME/.local/share/reflex/bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+export GOPATH="/home/stef/go/"
 export QT_QPA_PLATFORM=wayland
+export WAYLAND_DISPLAY=wayland-1
+# gem
+export PATH="$PATH:/home/stef/.local/share/gem/ruby/3.3.0/bin"
+export PATH=$PATH:$GOPATH/bin
+export PATH="/home/stef/.local/bin:$PATH"
+
+

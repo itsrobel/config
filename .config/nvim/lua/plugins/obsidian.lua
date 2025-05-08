@@ -77,13 +77,6 @@ return {
     --     date_format = '%Y-%m-%d-%a',
     --     time_format = '%H:%M',
     --   },
-    completion = {
-      -- Set to false to disable completion.
-      nvim_cmp = true,
-      -- Trigger completion at 2 chars.
-      min_chars = 2,
-    },
-
     --    config = function ()
     --      require('which-key').register( ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
     -- )
@@ -97,12 +90,12 @@ return {
         opts = { noremap = false, expr = true, buffer = true },
       },
       -- Toggle check-boxes.
-      ["<leader>ch"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true },
-      },
+      -- ["<leader>ch"] = {
+      --   action = function()
+      --     return require("obsidian").util.toggle_checkbox()
+      --   end,
+      --   opts = { buffer = true },
+      -- },
       -- Smart action depending on context, either follow link or toggle checkbox.
       ["<cr>"] = {
         action = function()

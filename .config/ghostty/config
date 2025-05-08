@@ -1,0 +1,10 @@
+font-family = MesloLGS Nerd Font Mono
+font-size = 19
+background-opacity = 0.9
+theme = tokyonight
+confirm-close-surface = false
+keybind = alt+h=previous_tab
+keybind = alt+l=next_tab
+command = /usr/bin/zsh
+term = xterm-256color
+background-opacity = 0.9

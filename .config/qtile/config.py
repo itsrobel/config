@@ -27,10 +27,6 @@
 import os
 import subprocess
 
-computer_type = subprocess.run(
-    ["./comp-type.sh"], stdout=subprocess.PIPE, shell=True, text=True
-).stdout
-
 # from qtile_extras.widget import StatusNotifier
 import colors
 from libqtile import bar, hook, layout, qtile
@@ -38,15 +34,26 @@ from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 from libqtile.log_utils import logger
 from libqtile.widget import backlight
+from libqtile.backend.wayland.inputs import InputConfig
+
+wl_input_rules = {
+    # "type:touch": InputConfig(tap=True),
+    "type:touch": InputConfig(tap=True, natural_scroll=True, dwt=True),
+}
 
 # Make sure 'qtile-extras' is installed or this config will not work.
 from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
-myTerm = "kitty -e tmux"  # My terminal of choice
-myBrowser = "firefox"  # My browser of choice
-myRun = "rofi -show run"  # My application launcher
+myTerm = "ghostty"  # My terminal of choice
+myBrowser = "zen-browser"  # My browser of choice
+myRun = "wofi --show run"  # My application launcher
+
+left = "h"
+down = "j"
+up = "k"
+right = "l"
 
 
 # Allows you to input a name when adding treetab section.
@@ -65,10 +72,46 @@ def minimize_all(qtile):
 
 
 # A function for toggling between MAX and MONADTALL layouts
+@lazy.function
+def window_to_next_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
+
+
+@lazy.function
+def window_to_next_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i + 1 != len(qtile.screens):
+        group = qtile.screens[i + 1].group.name
+        qtile.current_window.togroup(group)
+
+
+@lazy.function
+def window_to_previous_screen(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    if i != 0:
+        group = qtile.screens[i - 1].group.name
+        qtile.current_window.togroup(group)
+
+
+@lazy.function
+def window_to_prev_group(qtile):
+    if qtile.currentWindow is not None:
+        i = qtile.groups.index(qtile.currentGroup)
+        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
+
+
+@lazy.function
+def switch_screens(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group
+    qtile.current_screen.set_group(group)
+
 
 keys = [
     # The essentials
-    Key([mod], "Return", lazy.spawn(myTerm), desc="Terminal"),
+    Key([mod], "space", lazy.spawn(myTerm), desc="Terminal"),
     # Key([mod, "shift"], "Return", lazy.spawn("rofi -show drun"), desc="Run Launcher"),
     Key(
         [mod, "shift"],
@@ -78,32 +121,54 @@ keys = [
         ),
         desc="show clipboard history",
     ),
-    Key([mod], "g", lazy.spawn(myBrowser), desc="Web browser"),
+    # Key([mod], "b", lazy.spawn(myBrowser), desc="Web browser"),
     Key([mod], "p", lazy.spawn(myRun), desc="Run Launcher"),
     # Key([mod], "e", lazy.spawn(myEditor), desc="Text editor"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # Key([mod, "shift"], "c", lazy.window.kill(), desc="Kill focused window"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod, "shift"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "control"], "q", lazy.window.kill(), desc="Kill focused window"),
+    Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key([mod, "shift"], "x", lazy.spawn("archlinux-logout"), desc="Logout menu"),
-    Key([mod, "shift"], "x", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod, "control"], "x", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "n", lazy.layout.reset(), desc="Reset all window sizes"),
     Key([mod], "m", lazy.layout.maximize(), desc="Toggle between min and max sizes"),
-    Key([mod], "k", lazy.layout.next(), desc="Move window focus to other window"),
-    Key([mod], "j", lazy.layout.previous(), desc="Move window focus to other window"),
+    Key([mod], left, lazy.layout.left()),
+    Key([mod], down, lazy.layout.down()),
+    Key([mod], up, lazy.layout.up()),
+    Key([mod], right, lazy.layout.right()),
     Key(
-        [mod, "shift"], "j", lazy.layout.shuffle_left(), desc="Move window to the left"
+        [mod, "control"],
+        left,
+        lazy.layout.shuffle_left(),
+        desc="Move window to the left",
     ),
     Key(
-        [mod, "shift"],
-        "k",
+        [mod, "control"],
+        right,
         lazy.layout.shuffle_right(),
         desc="Move window to the right",
     ),
-    Key([mod], "space", lazy.window.toggle_floating(), desc="toggle floating"),
-    Key([mod, "control"], "l", lazy.next_screen(), desc="Move focus to next monitor"),
-    Key([mod, "control"], "h", lazy.prev_screen(), desc="Move focus to prev monitor"),
+    Key([mod], "b", lazy.layout.grow_right()),  # Similar to splith
+    Key([mod], "w", lazy.next_layout()),  # For tabbed layout
+    Key([mod], "e", lazy.layout.toggle_split()),
+    Key([mod], "f", lazy.window.toggle_fullscreen()),
+    Key([mod, "control"], "space", lazy.window.toggle_floating()),
+    Key([mod], "Return", lazy.layout.flip()),  # Similar to focus mode_toggle
+    Key([mod, "control"], right, lazy.next_screen(), desc="Move focus to next monitor"),
+    Key([mod, "control"], left, lazy.prev_screen(), desc="Move focus to prev monitor"),
+    Key(
+        [mod, "control"],
+        "o",
+        window_to_next_screen(),
+        desc="move window to next screen",
+    ),
+    Key(
+        [mod, "control"],
+        "i",
+        window_to_previous_screen(),
+        desc="move window to next screen",
+    ),
     Key(
         [mod],
         "comma",
@@ -189,27 +254,24 @@ for i in groups:
         ]
     )
 
-colors = colors.DoomOne
+color = colors.TomorrowNight
 
 layout_theme = {
     "border_width": 2,
     "margin": 16,
-    "border_focus": colors[8],
-    "border_normal": colors[0],
+    "border_focus": color[8],
+    "border_normal": color[0],
 }
 
 layouts = [
     layout.MonadTall(**layout_theme),
-    layout.Columns(**layout_theme),
+    # layout.Columns(**layout_theme),
 ]
 
-widget_defaults = dict(font="Ubuntu Bold", fontsize=12, padding=0, background=colors[0])
+widget_defaults = dict(font="Ubuntu Bold", fontsize=12, padding=0, background=color[0])
 
 extension_defaults = widget_defaults.copy()
 
-
-# computer_type = subprocess.run(["./comp-type.sh"], stdout=subprocess.PIPE, shell=True)
-logger.warning("Computer type: " + computer_type)
 
 computer_type = subprocess.run("laptop-detect", shell=True).returncode
 
@@ -227,7 +289,7 @@ def init_widgets_list():
             scale="False",
             mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm)},
         ),
-        widget.Prompt(font="Ubuntu Mono", fontsize=14, foreground=colors[1]),
+        widget.Prompt(font="Ubuntu Mono", fontsize=14, foreground=color[1]),
         widget.GroupBox(
             fontsize=11,
             margin_y=5,
@@ -235,83 +297,83 @@ def init_widgets_list():
             padding_y=0,
             padding_x=1,
             borderwidth=3,
-            active=colors[8],
-            inactive=colors[1],
+            active=color[8],
+            inactive=color[1],
             rounded=False,
-            highlight_color=colors[2],
+            highlight_color=color[2],
             highlight_method="line",
-            this_current_screen_border=colors[7],
-            this_screen_border=colors[4],
-            other_current_screen_border=colors[7],
-            other_screen_border=colors[4],
+            this_current_screen_border=color[7],
+            this_screen_border=color[4],
+            other_current_screen_border=color[7],
+            other_screen_border=color[4],
         ),
         widget.TextBox(
             text="|",
             font="Ubuntu Mono",
-            foreground=colors[1],
+            foreground=color[1],
             padding=2,
             fontsize=14,
         ),
         widget.CurrentLayoutIcon(
             # custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
-            foreground=colors[1],
+            foreground=color[1],
             padding=4,
             scale=0.6,
         ),
-        widget.CurrentLayout(foreground=colors[1], padding=5),
+        widget.CurrentLayout(foreground=color[1], padding=5),
         widget.TextBox(
             text="|",
             font="Ubuntu Mono",
-            foreground=colors[1],
+            foreground=color[1],
             padding=2,
             fontsize=14,
         ),
-        widget.WindowName(foreground=colors[6], max_chars=40),
+        widget.WindowName(foreground=color[6], max_chars=40),
         widget.GenPollText(
             update_interval=300,
             func=lambda: subprocess.check_output(
                 "printf $(uname -r)", shell=True, text=True
             ).upper(),
-            foreground=colors[3],
-            fmt="❤  {}",
+            foreground=color[3],
+            fmt="{}",
             decorations=[
                 BorderDecoration(
-                    colour=colors[3],
+                    colour=color[3],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
         widget.Spacer(length=8),
         widget.CPU(
-            format="   CPU: {load_percent}%",
-            foreground=colors[6],
+            format="CPU: {load_percent}%",
+            foreground=color[6],
             decorations=[
                 BorderDecoration(
-                    colour=colors[6],
+                    colour=color[6],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
         # widget.CPUGraph(
-        #     graph_color=colors[6],
-        #     border_color=colors[6],
+        #     graph_color=color[6],
+        #     border_color=color[6],
         #     type="line",
         #     decorations=[
         #         BorderDecoration(
-        #             colour=colors[6],
+        #             colour=color[6],
         #             border_width=[0, 0, 2, 0],
         #         )
         #     ],
         # ),
         widget.Spacer(length=8),
         widget.Memory(
-            foreground=colors[8],
+            foreground=color[8],
             mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm + " -e htop")},
             # format="{MemUsed: .0f}{mm}",
-            fmt="🖥  MEM: {}",
+            fmt="MEM: {}",
             decorations=[
                 BorderDecoration(
-                    colour=colors[8],
+                    colour=color[8],
                     border_width=[0, 0, 2, 0],
                 )
             ],
@@ -319,50 +381,50 @@ def init_widgets_list():
         widget.Spacer(length=8),
         widget.DF(
             update_interval=60,
-            foreground=colors[5],
+            foreground=color[5],
             mouse_callbacks={"Button1": lambda: qtile.spawn(myTerm + " -e df")},
             partition="/",
             # format = '[{p}] {uf}{m} ({r:.0f}%)',
             format="{uf}{m} free",
-            fmt="🖴  DSK: {}",
+            fmt="DSK: {}",
             visible_on_warn=False,
             decorations=[
                 BorderDecoration(
-                    colour=colors[5],
+                    colour=color[5],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
         widget.Spacer(length=8),
         widget.Volume(
-            foreground=colors[7],
-            fmt="   VOL: {}",
+            foreground=color[7],
+            fmt="VOL: {}",
             decorations=[
                 BorderDecoration(
-                    colour=colors[7],
+                    colour=color[7],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
         widget.Spacer(length=8),
         widget.KeyboardLayout(
-            foreground=colors[3],
-            fmt="⌨  KBD: {}",
+            foreground=color[3],
+            fmt="KBD: {}",
             decorations=[
                 BorderDecoration(
-                    colour=colors[3],
+                    colour=color[3],
                     border_width=[0, 0, 2, 0],
                 )
             ],
         ),
         widget.Spacer(length=8),
         widget.Clock(
-            foreground=colors[8],
+            foreground=color[8],
             # format="⏱  %A, %b %d - %H:%M",
-            format="⏱  %H:%M",
+            format="%H:%M",
             decorations=[
                 BorderDecoration(
-                    colour=colors[8],
+                    colour=color[8],
                     border_width=[0, 0, 2, 0],
                 )
             ],
@@ -385,11 +447,11 @@ def init_bright():
         bright = [
             widget.Backlight(
                 backlight_name="intel_backlight",
-                foreground=colors[6],
-                fmt="   BRT: {}",
+                foreground=color[6],
+                fmt="BRT: {}",
                 decorations=[
                     BorderDecoration(
-                        colour=colors[6],
+                        colour=color[6],
                         border_width=[0, 0, 2, 0],
                     )
                 ],
@@ -405,11 +467,11 @@ def init_battery():
     if computer_type == 0:
         battery = [
             widget.Battery(
-                format="  BAT: {percent:2.0%}",
-                foreground=colors[5],
+                format="BAT: {percent:2.0%}",
+                foreground=color[5],
                 decorations=[
                     BorderDecoration(
-                        colour=colors[5],
+                        colour=color[5],
                         border_width=[0, 0, 2, 0],
                     )
                 ],
@@ -462,38 +524,6 @@ if __name__ in ["config", "__main__"]:
     widgets_screen2 = init_widgets_screen2()
 
 
-def window_to_prev_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i - 1].name)
-
-
-def window_to_next_group(qtile):
-    if qtile.currentWindow is not None:
-        i = qtile.groups.index(qtile.currentGroup)
-        qtile.currentWindow.togroup(qtile.groups[i + 1].name)
-
-
-def window_to_previous_screen(qtile):
-    i = qtile.screens.index(qtile.current_screen)
-    if i != 0:
-        group = qtile.screens[i - 1].group.name
-        qtile.current_window.togroup(group)
-
-
-def window_to_next_screen(qtile):
-    i = qtile.screens.index(qtile.current_screen)
-    if i + 1 != len(qtile.screens):
-        group = qtile.screens[i + 1].group.name
-        qtile.current_window.togroup(group)
-
-
-def switch_screens(qtile):
-    i = qtile.screens.index(qtile.current_screen)
-    group = qtile.screens[i - 1].group
-    qtile.current_screen.set_group(group)
-
-
 mouse = [
     Drag(
         [mod],
@@ -511,10 +541,10 @@ dgroups_key_binder = None
 dgroups_app_rules = []  # type: list
 follow_mouse_focus = True
 bring_front_click = False
-cursor_warp = False
+cursor_warp = True
 
 floating_layout = layout.Floating(
-    border_focus=colors[8],
+    border_focus=color[8],
     border_width=2,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
@@ -524,7 +554,6 @@ floating_layout = layout.Floating(
         Match(wm_class="download"),  # downloads
         Match(wm_class="error"),  # error msgs
         Match(wm_class="file_progress"),  # file progress boxes
-        # Match(wm_class="kdenlive"),  # kdenlive
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk
         Match(wm_class="notification"),  # notifications

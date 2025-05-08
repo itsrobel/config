@@ -1,5 +1,3 @@
-# Setup Script
-
 add stuff here some time idk
 
 # Fonts
@@ -19,8 +17,8 @@ Or
 
 ```sh
 
-yay -s nerd-fonts-sf-mono
-yay -s ttf-font-icons
+yay -S nerd-fonts-sf-mono
+yay -S ttf-font-icons
 ```
 
 Without ligatures
@@ -31,6 +29,7 @@ noto-fonts and noto-fonts-emoji on arch can be installed with the following
 ```sh
 sudo pacman -S noto-fonts noto-fonts-emoji
 ```
+
 update the font cache:
 
 ```sh
@@ -41,8 +40,6 @@ fc-cache -fv
 gsettings set org.gnome.desktop.interface font-name 'SF Mono Nerd Font 11'
 gsettings set org.gnome.desktop.interface monospace-font-name 'SF Mono Nerd Font 10'
 ```
-
-
 
 For anyone else who reads this that is not me
 
@@ -90,7 +87,6 @@ The number at the end of hidraw can be found by going to
 chrome://device-log/
 ```
 
-
 # GTK and theming
 
 ```sh
@@ -134,12 +130,10 @@ gsettings set org.gnome.desktop.interface icon-theme "Dracula"
 
 ```
 
-
 # Lightdm
 
-
 ```sh
-sudo pacman -S lightdm lightdm-gtk-greeter 
+sudo pacman -S lightdm lightdm-gtk-greeter
 # Enable LightDM service
 sudo systemctl enable lightdm
 
@@ -169,13 +163,20 @@ julia
 tree-sitter
 eza
 zoxide
-
+grim
+slurp
+yazi
+bluetui
+impala
+pulsemixer
+spotify-tui
 
 sudo npm install -g neovim
 
 sudo pacman -S sof-firmware alsa-firmware alsa-utils
 
 if conflicts
+
 ```sh
 sudo rm /usr/lib/systemd/user/pulseaudio-x11.service
 sudo rm /usr/lib/systemd/user/pulseaudio.service
@@ -185,14 +186,13 @@ sudo rm /usr/share/bash-completion/completions/pacmd
 sudo rm /usr/share/bash-completion/completions/pasuspender
 ```
 
-
 ```sh
 sudo pacman -S pulseaudio pulseaudio-alsa pavucontrol
 ```
+
 ```sh
 rm -rf ~/.config/pulse
 rm -rf ~/.pulse
 ```
 
 should probably reboot
-
