@@ -74,14 +74,12 @@ plugins=(
 	git 
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	tmux
 	zoxide
+  tmux
 )
 
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_DEFAULT_SESSION_NAME="dev"
 ZOXIDE_CMD_OVERRIDE=cd
-
+ZSH_TMUX_AUTOSTART=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
