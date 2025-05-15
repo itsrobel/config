@@ -2,7 +2,12 @@
 local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
-
+-- config.unix_domains = {
+-- 	{ name = "unix" },
+-- }
+-- config.default_gui_startup_args = { "connect", "unix" }
+config.default_cursor_style = "SteadyBar"
+config.adjust_window_size_when_changing_font_size = false
 -- if you are *NOT* lazy-loading smart-splits.nvim (recommended)
 local function is_vim(pane)
 	return pane:get_user_vars().IS_NVIM == "true"
@@ -38,7 +43,7 @@ end
 
 config.color_scheme = "Catppuccin Mocha"
 
-config.font = wezterm.font("MesloLGS Nerd Font Mono")
+--config.font = wezterm.font("MesloLGS Nerd Font Mono")
 config.font_size = 13
 config.enable_tab_bar = false
 config.window_background_opacity = 0.9
@@ -60,7 +65,7 @@ config.keys = {
 	-- },
 	{
 		mods = "LEADER",
-		key = "%",
+		key = "-",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 

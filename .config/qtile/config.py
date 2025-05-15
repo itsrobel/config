@@ -46,7 +46,7 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import BorderDecoration
 
 mod = "mod4"  # Sets mod key to SUPER/WINDOWS
-myTerm = "ghostty"  # My terminal of choice
+myTerm = "wezterm"  # My terminal of choice
 myBrowser = "zen-browser"  # My browser of choice
 myRun = "wofi --show run"  # My application launcher
 
@@ -121,7 +121,7 @@ keys = [
         ),
         desc="show clipboard history",
     ),
-    # Key([mod], "b", lazy.spawn(myBrowser), desc="Web browser"),
+    Key([mod], "b", lazy.spawn(myBrowser), desc="Web browser"),
     Key([mod], "p", lazy.spawn(myRun), desc="Run Launcher"),
     # Key([mod], "e", lazy.spawn(myEditor), desc="Text editor"),
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
