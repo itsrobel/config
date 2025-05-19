@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term ghostty 
 # Your preferred application launcher
-set $menu wofi --show run
+set $menu rofi -show drun
 set $browser zen-browser 
 
 ### Output configuration
@@ -32,10 +32,14 @@ output * bg ~/pictures/wallpapers/anime-rain-girl.jpg fill
 
 
 
-output HDMI-A-1 position 2560 0 res 2560x1440 scale 1.25
+# output DP-1 position 3840 0 res 3840x2160 scale 1.25
+# output eDP-1 position 0 0 scale 1.15
+
+output DP-1 position 0 0 res 3840x2160 scale 1.25
+output eDP-1 position 3840 0 scale 1.15
+
+# output HDMI-A-1 position 2560 0 res 2560x1440 scale 1.25
 output * adaptive_sync on
-# output DP-1 position 0 0 res 1920x1080
-output eDP-1 position 0 0 scale 1.15
 # output DP-1 position 0 0 scale 1.15
 
 
@@ -49,6 +53,10 @@ exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
          before-sleep 'swaylock -f -c 000000'
+
+
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -72,7 +80,8 @@ exec swayidle -w \
 # Basics:
 #
     # Start a terminal
-    bindsym $mod+Space exec $term
+    bindsym $mod+Space exec $menu
+    bindsym $mod+t exec $term
     bindsym $mod+o exec  $browser
 
 
@@ -81,7 +90,7 @@ exec swayidle -w \
     bindsym $mod+q kill
 
     # Start your launcher
-    bindsym $mod+p exec $menu
+    # bindsym $mod+p exec $menu
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
