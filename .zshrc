@@ -181,4 +181,5 @@ export PATH="$PATH:/home/stef/.local/share/gem/ruby/3.3.0/bin"
 export PATH=$PATH:$GOPATH/bin
 export PATH="/home/stef/.local/bin:$PATH"
 
+# export BEDROCK_KEYS=$AWS_ACCESS_KEY,$AWS_SECRET_KEY,us-east-1
 
