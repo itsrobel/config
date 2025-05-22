@@ -76,10 +76,13 @@ plugins=(
 	zsh-syntax-highlighting
 	zoxide
   tmux
+  rbw
 )
 
 ZOXIDE_CMD_OVERRIDE=cd
 ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_DEFAULT_SESSION_NAME="dev"
+ZSH_TMUX_UNICODE=true
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
