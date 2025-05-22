@@ -36,7 +36,7 @@ output * bg ~/pictures/wallpapers/anime-rain-girl.jpg fill
 # output eDP-1 position 0 0 scale 1.15
 
 output DP-1 position 0 0 res 3840x2160 scale 1.25
-output eDP-1 position 3840 0 scale 1.15
+output eDP-1 position 3840 0 scale 1.5
 
 # output HDMI-A-1 position 2560 0 res 2560x1440 scale 1.25
 output * adaptive_sync on
